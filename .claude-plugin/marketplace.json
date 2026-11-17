@@ -1,0 +1,12 @@
+{
+  "name": "ecom-society",
+  "owner": { "name": "eCom Society" },
+  "metadata": { "description": "Kit del Reto de 4 días de eCom Society" },
+  "plugins": [
+    {
+      "name": "reto",
+      "source": "./plugins/reto",
+      "description": "Las skills del Reto de 4 días: herramientas, producto, tienda, anuncios y números."
+    }
+  ]
+}
