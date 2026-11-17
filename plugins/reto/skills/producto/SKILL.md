@@ -27,7 +27,9 @@ En la parte 1 se investiga el problema: que esté creciendo, que sea grande, urg
 **Estados Unidos es siempre la referencia.** Revisa primero las tendencias y la competencia en Estados Unidos (en inglés) y después en el país de la persona: lo que crece allá suele llegar después a Latinoamérica.
 
 ### 1. Lo que trae de su investigación a mano
-Pídele, una cosa a la vez:
+**Primero busca su brief.** La persona llena el brief en Google Docs, lo descarga en Markdown y lo pone en `contexto/`. Busca en `contexto/` cualquier archivo `.md` que no sea de las plantillas vacías (por ejemplo "Brief de investigación de mercado….md") o un `.docx` o `.pdf`. Si lo encuentras, léelo, pásalo a `contexto/01-investigacion-mercado.md` y pregúntale solo lo que le falte. Si no está, dile cómo hacerlo: en Google Docs, Archivo › Descargar › Markdown (.md), y arrastrar el archivo a `mi-reto/contexto/`. Si no puede, que pegue el texto en el chat.
+
+Si no trajo brief, pídele, una cosa a la vez:
 1. El problema que eligió (si no tiene, ayúdale con sus intereses: salud y bienestar, belleza y cuidado personal, hogar).
 2. **Las keywords** que buscó en Glimpse, Semrush o Google Trends, y cuál vio creciendo en su país.
 3. **El subreddit** o los videos donde la gente habla del problema, y **que te pegue entre 5 y 10 frases textuales** que copió. Explícale por qué: muchas páginas (Reddit, Amazon, Mercado Libre) bloquean las búsquedas automáticas, y esas frases son la materia prima de sus anuncios.
