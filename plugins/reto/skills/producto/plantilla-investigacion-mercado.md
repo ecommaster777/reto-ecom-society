@@ -49,13 +49,21 @@ Activos hace más de 30 días.
 - Google Trends o Glimpse en [país], últimos 12 meses: [sube, estable o baja]
 - Temporada: [si tiene meses fuertes]
 
-## 9. Los productos candidatos
+## 9. Los 4 criterios del problema
+| Criterio | ¿Cumple? | La evidencia |
+|---|---|---|
+| Está creciendo | [sí / no / no lo pude comprobar] | [keyword, tendencia y link] |
+| Es grande | [ ] | [marcas y anuncios que lo atacan] |
+| Es urgente | [ ] | [frase textual que lo muestra] |
+| Ya pagan por resolverlo | [ ] | [tiendas y anuncios con más de 30 días] |
+
+## 10. Los productos candidatos (se llena el jueves, parte 2)
 | Producto | Precio de venta de referencia | Costo de referencia (AliExpress, con envío) | Veces | ¿Pasa el filtro de 3? |
 |---|---|---|---|---|
 | [producto] | [precio y link] | [costo y link] | [x] | [sí o no] |
 
-## 10. Lo que no pude comprobar
+## 11. Lo que no pude comprobar
 - [dato pendiente y por qué]
 
-## 11. Mi conclusión
+## 12. Mi conclusión
 [El producto con el que sigo y por qué, en 3 líneas]
