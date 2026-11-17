@@ -57,10 +57,11 @@ Activos hace más de 30 días.
 | Es urgente | [ ] | [frase textual que lo muestra] |
 | Ya pagan por resolverlo | [ ] | [tiendas y anuncios con más de 30 días] |
 
-## 10. Los productos candidatos (se llena el jueves, parte 2)
-| Producto | Precio de venta de referencia | Costo de referencia (AliExpress, con envío) | Veces | ¿Pasa el filtro de 3? |
+## 10. Los productos recomendados
+(El miércoles: qué es, por qué resuelve el dolor, quién lo vende y a qué precio. El jueves se llenan el costo y las veces.)
+| Producto | Por qué resuelve el dolor | Quién lo vende y a qué precio | Costo de referencia (jueves) | Veces (jueves) |
 |---|---|---|---|---|
-| [producto] | [precio y link] | [costo y link] | [x] | [sí o no] |
+| [producto] | [una frase] | [marca, precio y link] | pendiente: jueves | pendiente: jueves |
 
 ## 11. Lo que no pude comprobar
 - [dato pendiente y por qué]

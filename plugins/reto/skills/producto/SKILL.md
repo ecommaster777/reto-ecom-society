@@ -22,7 +22,9 @@ Acompañas a una persona **principiante** a elegir qué vender. Tu trabajo **no 
 
 ## Parte 1 · Miércoles: el problema validado
 
-En la parte 1 **no se elige producto**. Se investiga el problema: que esté creciendo, que sea grande, urgente y que la gente ya pague por resolverlo. El producto se elige el jueves en la parte 2.
+En la parte 1 se investiga el problema: que esté creciendo, que sea grande, urgente y que la gente ya pague por resolverlo. La persona ya hizo una parte a mano; **tu trabajo es completar su brief** y dejarlo guardado en su carpeta de contexto. Al final propones los productos recomendados, pero la elección final, con costos y números, es el jueves en la parte 2.
+
+**Estados Unidos es siempre la referencia.** Revisa primero las tendencias y la competencia en Estados Unidos (en inglés) y después en el país de la persona: lo que crece allá suele llegar después a Latinoamérica.
 
 ### 1. Lo que trae de su investigación a mano
 Pídele, una cosa a la vez:
@@ -34,7 +36,7 @@ Pídele, una cosa a la vez:
 Si no hizo la investigación a mano, explícale en 4 líneas cómo hacerla (keywords en https://trends.google.com o Glimpse, el subreddit del problema en Reddit, la Biblioteca de anuncios en https://www.facebook.com/ads/library filtrando por su país) y pídele que la haga antes de seguir. Es parte del aprendizaje.
 
 ### 2. Lo que haces tú
-1. **La tendencia:** revisa en Google Trends si el interés sube o baja en su país en los últimos 12 meses y 5 años. Si no puedes, apóyate en lo que vio en Glimpse o Semrush y dilo.
+1. **La tendencia:** revisa en Google Trends, primero en Estados Unidos y con la keyword en inglés, si el interés sube o baja en los últimos 5 años. Compara el promedio del último año con el del primero y dilo en porcentaje. Busca también las soluciones o ingredientes del problema (por ejemplo "tart cherry" para el ácido úrico) y las búsquedas relacionadas que más suben. Después mira su país. Si no puedes entrar a Google Trends, apóyate en lo que vio en Glimpse o Semrush y dilo.
 2. **La voz del cliente:** busca en Reddit, comentarios de YouTube y reseñas de 1 a 3 estrellas en Amazon y Mercado Libre. Saca los **5 dolores que más se repiten**, cada uno con 1 o 2 frases textuales y su link. Suma las frases que trajo la persona.
 3. **La competencia:** quién ya resuelve el problema, cómo lo vende (promesa, paquetes, garantía) y cuánto tiempo llevan sus anuncios prendidos. Con links.
 4. **Los 4 criterios:** marca cada uno con sí, no o "no lo pude comprobar", con la evidencia al lado:
@@ -44,10 +46,12 @@ Si no hizo la investigación a mano, explícale en 4 líneas cómo hacerla (keyw
    4. **Ya pagan por resolverlo:** hay tiendas vendiendo y anuncios activos hace más de 30 días.
    Si le falta uno, recomiéndale descartarlo hoy y probar con otro problema.
 
-### 3. Lo que le entregas
-Un resumen corto: el problema, los 4 criterios con su evidencia, los 5 dolores con frases textuales y los 3 competidores. Debajo, los links y lo que no pudiste comprobar.
+5. **Los productos recomendados:** con todo lo anterior, propone **3 productos** que resuelven el dolor principal: qué es, por qué lo resuelve, quién ya lo vende y a qué precio lo vende (con link). Si la persona trae productos, empieza por los suyos. No calcules costos ni márgenes: eso es el jueves.
 
-Guarda todo en `contexto/01-investigacion-mercado.md` llenando la plantilla `plantilla-investigacion-mercado.md` que está junto a esta skill, sección por sección: es el **brief** del problema. Las secciones de productos candidatos, precios y costos quedan con "pendiente: jueves".
+### 3. Lo que le entregas
+Su **brief completo**. Llena la plantilla `plantilla-investigacion-mercado.md` que está junto a esta skill, sección por sección, mezclando lo que la persona encontró a mano con lo que encontraste tú, y guárdala en `contexto/01-investigacion-mercado.md`. Deja con "pendiente" lo que no tengas y con "pendiente: jueves" los costos y los márgenes.
+
+En el chat muéstrale un resumen corto: el problema, los 4 criterios con su evidencia, los 5 dolores con frases textuales, los 3 competidores y los 3 productos recomendados. Dile dónde quedó el archivo y que lo puede abrir y descargar desde su carpeta `mi-reto/contexto/`: ese brief es lo que va a leer Claude en cada skill que venga.
 
 Termina escribiendo **el texto de la tarea 1**, listo para copiar y pegar en el grupo, y guárdalo en `tareas/tarea-1.txt`:
 
@@ -58,6 +62,7 @@ La keyword que crece: [keyword]
 Los 4 criterios: creciendo [✓/✕] · grande [✓/✕] · urgente [✓/✕] · ya pagan [✓/✕]
 Cómo lo dice la gente: [2 frases textuales]
 Quién ya lo resuelve: [3 links de anuncios]
+Productos recomendados: [3 productos]
 ```
 
 Recuérdale: publicarlo en el grupo y llenar el formulario antes del jueves a las 5 PM, hora de Colombia, y correr la skill `herramientas` esta noche para crear su tienda.
@@ -67,8 +72,8 @@ Recuérdale: publicarlo en el grupo y llenar el formulario antes del jueves a la
 ## Parte 2 · Jueves: el producto, los números y el proveedor
 
 ### 1. Los 3 candidatos
-Lee `contexto/01-investigacion-mercado.md` (el problema validado del miércoles).
-1. Propone **3 productos** que resuelven el dolor principal. Si la persona ya trae productos, empieza por los suyos.
+Lee `contexto/01-investigacion-mercado.md` (el brief del miércoles, con el problema validado y los productos recomendados).
+1. Parte de los **3 productos recomendados** del brief. Si la persona quiere cambiar alguno, cámbialo.
 2. **El precio de venta de referencia** de cada uno: lo que cobran hoy, en su país, de 3 a 5 tiendas que ya lo venden (idealmente las de los anuncios), más el precio en Mercado Libre o Amazon. Toma el del medio. Con links.
 3. **El costo de referencia:** el producto más el envío en AliExpress hacia su país. Aclárale que **no es donde va a comprar**, es solo una referencia para saber si hay margen.
 4. **El primer filtro:** el precio de venta tiene que ser **al menos 3 veces** el costo de referencia. Si no da, márcalo como descartado y explica por qué.
