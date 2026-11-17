@@ -26,8 +26,13 @@ Acompañas a una persona que **empieza de cero** a dejar listas sus herramientas
 ## Paso 0: saber dónde está
 1. Revisa en qué carpeta estás. Lo ideal es `mi-reto` dentro de su usuario. Si no está ahí, explícale cómo salir (`/exit`), entrar con `cd ~/mi-reto` y volver a abrir `claude`. Si la carpeta no existe, que la cree con `mkdir ~/mi-reto`.
 2. Detecta su sistema (Mac o Windows) con un comando simple.
-3. Si no existe `perfil.md` en la carpeta, hazle estas preguntas **una por una** y guárdalas ahí: nombre, país desde donde va a vender, si ya vendió por internet alguna vez (sí o no, y qué), cuántas horas al día tiene para el reto, y cuánto piensa destinar a anuncios. Este archivo lo leen las demás skills del reto.
-4. Pregúntale qué día del reto es, o dedúcelo de la fecha, y ve a la etapa que corresponde. Si le faltan etapas anteriores, empieza por la primera pendiente.
+3. **Arma su carpeta de contexto** si no existe. Explícale en 3 líneas para qué sirve: todo lo que vayamos descubriendo de su negocio (su mercado, su producto, sus números, sus anuncios y sus resultados) se guarda aquí, y Claude lo lee cada vez que trabaja con él. Así, cada día la IA sabe más de su marca y le responde mejor. Crea:
+   - `CLAUDE.md` en la raíz de `mi-reto`, con este contenido: "Este es el negocio de [nombre]. Antes de cualquier tarea, lee los archivos de la carpeta contexto/. Cada vez que descubramos algo nuevo del negocio (investigación, producto, números, proveedor, tienda, anuncios, resultados, finanzas o aprendizajes), guárdalo en el archivo que corresponde de contexto/, con la fecha, sin borrar lo anterior. Habla en español simple."
+   - La carpeta `contexto/` con estos archivos, cada uno con su título: `00-perfil.md`, `01-investigacion-mercado.md`, `02-producto-y-numeros.md`, `03-proveedor.md`, `04-tienda.md`, `05-anuncios.md`, `06-resultados-meta.md`, `07-finanzas.md` y `08-aprendizajes.md`.
+   - La carpeta `tareas/`, donde quedan los textos de cada tarea del reto.
+   Si ya tiene un negocio con información (precios, resultados, proveedores), pídele que te la cuente o la pegue y guárdala en el archivo que corresponde.
+4. Si `contexto/00-perfil.md` está vacío, hazle estas preguntas **una por una** y guárdalas ahí: nombre, país desde donde va a vender, si ya vendió por internet alguna vez (sí o no, y qué), cuántas horas al día tiene para el reto, y cuánto piensa destinar a anuncios. Este archivo lo leen las demás skills del reto.
+5. Pregúntale qué día del reto es, o dedúcelo de la fecha, y ve a la etapa que corresponde. Si le faltan etapas anteriores, empieza por la primera pendiente.
 
 ## Etapa 1 · Antes del miércoles: investigación
 Claude Code ya funciona si estás leyendo esto. Revisa con la persona, una por una:
@@ -38,7 +43,7 @@ Claude Code ya funciona si estás leyendo esto. Revisa con la persona, una por u
 Cuando todo esté, dile: "Listo para el miércoles. En la clase vamos a usar la skill de producto".
 
 ## Etapa 2 · Miércoles en la noche: Shopify, dominio y conexión con Claude
-1. **Crear la tienda:** que entre al link de Shopify del reto, cree su cuenta y su tienda. Pídele que te diga la dirección de su tienda que termina en `.myshopify.com` (está en la barra del navegador o en Configuración). Guárdala en `perfil.md`.
+1. **Crear la tienda:** que entre al link de Shopify del reto, cree su cuenta y su tienda. Pídele que te diga la dirección de su tienda que termina en `.myshopify.com` (está en la barra del navegador o en Configuración). Guárdala en `contexto/00-perfil.md`.
 2. **El dominio:** explícale que es el nombre de su tienda en internet y que lo más simple es comprarlo **dentro de Shopify** (Configuración → Dominios → Comprar dominio), porque así se conecta solo. Consejos: corto, fácil de decir, sin guiones, preferiblemente .com. Él lo compra. Si no quiere comprarlo todavía, sigue sin dominio: se puede hacer el jueves.
 3. **Node.js:** revisa si lo tiene con `node --version`. Si no:
    - Mac: si tiene Homebrew (`brew --version`), instálalo con `brew install node`. Si no, que lo descargue de https://nodejs.org (botón LTS), lo instale como cualquier programa y vuelva a abrir la terminal.
@@ -48,7 +53,7 @@ Cuando todo esté, dile: "Listo para el miércoles. En la clase vamos a usar la 
    `shopify store auth --store SU-TIENDA.myshopify.com --scopes read_products,write_products,read_files,write_files,read_themes,write_themes,read_content,write_content,read_online_store_pages,write_online_store_pages,read_online_store_navigation,write_online_store_navigation,read_legal_policies,write_legal_policies,read_shipping,write_shipping,read_discounts,write_discounts`
    Se abre el navegador: que inicie sesión y acepte. Si algún permiso da error, quítalo de la lista y vuelve a correr.
 6. **Prueba:** corre `shopify store execute --store SU-TIENDA.myshopify.com --query 'query { shop { name } }'`. Si responde con el nombre de su tienda, quedó conectada.
-7. Anota en `perfil.md` qué quedó listo. Dile: "Tu tienda está conectada con Claude. Mañana la montamos con la skill de tienda".
+7. Anota en `contexto/00-perfil.md` qué quedó listo. Dile: "Tu tienda está conectada con Claude. Mañana la montamos con la skill de tienda".
 
 ## Etapa 3 · Jueves en la noche: Meta y Higgsfield
 Explícale primero por qué se hace con calma: Meta es estricto con las cuentas nuevas y un error puede bloquearla.
@@ -65,4 +70,4 @@ Explícale primero por qué se hace con calma: Meta es estricto con las cuentas 
 Si Meta le pide verificación o le bloquea algo, tranquilízalo: la tarea del viernes cuenta igual con la campaña armada.
 
 ## Al terminar cualquier etapa
-Dale un resumen corto de lo que quedó listo, lo que falta y cuándo se usa. Actualiza `perfil.md` con una sección "Herramientas" con cada cosa marcada como lista o pendiente.
+Dale un resumen corto de lo que quedó listo, lo que falta y cuándo se usa. Actualiza `contexto/00-perfil.md` con una sección "Herramientas" con cada cosa marcada como lista o pendiente.

@@ -12,8 +12,9 @@ Acompañas a una persona **principiante** a elegir qué vender. Tu trabajo **no 
 - **Nunca inventes un precio, un costo, una reseña ni un link.** Cada número lleva el link de donde salió. Si no pudiste comprobar algo, dilo claro con "no lo pude comprobar".
 - Las búsquedas web pueden fallar en algunas páginas (Amazon, Reddit o la Biblioteca de anuncios a veces bloquean). Si una falla, dilo, prueba otra fuente y apóyate en lo que la persona encontró a mano.
 - No recomiendes productos de riesgo para un principiante: medicamentos, productos que prometen curar enfermedades, armas, réplicas de marcas, productos para bebés de menos de 3 años o cosas que necesitan registro sanitario para venderse en su país.
-- Lee `perfil.md` en la carpeta. Si no existe, pregunta su nombre y su país y créalo.
-- Pregunta al inicio si es la **parte 1** (miércoles) o la **parte 2** (jueves). Si existe `1-mercado.md` y no existe `2-producto.md`, propón la parte 2.
+- Lee `CLAUDE.md` y todo `contexto/`. Si no existe la carpeta `contexto/`, corre primero el Paso 0 de la skill `herramientas` (crear `CLAUDE.md`, `contexto/` y `tareas/`).
+- Todo lo que descubras se guarda en `contexto/`, con la fecha y sin borrar lo anterior: así la IA aprende cada vez más de su marca.
+- Pregunta al inicio si es la **parte 1** (miércoles) o la **parte 2** (jueves). Si `contexto/01-investigacion-mercado.md` ya tiene candidatos y `contexto/02-producto-y-numeros.md` está vacío, propón la parte 2.
 
 ---
 
@@ -39,9 +40,9 @@ Si no hizo la investigación a mano, explícale en 3 líneas cómo hacerla (Bibl
 ### 3. Lo que le entregas
 Una tabla con los 3 productos: dolor que resuelve, precio de venta de referencia, costo de referencia, cuántas veces cabe el costo en el precio, tendencia, y si pasa o no el filtro. Debajo, los links de cada número y lo que no pudiste comprobar.
 
-Guarda todo en `1-mercado.md` (dolores con frases, tabla, links).
+Guarda todo en `contexto/01-investigacion-mercado.md` llenando la plantilla `plantilla-investigacion-mercado.md` que está junto a esta skill, sección por sección. Deja en blanco, con "pendiente", lo que no tengas.
 
-Termina escribiendo **el texto de la tarea 1**, listo para copiar y pegar en el grupo, y guárdalo en `tarea-1.txt`:
+Termina escribiendo **el texto de la tarea 1**, listo para copiar y pegar en el grupo, y guárdalo en `tareas/tarea-1.txt`:
 
 ```
 TAREA 1 · [Nombre] · [País]
@@ -60,7 +61,7 @@ Recuérdale: publicarlo en el grupo y llenar el formulario antes del jueves a la
 ## Parte 2 · Jueves: el producto, los números y el proveedor
 
 ### 1. Los 3 números, con datos reales
-Lee `1-mercado.md`. Para cada candidato que pasó el filtro:
+Lee `contexto/01-investigacion-mercado.md`. Para cada candidato que pasó el filtro:
 1. **Busca el proveedor** según su país (tabla de abajo) y el costo real del producto con el envío hasta su cliente.
 2. **Calcula los 3 números:**
    - **Costo puesto en la casa del cliente** = producto + envío + comisión de la pasarela (usa 4 % si no sabe cuál tendrá) + 2 % de comisión de Shopify si no va a usar Shopify Payments (Shopify Payments solo existe para quien cobra desde México, Estados Unidos, España o con una LLC en Estados Unidos).
@@ -97,13 +98,13 @@ Muéstrale **solo las opciones que le sirven a su país**:
 Si hay opción local, explícale que llega más rápido y suele vender mejor. Si el producto viene de China, avísale que puede tardar semanas y que hay que decirlo claro en la tienda.
 
 ### 3. El mensaje al proveedor
-Escríbele el mensaje listo para mandar por WhatsApp o correo, con estas 4 preguntas, y guárdalo en `mensaje-proveedor.txt`:
+Escríbele el mensaje listo para mandar por WhatsApp o correo, con estas 4 preguntas, y guárdalo en `tareas/mensaje-proveedor.txt`:
 1. Cuánto tarda en llegar al cliente en [su país] y cuánto cuesta el envío.
 2. Si manda una muestra antes de empezar a vender.
 3. Qué pasa si el producto llega dañado o el cliente lo devuelve.
 4. Si más adelante puede poner su marca, y con qué pedido mínimo.
 
 ### 4. Lo que le entregas
-Guarda en `2-producto.md`: el producto elegido, el dolor, los 3 números, los 5 criterios, el proveedor con su link y el tiempo de entrega. Lo va a leer la skill `tienda` para montar la tienda.
+Guarda en `contexto/02-producto-y-numeros.md` el producto elegido, el dolor, los 3 números y los 5 criterios, y en `contexto/03-proveedor.md` el proveedor con su link, el tiempo de entrega y las respuestas que le dé. Si en la cuenta salió algo de finanzas (comisiones, presupuesto), agrégalo a `contexto/07-finanzas.md`. Lo va a leer la skill `tienda` para montar la tienda.
 
 Dile el siguiente paso: correr la skill `tienda`.
