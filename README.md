@@ -7,7 +7,7 @@ Las skills que usamos en el reto para que Claude Code haga cada tarea contigo.
 Abre Claude Code en tu carpeta del reto y pega estos dos mensajes, uno a la vez:
 
 ```
-/plugin marketplace add OWNER/REPO
+/plugin marketplace add ecommaster777/reto-ecom-society
 ```
 
 ```
