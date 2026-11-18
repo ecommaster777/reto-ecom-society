@@ -13,6 +13,7 @@ Archivos de la plantilla:
 - `datos-ejemplo.json`: la página completa del producto de ejemplo. Es tu molde: copia su forma campo por campo.
 - `armar.py`: junta la plantilla con los datos y deja la página (`index.html`), el carrusel (`galeria.html`) y, si le das la carpeta del tema, la versión para Shopify.
 - `exportar_galeria.py`: exporta las 7 piezas del carrusel a imagen al doble de resolución.
+- `recortar.py`: recorta el espacio vacío alrededor del logo y del frasco sin fondo.
 
 Se hace en 4 pasos y **la persona aprueba cada uno antes de seguir**.
 
@@ -24,7 +25,7 @@ Se hace en 4 pasos y **la persona aprueba cada uno antes de seguir**.
 - **Precios en dólares.** La tienda va en USD y Shopify Markets convierte a cada moneda. En Shopify, los precios de la página salen de las variantes del producto, así que se convierten solos.
 - **Reseñas de muestra:** en el prototipo y en la primera versión de Shopify van reseñas, fotos y videos de clientes y número de clientes de muestra, hechos con IA, para que la página esté completa. Anótalo en `contexto/04-tienda.md` y recuérdale que **antes de prender anuncios** se reemplazan por reseñas reales.
 - La cuenta regresiva va a una fecha real (el fin de su oferta de lanzamiento).
-- Copy: sigue la skill `copy` (resultado antes que características, títulos de una línea, nunca cruces ni asteriscos al final de los textos, nada de "cura", "elimina" o "trata").
+- Copy: sigue la skill `copy` (resultado antes que características, títulos de una línea, nunca cruces ni asteriscos al final de los textos, nada de "cura", "elimina" o "trata", y nunca "tu ácido úrico" ni "tu [condición]": se dice "el ácido úrico", porque Meta rechaza los textos que señalan la condición del cliente).
 - Recuérdale revisar la regla sanitaria de su país antes de vender un suplemento o un cosmético.
 - Guarda cada aprobación en `contexto/04-tienda.md` con la fecha. Trabaja en la carpeta `tienda/pagina/` de `mi-reto`.
 
@@ -56,10 +57,12 @@ Muéstrale el copy ordenado por bloque, ajusta y **espera su aprobación**.
    - `garantia-retrato.jpg` una persona sonriendo con el producto.
    - `video-1.jpg` a `video-3.jpg` cuadros verticales tipo selfie, y con ellos **los videos** `video-1.mp4` a `video-3.mp4`: imagen a video con sonido en Higgsfield, unos 8 segundos, la persona diciendo una frase corta en el español de su país. Comprímelos a 540 px de ancho (`ffmpeg -i entrada.mp4 -vf scale=540:-2 -crf 26 -movflags +faststart salida.mp4`).
    - `otra-marca.jpg` un envase genérico sin marca, de aspecto común.
-   - `frasco.png` **el producto sin fondo** (quítale el fondo al mockup con Higgsfield y recórtalo): flota sobre los fondos de color.
-   - `logo.png` el logo con fondo transparente.
-   - Para el carrusel, escala a 2K con Higgsfield las fotos que se ven grandes y guárdalas como `principal-hd.jpg`, `garantia-retrato-hd.jpg` y `capsulas-macro-hd.jpg` (una foto de cerca del producto o de su contenido sobre el color principal).
-2. **Arma el prototipo y el carrusel:**
+   - `frasco.png` **el producto sin fondo**: quítale el fondo al mockup con la herramienta de quitar fondo de Higgsfield. Flota sobre los fondos de color.
+   - `logo.png` el logo con fondo transparente (si `marca/logo.png` todavía tiene fondo, quítaselo igual).
+   - **Recorta los dos** (Higgsfield los entrega en un cuadro de 1024 x 1024 con mucho espacio vacío y el logo se vería diminuto en la página): `python3 RUTA_DE_LA_SKILL/plantilla/recortar.py tienda/pagina/fotos/logo.png tienda/pagina/fotos/frasco.png`. Si dice que falta Pillow, sigue las instrucciones que imprime.
+   - Para el carrusel, escala con la herramienta de escalar imagen (upscale) de Higgsfield, a 2K, las fotos que se ven grandes y guárdalas como `principal-hd.jpg`, `garantia-retrato-hd.jpg` y `capsulas-macro-hd.jpg` (una foto de cerca del producto o de su contenido sobre el color principal). Si la herramienta no está, genera esas tres en la mayor resolución que ofrezca el modelo.
+   - Antes de seguir, abre cada foto y revisa que el frasco y la etiqueta sean los del mockup y que ningún texto tenga errores (tildes incluidas). Si una falla, vuelve a generarla.
+2. **Arma el prototipo y el carrusel**, solo cuando todas las fotos, el frasco y el logo estén finales (el carrusel copia esas imágenes; si cambias una después, vuelve a correr los dos comandos):
    ```
    python3 RUTA_DE_LA_SKILL/plantilla/armar.py tienda/pagina/datos.json tienda/pagina
    python3 RUTA_DE_LA_SKILL/plantilla/exportar_galeria.py tienda/pagina
