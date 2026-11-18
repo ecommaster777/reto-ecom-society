@@ -95,6 +95,7 @@ Recomiéndale según su país:
 - **La comisión extra de Shopify:** si no usa Shopify Payments, Shopify cobra además 2 % por venta en el plan Basic. Anótalo en `contexto/07-finanzas.md` para que la cuenta de los 3 números lo incluya.
 - **La LLC:** si quiere sacarla, que vea el entrenamiento de Santiago en https://youtu.be/EM81WpjV7xw y la puede abrir con doola en https://partnersps.doola.com/fpmgroup con el código **DOOLAFPMGROUP10** (10 % de descuento).
 - La pasarela la conecta la persona en Configuración › Pagos, o instalando la app de la pasarela desde la tienda de apps de Shopify. La verificación de identidad y los datos del banco los pone siempre ella.
+- **Avísale que la aprobación puede tardar unos días**, porque la pasarela revisa sus documentos (en Colombia, el RUT). Que la conecte esa misma noche para que esté lista cuando prenda anuncios.
 - Si no alcanza a conectarla hoy, no pasa nada: la página de producto se puede montar igual y la pasarela se conecta antes de prender anuncios.
 
 ## Al terminar
