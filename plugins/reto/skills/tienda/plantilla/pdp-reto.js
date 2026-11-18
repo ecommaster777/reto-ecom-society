@@ -163,7 +163,9 @@ function render(root,D,opt){
  const stk=$('.sticky'),atc=$('[data-atc]');new IntersectionObserver(([e])=>stk.classList.toggle('on',!e.isIntersecting&&e.boundingClientRect.top<0)).observe(atc);
  $('[data-tobuy]').onclick=()=>atc.scrollIntoView({behavior:'smooth',block:'center'});
  $$('[data-atc]').forEach(btn=>btn.onclick=async()=>{const o=O[sel];
-  if(o.id&&opt.carrito!==false){btn.disabled=true;try{await fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{id:o.id,quantity:1}]})});location.href=opt.ir_a||'/checkout'}catch(e){btn.disabled=false}}
+  if(o.id&&opt.carrito!==false){btn.disabled=true;try{const r=await fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{id:o.id,quantity:1}]})});
+   if(!r.ok){const j=await r.json().catch(()=>({}));console.error('[PDPReto] no se pudo agregar al carrito:',j.description||j.message||r.status);alert(j.description||j.message||'No se pudo agregar al carrito');btn.disabled=false;return}
+   location.href=opt.ir_a||'/checkout'}catch(e){btn.disabled=false}}
   else{btn.animate([{transform:'scale(1)'},{transform:'scale(.97)'},{transform:'scale(1)'}],{duration:200})}});
 }
 window.PDPReto={render};
