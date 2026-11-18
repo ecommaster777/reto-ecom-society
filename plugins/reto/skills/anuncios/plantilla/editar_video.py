@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+"""Edita los videos de los anuncios: recorta, pone títulos y subtítulos en la zona segura de Reels
+y deja cada video en 1080 x 1920, listo para Meta.
+
+Uso:
+  python3 editar_video.py anuncios/campana.json        edita todos los videos que tengan "edicion"
+  python3 editar_video.py --transcribir video.mp4      escribe lo que dice la persona, palabra por palabra con su segundo
+                                                       (necesita: python3 -m pip install --user faster-whisper)
+  python3 editar_video.py --pausas video.mp4           si no hay faster-whisper: muestra en qué tramos habla la persona
+
+En campana.json, cada anuncio de video lleva:
+  "original": "videos/originales/1E.mp4",   el video como salió de Higgsfield
+  "video": "videos/1E.mp4",                 dónde queda el editado
+  "edicion": {
+    "recorte": [0.3, 14.6],                 opcional: segundo de inicio y de fin
+    "textos": [ {"t0": 0, "t1": 2.4, "texto": "…", "zona": "arriba", "estilo": "titulo"} , … ],
+    "cierre": {"t0": 6.4, "texto": "Envío gratis · 30 días de garantía", "zona": "abajo", "sin_logo": false}
+                                            sin_logo: true si el producto ya se ve grande en ese momento (así no tapas la etiqueta)
+  }
+zona: arriba | centro | abajo (siempre dentro de la zona segura). estilo: titulo (caja blanca) | subtitulo (letra blanca con borde).
+Regla: los subtítulos nunca tapan la cara. Mira un cuadro del video y elige la zona donde no hay rostro.
+Necesita Google Chrome y ffmpeg.
+"""
+import json, sys, os, re, shutil, subprocess, platform, tempfile, html
+from pathlib import Path
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
+W, H = 1080, 1920
+SEG_ARRIBA, SEG_ABAJO, LADO = 290, 1240, 80      # Reels: libre el 14 % de arriba y el 35 % de abajo
+
+def chrome():
+    for c in {"Darwin": ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"],
+              "Windows": [r"C:\Program Files\Google\Chrome\Application\chrome.exe", r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                          os.path.expandvars(r"%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe")]}.get(platform.system(), []) + [shutil.which("google-chrome") or "", shutil.which("chromium") or ""]:
+        if c and Path(c).exists():
+            return c
+    sys.exit("No encontré Google Chrome.")
+
+def ffmpeg():
+    f = shutil.which("ffmpeg")
+    if not f:
+        sys.exit("Falta ffmpeg. En Mac: brew install ffmpeg · En Windows: winget install Gyan.FFmpeg (y vuelve a abrir la terminal).")
+    return f
+
+CSS = f"""*{{margin:0;padding:0;box-sizing:border-box}}html,body{{width:{W}px;height:{H}px;background:transparent;overflow:hidden}}
+.z{{position:absolute;left:{LADO}px;right:{LADO}px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}}
+.arriba{{top:{SEG_ARRIBA}px}}.abajo{{bottom:{H - SEG_ABAJO}px}}.centro{{top:50%;transform:translateY(-50%)}}
+.titulo span{{background:#fff;color:#111;font:800 70px/1.15 -apple-system,"Helvetica Neue",Arial,sans-serif;padding:12px 26px;border-radius:16px;box-shadow:0 6px 24px #0004}}
+.subtitulo span{{background:#fff;color:#111;font:800 56px/1.15 -apple-system,"Helvetica Neue",Arial,sans-serif;padding:8px 20px;border-radius:12px;box-shadow:0 6px 20px #0005}}
+.cierre .card{{background:VAR_COLOR;border-radius:34px;padding:34px 48px 38px;display:flex;flex-direction:column;align-items:center;gap:18px;box-shadow:0 14px 40px #0006}}
+.cierre img{{height:96px}}.cierre span{{color:#fff;font:800 50px/1.2 -apple-system,"Helvetica Neue",Arial,sans-serif}}"""
+
+def lineas(t, n=24):
+    """Parte el texto en renglones cortos (máximo ~24 letras) para que se lea de un vistazo."""
+    out, cur = [], ""
+    for w in t.split():
+        if cur and len(cur) + 1 + len(w) > n:
+            out.append(cur); cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    return out + ([cur] if cur else [])
+
+def capa(chr_, html_txt, destino, color):
+    with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8") as f:
+        f.write(f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS.replace("VAR_COLOR", color)}</style></head><body>{html_txt}</body></html>')
+        tmp = f.name
+    subprocess.run([chr_, "--headless=new", "--disable-gpu", "--hide-scrollbars", f"--window-size={W},{H}", "--default-background-color=00000000",
+                    f"--screenshot={destino}", Path(tmp).as_uri()], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=60)
+    os.unlink(tmp)
+
+def pausas(video):
+    if "Audio" not in subprocess.run([ffmpeg(), "-i", video], capture_output=True, text=True).stderr:
+        print("Este video no tiene audio."); return
+    r = subprocess.run([ffmpeg(), "-i", video, "-af", "silencedetect=noise=-32dB:d=0.25", "-f", "null", "-"], capture_output=True, text=True)
+    dur = float(re.search(r"Duration: (\d+):(\d+):([\d.]+)", r.stderr).groups()[2]) + 60 * int(re.search(r"Duration: (\d+):(\d+)", r.stderr).group(2))
+    ini = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", r.stderr)]
+    fin = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", r.stderr)]
+    habla, t = [], 0.0
+    for a, b in zip(ini, fin + [dur]):
+        if a - t > 0.15: habla.append((round(t, 2), round(a, 2)))
+        t = b
+    if dur - t > 0.15: habla.append((round(t, 2), round(dur, 2)))
+    print(f"Duración: {dur:.2f} s. La persona habla en estos tramos (segundos):")
+    for a, b in habla: print(f"  {a:6.2f} → {b:6.2f}")
+
+def editar(cj):
+    cj = Path(cj).resolve(); base = cj.parent; C = json.loads(cj.read_text(encoding="utf-8"))
+    ch, ff = chrome(), ffmpeg(); color = C["marca"]["colores"]["principal"]
+    logo = C["marca"].get("logo_claro") or C["marca"]["logo"]
+    if not (base / logo).exists():
+        sys.exit(f"No encontré el logo: {base / logo}")
+    for cjto in C["conjuntos"]:
+        for ad in cjto["anuncios"]:
+            ed = ad.get("edicion")
+            if not ed: continue
+            src = base / ad.get("original", ""); dst = base / ad["video"]; dst.parent.mkdir(parents=True, exist_ok=True)
+            if not ad.get("original") or not src.exists():
+                print(f'{ad["id"]}: no encontré el video original ({ad.get("original")}). Bájalo a videos/originales/ y vuelve a correr.'); continue
+            if src.resolve() == dst.resolve():
+                print(f'{ad["id"]}: "original" y "video" no pueden ser el mismo archivo.'); continue
+            tmpd = Path(tempfile.mkdtemp()); capas = []
+            r0, r1 = ed.get("recorte", [0, None])
+            for i, t in enumerate(ed.get("textos", [])):
+                spans = "".join(f"<span>{html.escape(l)}</span>" for l in lineas(t["texto"], 22 if t.get("estilo") == "titulo" else 24))
+                p = tmpd / f"t{i}.png"; capa(ch, f'<div class="z {t.get("zona","abajo")} {t.get("estilo","subtitulo")}">{spans}</div>', p, color)
+                capas.append((p, t["t0"], t["t1"]))
+            if ed.get("cierre"):
+                c = ed["cierre"]; p = tmpd / "cierre.png"
+                img_logo = "" if c.get("sin_logo") else '<img src="' + (base / logo).resolve().as_uri() + '">'
+                capa(ch, f'<div class="z {c.get("zona","abajo")} cierre"><div class="card">{img_logo}<span>{html.escape(c["texto"])}</span></div></div>', p, color)
+                capas.append((p, c["t0"], 999))
+            ext = ed.get("extender", 0)   # segundos de cuadro congelado al final, para el cierre
+            cmd = [ff, "-y", "-v", "error"]
+            if r0: cmd += ["-ss", str(r0)]
+            if r1: cmd += ["-to", str(r1)]
+            cmd += ["-i", str(src)]
+            for p, _, _ in capas: cmd += ["-i", str(p)]
+            f = f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1" + (f",tpad=stop_mode=clone:stop_duration={ext}" if ext else "") + "[v0]"
+            for i, (_, a, b) in enumerate(capas, 1):
+                a2, b2 = max(a - (r0 or 0), 0), b - (r0 or 0)
+                f += f";[v{i-1}][{i}:v]overlay=0:0:enable='between(t,{a2:.2f},{b2:.2f})'[v{i}]"
+            cmd += ["-filter_complex", f, "-map", f"[v{len(capas)}]", "-map", "0:a?"] + (["-af", f"apad=pad_dur={ext}"] if ext else []) + ["-c:v", "libx264", "-preset", "medium", "-crf", "21",
+                    "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(dst)]
+            r = subprocess.run(cmd, capture_output=True, text=True)
+            if r.returncode != 0:
+                print(f'{ad["id"]}: ffmpeg falló:', r.stderr.strip()[-400:]); continue
+            shutil.rmtree(tmpd, ignore_errors=True)
+            print("Video", ad["id"], "→", dst)
+
+def transcribir(video):
+    try:
+        from faster_whisper import WhisperModel
+    except ImportError:
+        print("No está faster-whisper. Instálalo con: python3 -m pip install --user faster-whisper  · o usa --pausas"); return
+    segs, _ = WhisperModel("small", device="cpu", compute_type="int8").transcribe(video, language="es", word_timestamps=True)
+    for s in segs:
+        print(f"{s.start:.2f}-{s.end:.2f} {s.text.strip()}")
+        print("   " + " ".join(f"{w.word.strip()}@{w.start:.2f}" for w in s.words))
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    if sys.argv[1] == "--pausas": pausas(sys.argv[2])
+    elif sys.argv[1] == "--transcribir": transcribir(sys.argv[2])
+    else: editar(sys.argv[1])

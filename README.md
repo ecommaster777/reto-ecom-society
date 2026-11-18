@@ -26,6 +26,7 @@ Después cierra Claude con `/exit` y vuelve a abrirlo con `claude`.
 | Marca | Jueves | `/reto:marca` |
 | Copy | Jueves y viernes | `/reto:copy` |
 | Tienda | Jueves | `/reto:tienda` |
+| Anuncios | Viernes | `/reto:anuncios` |
 
 Las skills nuevas llegan durante la semana. Para tenerlas, sal de Claude con `/exit` y en la terminal escribe:
 
