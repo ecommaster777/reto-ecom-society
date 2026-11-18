@@ -106,6 +106,9 @@ def editar(cj):
     except json.JSONDecodeError as e:
         sys.exit(f"campana.json tiene un error de escritura en la línea {e.lineno}: {e.msg}")
     fallas = []
+    m_ = C.get("marca") if isinstance(C, dict) else None
+    if not isinstance(m_, dict) or not isinstance(m_.get("colores"), dict) or "principal" not in m_["colores"] or not (m_.get("logo_claro") or m_.get("logo")):
+        sys.exit("En campana.json falta marca.colores.principal o marca.logo. Complétalos y vuelve a correr.")
     ch, ff = chrome(), ffmpeg(); color = C["marca"]["colores"]["principal"]
     logo = C["marca"].get("logo_claro") or C["marca"]["logo"]
     if not (base / logo).exists():

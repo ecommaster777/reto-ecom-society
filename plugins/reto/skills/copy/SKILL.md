@@ -40,7 +40,7 @@ La gente no compra cereza ácida ni 60 cápsulas, compra **lo que va a vivir**: 
 ## Lo que nunca se escribe
 - **Resultados médicos inventados.** Ningún texto promete curar, eliminar ni reemplazar un tratamiento.
 - **Reseñas de muestra en una tienda con tráfico.** En el prototipo y en la primera versión de Shopify sí van reseñas, testimonios y número de clientes **de muestra**, escritos con IA para que la página se vea completa. Escríbelos como hablaría un cliente real de su país, con nombre, ciudad y el resultado que vivió. Anota en `contexto/04-tienda.md` que son de muestra y recuérdale a la persona que **antes de prender anuncios** los reemplaza por reseñas reales (de sus primeras clientas, amigos que lo prueben o una app de reseñas).
-- **Promesas de salud:** nunca "cura", "elimina", "trata", "reemplaza tu medicamento" ni diagnósticos. Se habla de "apoya", "ayuda a", "acompaña", y se recomienda consultar al médico.
+- **Promesas de salud:** nunca "cura", "elimina", "trata", "reemplaza tu medicamento" ni diagnósticos. Se habla de "apoya", "ayuda a", "acompaña". En anuncios y en la página se dice "no reemplaza un tratamiento médico" (sin "tu médico").
 - **Decirle a la persona lo que tiene** (regla de Meta para anuncios y para la página a la que llevan): nada de "tu ácido úrico", "tu gota", "tus crisis", "¿sufres de…?". Se dice "el ácido úrico" o se habla de la escena en tercera persona ("quien lo vivió lo sabe").
 - **Prevenir:** nada de "que no vuelva", "antes de que duela", "la próxima crisis".
 - **Prueba social inventada:** ni número de clientes, ni "compra verificada", ni testimonios de personas hechas con IA. Las reseñas de muestra del prototipo se cambian por reales antes de prender anuncios.

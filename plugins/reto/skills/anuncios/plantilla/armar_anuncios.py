@@ -166,7 +166,7 @@ section{{padding:26px 24px}}h2{{margin:0 0 4px;font-size:22px}}.ang{{margin:0;fo
 
     # 3. La guía para montarla a mano
     g = [f'# Tu campaña · {m["nombre"]}', "", "Móntala en https://adsmanager.facebook.com siguiendo este orden. Copia y pega cada texto tal cual.", "",
-         "## 1. La campaña", "- Botón verde **+ Crear** › objetivo **Ventas** › Continuar.",
+         "## 1. La campaña", "- Botón verde **+ Crear** › objetivo **Ventas** › **Campaña de ventas Advantage+** › Continuar.",
          f'- Nombre: **{C["nombre_campana"]}**',
          f'- Presupuesto **de la campaña** (Advantage+): **{C["moneda"]} {C["presupuesto_diario"]} al día**. Meta lo reparte entre los {len(C["conjuntos"])} conjuntos.',
          "- Estrategia de puja: volumen más alto (la que viene por defecto).", ""]
