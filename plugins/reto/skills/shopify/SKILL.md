@@ -33,10 +33,10 @@ Pregúntale si ya creó su tienda (era la tarea del miércoles en la noche).
 2. **Shopify CLI:** `npm install -g @shopify/cli@latest` y revisa con `shopify version`.
 3. **La conexión:** corre
    `shopify store auth --store SU-TIENDA.myshopify.com --scopes read_products,write_products,read_files,write_files,read_themes,write_themes,read_content,write_content,read_online_store_pages,write_online_store_pages,read_online_store_navigation,write_online_store_navigation,read_legal_policies,write_legal_policies,read_shipping,write_shipping,read_discounts,write_discounts`
-   Se abre el navegador: que inicie sesión y acepte. Si un permiso da error, quítalo de la lista y vuelve a correr.
+   Se abre el navegador: que inicie sesión y acepte, y después vuelva a la terminal sin cerrar nada. Si Shopify dice que un permiso no existe, quítalo de la lista y vuelve a correr: no es un error de la persona.
 4. **Prueba:** `shopify store execute --store SU-TIENDA.myshopify.com --query 'query { shop { name currencyCode } }'`. Si responde con el nombre de su tienda, quedó conectada.
 
-Desde aquí, todo lo que se pueda hacer por la conexión lo haces tú con `shopify store execute`. Revisa siempre la respuesta: si sale un error de permisos, dile qué permiso falta y vuelve al punto 3.
+Desde aquí, todo lo que se pueda hacer por la conexión lo haces tú con `shopify store execute`. **Para todo lo que cambie la tienda (políticas, páginas, menús, productos) agrega siempre `--allow-mutations`**, porque sin eso Shopify rechaza el cambio. Antes de cada cambio, dile a la persona en una línea qué vas a hacer. Revisa siempre la respuesta: si sale un error de permisos, dile qué permiso falta y vuelve al punto 3.
 
 ## Paso 3 · Los datos del negocio
 Pregúntale, uno por uno, y guárdalos en `contexto/04-tienda.md`:

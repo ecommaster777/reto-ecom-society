@@ -43,7 +43,7 @@ Claude Code ya funciona si estás leyendo esto. Revisa con la persona, una por u
 Cuando todo esté, dile: "Listo para el miércoles. En la clase vamos a usar la skill de producto".
 
 ## Etapa 2 · Miércoles en la noche: Shopify y Higgsfield
-1. **La cuenta de Shopify:** que entre al link de Shopify del reto y cree su cuenta y su tienda. Cuéntale que con ese link tiene **Shopify por 1 dólar al mes durante los primeros 3 meses**. Pídele la dirección de su tienda que termina en `.myshopify.com` y guárdala en `contexto/00-perfil.md`. El jueves, en clase, la skill `shopify` la conecta con Claude y la configura. El dominio se compra el jueves, cuando tenga nombre de marca.
+1. **La cuenta de Shopify:** que entre al link de Shopify del reto y cree su cuenta y su tienda. Cuéntale que con ese link tiene **Shopify por 1 dólar al mes durante los primeros 3 meses**. Pídele la dirección de su tienda que termina en `.myshopify.com` y guárdala en `contexto/00-perfil.md`. El jueves, en clase, la skill `shopify` la conecta con Claude y la configura. El dominio se compra el jueves, después de la skill `marca`, cuando ya tenga nombre.
 2. **Higgsfield:** con él salen el logo, la etiqueta, el mockup y todas las fotos de la página de producto desde el jueves, así que tiene que quedar conectado hoy.
    1. Que cree su cuenta con el link del reto y elija el plan más básico con créditos (el gratis no trae créditos). Lo paga la persona.
    2. Conectar Higgsfield a Claude: que entre a https://claude.ai/customize/connectors, busque Higgsfield y lo conecte con su cuenta.

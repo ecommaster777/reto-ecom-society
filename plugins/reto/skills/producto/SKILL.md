@@ -77,7 +77,7 @@ Recuérdale: publicarlo en el grupo de WhatsApp antes del jueves a las 5 PM, hor
 Hoy se elige **un** producto y se comprueba que la cuenta da. La base de la cuenta es **lo que cobra el proveedor**, no una suposición.
 
 ### 1. El costo, del proveedor
-Lee `contexto/01-investigacion-mercado.md` y parte de los productos recomendados y sus links de CJ. Para cada uno (máximo 3), pídele a la persona, una cosa a la vez:
+Lee `contexto/01-investigacion-mercado.md` y parte de los productos recomendados y sus links de CJ. Si la persona todavía no tiene cuenta en CJ, que la cree primero con el link del reto (https://www.cjdropshipping.com/register.html?token=53e6745e-7a90-4562-a572-20bd70211f11): sin cuenta no puede ver el envío a su país. Para cada producto (máximo 3), pídele, una cosa a la vez:
 1. **El link de CJ** del producto.
 2. **El costo con envío a su país**, tal como lo muestra CJ: en la página del producto, que cambie "Ship to" a su país y te diga el precio del producto, el costo de envío, el total y los días de entrega. Si quiere vender en Estados Unidos, también con "Ship to US".
 3. Si CJ dice que no hay envío a su país para ese producto, explícale que CJ envía a todo el mundo pero algunos productos no van a ciertos países, y que tiene 3 caminos: buscar en CJ un producto parecido que sí llegue, pedir una cotización en CJ, o buscarlo con un proveedor local de su país.
