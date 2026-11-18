@@ -70,7 +70,11 @@ Muéstrale el copy ordenado por bloque, ajusta y **espera su aprobación**.
 
 ## Paso 4 · La página en Shopify (aprobación 4)
 Usa `shopify store execute --allow-mutations` para todo lo que cambie la tienda.
-1. **El producto:** créalo con `productCreate` con el título y la descripción, y la opción "Paquete" con 3 valores en el mismo orden de las ofertas ("1 frasco", "2 frascos", "3 frascos"). Con `productVariantsBulkUpdate` pon a cada variante su **precio** y su **precio de antes** (`compareAtPrice`) en dólares, iguales a los de las ofertas. Sube `principal.jpg` como foto del producto.
+0. **Moneda, mercados y envío.** Lee la ruta en `contexto/00-perfil.md` y los países en `contexto/02-producto-y-numeros.md`. Lo que no se pueda por la conexión, hazlo con Claude en Chrome en el administrador de la persona.
+   - **Ruta B:** la tienda en la moneda de su país y **un solo mercado, su país**. Nada de otros países: su pasarela local no les puede cobrar.
+   - **Ruta A:** la moneda de la tienda es USD. Crea los mercados con los países que dejó la skill `producto` en `contexto/02-producto-y-numeros.md` (Estados Unidos, Canadá, Reino Unido, Australia y los de Latinoamérica hispana donde el proveedor envía y el margen da al menos 60 %). **Nunca Argentina.** Shopify Markets convierte el precio a la moneda de cada país. Solo si la persona vende en un único país, la moneda va en la de ese país.
+   - **Envío gratis** a su país (ruta B) o a todos esos países (ruta A), con una tarifa de 0 por zona, porque el envío ya va dentro del precio.
+1. **El producto:** créalo con `productCreate` con el título y la descripción, y la opción "Paquete" con 3 valores en el mismo orden de las ofertas ("1 frasco", "2 frascos", "3 frascos"). Con `productVariantsBulkUpdate` pon a cada variante su **precio** y su **precio de antes** (`compareAtPrice`) en la moneda de la tienda (dólares en la ruta A, la de su país en la ruta B), iguales a los de las ofertas. Sube `principal.jpg` como foto del producto.
 2. **El tema:** bájalo con `shopify theme pull --store SU-TIENDA.myshopify.com --live --path tienda/tema`.
 3. **La plantilla:** corre
    ```

@@ -53,14 +53,11 @@ Hazlo y muéstrale lo que quedó, sin pedirle que haga clic:
 2. **Las páginas:** Contacto, Preguntas frecuentes (6 a 8 preguntas: tiempos de envío, cómo pagar, garantía, cómo hacer seguimiento, devoluciones, contacto) y Rastrea tu pedido. "Sobre nosotros" se crea después de la marca.
 3. **El menú principal** con Inicio, el producto (cuando exista), Preguntas frecuentes y Contacto, y el **menú del pie** con las políticas y el contacto.
 
-## Paso 5 · Mercados, envíos y checkout (lo haces tú)
-Hazlo tú por la conexión (`shopify store execute --allow-mutations`). Lo que no se pueda por la conexión, hazlo **con Claude en Chrome** abriendo el administrador de Shopify de la persona (ella ya inició sesión). Explícale cada cosa en una línea mientras la haces.
-Lee la ruta en `contexto/00-perfil.md` (la eligió en la skill `producto`). Si no está, pregúntale: "¿Tienes una LLC en Estados Unidos, o vives en México, Estados Unidos o España?". Sí es ruta A; no es ruta B.
-1. **Moneda y mercados.**
-   - **Ruta B:** la tienda en la moneda de su país y **un solo mercado, su país**. Nada de otros países: su pasarela local no les puede cobrar.
-   - **Ruta A:** la moneda de la tienda es USD. Crea los mercados con los países que dejó la skill `producto` en `contexto/02-producto-y-numeros.md` (Estados Unidos, Canadá, Reino Unido, Australia y los de Latinoamérica hispana donde el proveedor envía y el margen da al menos 60 %). **Nunca Argentina.** Shopify Markets convierte el precio a la moneda de cada país. Solo si la persona vende en un único país, la moneda va en la de ese país.
-2. **Envío gratis** a su país (ruta B) o a todos esos países (ruta A) (una tarifa de 0 por zona), porque el envío ya va dentro del precio.
-3. **Checkout:** el teléfono del cliente obligatorio (lo necesita la transportadora).
+## Paso 5 · El checkout (lo haces tú)
+Hazlo tú por la conexión o, si no se puede, **con Claude en Chrome** en el administrador de Shopify de la persona (ella ya inició sesión).
+- **El teléfono del cliente obligatorio** en el checkout (lo necesita la transportadora).
+
+**La moneda, los mercados por país y el envío no se tocan aquí.** Dependen de la ruta y del producto, que todavía no están definidos al empezar la clase: los deja la skill `tienda` al subir la página. Díselo a la persona en una línea.
 
 **Lo único que hace la persona:** escribir su número de WhatsApp y conectar su pasarela de pago (Paso 6), porque ahí van sus datos.
 
