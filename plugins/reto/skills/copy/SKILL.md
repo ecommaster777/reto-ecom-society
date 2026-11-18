@@ -34,6 +34,7 @@ La gente no compra cereza ácida ni 60 cápsulas, compra **lo que va a vivir**: 
 - **Frases cortas y medianas mezcladas.** Párrafos de 1 a 3 líneas.
 - **Nada de muletillas de IA:** "descubre", "el secreto", "revoluciona", "transforma tu vida", "no es solo X, es Y", "sumérgete", "en el mundo de hoy", "¿Y si te dijera…?", tres adjetivos seguidos.
 - **No uses guiones largos (—).** Usa comas, puntos o dos puntos.
+- **Nunca pongas cruces (†), asteriscos ni números de nota al final de los textos.** Las advertencias de salud van una sola vez, completas, en el pie de página.
 - Sin mayúsculas sostenidas ni más de un emoji por bloque. Cero signos de exclamación seguidos.
 
 ## Lo que nunca se escribe

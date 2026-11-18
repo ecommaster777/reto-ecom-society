@@ -38,7 +38,7 @@ Arma el esquema de la página con **esta arquitectura, en este orden**. Está to
 7. **Una frase** que explica cómo lo logra.
 8. **6 beneficios con ícono**, en 2 columnas.
 9. **Precio:** el del paquete elegido, el precio de antes tachado y una etiqueta con el ahorro.
-10. **3 tarjetas de paquete:** 1 unidad · "Compra 2 y llévate 1 regalo" (marcada "Más popular", con la línea del regalo debajo) · "Compra 3 y llévate 2 regalos" (marcada "Envío gratis"). Cada una con su foto, precio por unidad y precio tachado.
+10. **3 tarjetas de paquete:** "Compra 1" · "Compra 1 y el 2.º va al 50 %" (marcada "Más popular", con envío gratis) · "Compra 2 y llévate 1 gratis" (marcada "Mejor precio", con envío gratis y un regalo). Cada una con su foto, precio por unidad y precio tachado. Antes de proponerlas, calcula el margen de cada oferta con el costo real del proveedor para esa cantidad y su envío: las 3 tienen que dejar **al menos 60 %** después del producto, el envío y la pasarela. Si una no da, súbele el precio base o cambia esa oferta.
 11. **Regalos desbloqueados:** 3 casillas (envío gratis, regalo 1, regalo 2) que se activan según el paquete.
 12. **Fecha de entrega:** "Pide hoy y te llega entre el [fecha] y el [fecha]", calculada con el tiempo real del proveedor.
 13. **Botón** "Agregar al carrito" con el precio tachado y el precio final dentro.
@@ -87,7 +87,7 @@ Muéstraselo completo y **espera su aprobación**. Guárdalo en `contexto/04-tie
 4. Ajusta lo que pida y **espera su aprobación**.
 
 ## Paso 4 · La página en Shopify (aprobación 4)
-1. **El producto:** créalo con `shopify store execute --allow-mutations` y la mutación `productCreate`, con el título, la descripción y la opción "Paquete" con un valor por cada tarjeta de la oferta ("1 frasco", "2 frascos + regalo", "3 frascos + 2 regalos"), con precios en dólares. Después fija el precio de cada variante con `productVariantsBulkUpdate`. Sube las fotos de `tienda/fotos/` con `stagedUploadsCreate` y después `productCreateMedia`; si una falla, dile cuál y sigue con las demás.
+1. **El producto:** créalo con `shopify store execute --allow-mutations` y la mutación `productCreate`, con el título, la descripción y la opción "Paquete" con un valor por cada tarjeta de la oferta ("1 frasco", "2 frascos", "3 frascos"), con precios en dólares. Después fija el precio de cada variante con `productVariantsBulkUpdate`. Sube las fotos de `tienda/fotos/` con `stagedUploadsCreate` y después `productCreateMedia`; si una falla, dile cuál y sigue con las demás.
 2. **La plantilla:** baja su tema con `shopify theme pull --store SU-TIENDA.myshopify.com --live --path tienda/tema`. Crea:
    - `sections/pagina-reto.liquid`, con el prototipo convertido a Liquid. El bloque de compra usa el formulario de producto de Shopify, con las variantes como tarjetas de oferta y el botón de agregar al carrito funcionando. Los colores, fuentes y textos salen del prototipo aprobado.
    - `templates/product.reto.json`, que usa esa sección.

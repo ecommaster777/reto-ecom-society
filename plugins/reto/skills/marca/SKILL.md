@@ -59,6 +59,7 @@ Si el producto se consume (suplemento, crema, bebida, snack, cosmético), la eti
 
 ## Paso 6 · El mockup del producto
 - **El mockup se parece al producto real del proveedor, con su marca.** Pídele a la persona la foto del producto en CJ (o del proveedor) y úsala como primera referencia en Higgsfield: misma forma de envase, mismo tamaño, mismo tipo de tapa y de etiqueta. Lo único que cambia es la marca: la etiqueta y el logo aprobados (`marca/etiqueta.png` y `marca/logo.png` como segunda referencia). Así lo que muestra la página es lo que le llega al cliente cuando el proveedor ponga su etiqueta.
+- **Los colores del empaque son los del proveedor.** Si el frasco del proveedor es amarillo, el mockup es amarillo, aunque la paleta de la marca sea otra: el logo y los textos van con los colores de la marca, pero el envase, la tapa y el color de fondo de la etiqueta se quedan como llegan. Si el cliente ve un frasco rojo y le llega uno amarillo, pide reembolso. Las cápsulas también se ven del color real.
 - Pide una foto de producto realista: luz natural, sombra suave, fondo liso cálido, sin aspecto de render 3D.
 - Para productos que no son consumibles, el mockup es el producto con el logo y su empaque.
 - **3 tomas:** fondo limpio de estudio (la foto principal), el producto en un ambiente que encaje con el concepto, y el producto con sus ingredientes o en uso.
