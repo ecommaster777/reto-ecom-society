@@ -26,7 +26,7 @@ Le montas a una persona principiante **la página de producto** de su marca, la 
 ---
 
 ## Paso 1 · La estructura (aprobación 1)
-Arma el esquema de la página con **esta arquitectura, en este orden**. Está tomada de una de las páginas de suplementos que más vende en Estados Unidos; adapta los textos y las fotos a su producto, pero respeta los bloques y sus elementos.
+Arma el esquema de la página con **esta arquitectura, en este orden** (29 bloques). Está tomada de una de las páginas de suplementos que más vende en Estados Unidos; adapta los textos y las fotos a su producto, pero respeta los bloques y sus elementos.
 
 **Arriba (lo que se ve sin bajar):**
 1. **Barra de oferta** con el nombre de la oferta y una cuenta regresiva a una fecha real (por ejemplo, el fin de la oferta de lanzamiento).
@@ -57,8 +57,9 @@ Arma el esquema de la página con **esta arquitectura, en este orden**. Está to
 24. **Garantía de 30 días** con sello, texto, botón y la foto de una persona sonriendo con el producto.
 25. **Gente real, resultados reales:** 3 videos o fotos verticales de clientes hablando a la cámara con el producto.
 26. **La oferta otra vez:** "Compártelo con tu familia", las 3 tarjetas, la fecha y el botón.
-27. **Lista de reseñas** con etiquetas ("Uso diario", "Recompra"…).
-28. **Pie de página:** correo para ofertas, links (preguntas, contacto, rastreo, envíos, devoluciones, privacidad, términos), las advertencias de salud y el selector de país y moneda.
+27. **Preguntas frecuentes** que resuelven las objeciones del brief (cuándo noto la diferencia, si lo puedo tomar con medicamento, qué lleva, efectos, envío, pago seguro, garantía, cancelar la suscripción), con un botón al final.
+28. **Lista de reseñas** con etiquetas ("Uso diario", "Recompra"…).
+29. **Pie de página:** correo para ofertas, links (preguntas, contacto, rastreo, envíos, devoluciones, privacidad, términos), las advertencias de salud y el selector de país y moneda.
 
 **Reglas de conversión (CRO):**
 - Menos scroll y menos fricción: poco espacio entre secciones (unos 32 px en celular), títulos de una sola línea, párrafos de 1 o 2 líneas.
@@ -82,6 +83,7 @@ Muéstraselo completo y **espera su aprobación**. Guárdalo en `contexto/04-tie
    5. Garantía: retrato de una persona sonriendo con el producto.
    6. Videos de clientes (3): cuadros verticales tipo selfie hablándole a la cámara.
    7. Comparación: un envase genérico sin marca. Revisa que el nombre en la etiqueta se lea bien en todas; si una sale con letras raras, vuelve a generarla. Guárdalas en `tienda/fotos/`.
+   Las 7 piezas del carrusel (producto con 3 beneficios, siéntete mejor, por qué confiar, testimonio, cápsulas con 6 detalles, comparación e información nutrimental) se arman en HTML con las fotos y se exportan a imagen **al doble de resolución** (2160 px), para que el texto y las fotos se vean nítidos en celular. Si una foto se va a ver grande, escálala antes a 2K.
 2. **El prototipo:** un solo archivo `tienda/prototipo.html` con toda la página, con la paleta, las tipografías, el logo, las fotos y el copy aprobados. Pensado primero para celular (ahí llega casi todo el tráfico de los anuncios), y que se vea bien en computador. Que las tarjetas de oferta se puedan seleccionar y el precio cambie.
 3. Ábrelo en su navegador (`open tienda/prototipo.html` en Mac, `start tienda/prototipo.html` en Windows) y pídele que lo mire también en el celular con la vista de celular del navegador.
 4. Ajusta lo que pida y **espera su aprobación**.
