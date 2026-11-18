@@ -1,6 +1,6 @@
 ---
 name: herramientas
-description: Revisa y deja listas las herramientas del Reto de 4 días de eCom Society, paso a paso y en el orden del reto (Claude Code, cuentas de investigación, Shopify, dominio, conexión de Shopify con Claude, Meta y Higgsfield). Úsala cuando la persona escriba "herramientas", "reto-herramientas", "qué me falta", "no me funciona", "conectar Shopify", "dominio", "Business Manager", "portafolio comercial", "píxel" o "Higgsfield", o al empezar el reto.
+description: Revisa y deja listas las herramientas del Reto de 4 días de eCom Society, paso a paso y en el orden del reto (Claude Code, cuentas de investigación, cuenta de Shopify, Higgsfield y Meta). Úsala cuando la persona escriba "herramientas", "reto-herramientas", "qué me falta", "no me funciona", "conectar Shopify", "dominio", "Business Manager", "portafolio comercial", "píxel" o "Higgsfield", o al empezar el reto.
 ---
 
 # Herramientas del reto
@@ -42,20 +42,15 @@ Claude Code ya funciona si estás leyendo esto. Revisa con la persona, una por u
 4. Extensión **Glimpse** instalada en Chrome.
 Cuando todo esté, dile: "Listo para el miércoles. En la clase vamos a usar la skill de producto".
 
-## Etapa 2 · Miércoles en la noche: Shopify, dominio y conexión con Claude
-1. **Crear la tienda:** que entre al link de Shopify del reto, cree su cuenta y su tienda. Pídele que te diga la dirección de su tienda que termina en `.myshopify.com` (está en la barra del navegador o en Configuración). Guárdala en `contexto/00-perfil.md`.
-2. **El dominio:** explícale que es el nombre de su tienda en internet y que lo más simple es comprarlo **dentro de Shopify** (Configuración → Dominios → Comprar dominio), porque así se conecta solo. Consejos: corto, fácil de decir, sin guiones, preferiblemente .com. Él lo compra. Si no quiere comprarlo todavía, sigue sin dominio: se puede hacer el jueves.
-3. **Node.js:** revisa si lo tiene con `node --version`. Si no:
-   - Mac: si tiene Homebrew (`brew --version`), instálalo con `brew install node`. Si no, que lo descargue de https://nodejs.org (botón LTS), lo instale como cualquier programa y vuelva a abrir la terminal.
-   - Windows: `winget install OpenJS.NodeJS.LTS`. Después que cierre y vuelva a abrir PowerShell y Claude.
-4. **Shopify CLI:** instálala con `npm install -g @shopify/cli@latest` y revisa con `shopify version` que sea 3.93 o más nueva.
-5. **Conectar la tienda con Claude:** corre
-   `shopify store auth --store SU-TIENDA.myshopify.com --scopes read_products,write_products,read_files,write_files,read_themes,write_themes,read_content,write_content,read_online_store_pages,write_online_store_pages,read_online_store_navigation,write_online_store_navigation,read_legal_policies,write_legal_policies,read_shipping,write_shipping,read_discounts,write_discounts`
-   Se abre el navegador: que inicie sesión y acepte. Si algún permiso da error, quítalo de la lista y vuelve a correr.
-6. **Prueba:** corre `shopify store execute --store SU-TIENDA.myshopify.com --query 'query { shop { name } }'`. Si responde con el nombre de su tienda, quedó conectada.
-7. Anota en `contexto/00-perfil.md` qué quedó listo. Dile: "Tu tienda está conectada con Claude. Mañana la montamos con la skill de tienda".
+## Etapa 2 · Miércoles en la noche: Shopify y Higgsfield
+1. **La cuenta de Shopify:** que entre al link de Shopify del reto y cree su cuenta y su tienda. Cuéntale que con ese link tiene **Shopify por 1 dólar al mes durante los primeros 3 meses**. Pídele la dirección de su tienda que termina en `.myshopify.com` y guárdala en `contexto/00-perfil.md`. El jueves, en clase, la skill `shopify` la conecta con Claude y la configura. El dominio se compra el jueves, cuando tenga nombre de marca.
+2. **Higgsfield:** con él salen el logo, la etiqueta, el mockup y todas las fotos de la página de producto desde el jueves, así que tiene que quedar conectado hoy.
+   1. Que cree su cuenta con el link del reto y elija el plan más básico con créditos (el gratis no trae créditos). Lo paga la persona.
+   2. Conectar Higgsfield a Claude: que entre a https://claude.ai/customize/connectors, busque Higgsfield y lo conecte con su cuenta.
+   3. Dentro de Claude, que escriba `/mcp` para comprobar que aparece. Si no aparece, que salga con `/exit`, vuelva a abrir `claude` y revise otra vez. Si sigue sin aparecer, que lo lleve al grupo con una captura.
+3. Anota en `contexto/00-perfil.md` qué quedó listo. Dile: "Listo para el jueves. Mañana abrimos tu Shopify, creamos tu marca y montamos tu página".
 
-## Etapa 3 · Jueves en la noche: Meta y Higgsfield
+## Etapa 3 · Jueves en la noche: Meta
 Explícale primero por qué se hace con calma: Meta es estricto con las cuentas nuevas y un error puede bloquearla.
 1. **Perfil de Facebook:** que use su perfil personal real, no uno nuevo, y active la autenticación en dos pasos (Configuración → Centro de cuentas → Contraseña y seguridad).
 2. **Portafolio comercial** (antes Business Manager): crearlo en https://business.facebook.com con su nombre y el de su tienda.
@@ -63,7 +58,6 @@ Explícale primero por qué se hace con calma: Meta es estricto con las cuentas 
 4. **Método de pago:** una tarjeta que acepte cobros internacionales. Lo pone él.
 5. **Conectar Shopify con Meta:** en Shopify, instalar la app "Facebook & Instagram" (de Meta), conectar su portafolio, su cuenta publicitaria y su página, y aceptar compartir datos. Eso crea el píxel que avisa cada compra.
 6. **Verificar el dominio** en el portafolio (Configuración → Seguridad de la marca → Dominios). Si compró el dominio en Shopify, la opción más simple es la etiqueta meta: copia la etiqueta que da Meta y, si la tienda está conectada, ofrécele agregarla al tema por él.
-7. **Higgsfield:** que cree su cuenta con el link del reto y elija el plan más básico con créditos (el gratis no trae créditos). Después, conectar Higgsfield a Claude: que entre a https://claude.ai/customize/connectors, busque Higgsfield y lo conecte. Luego, dentro de Claude, que escriba `/mcp` para comprobar que aparece. Si no aparece en la lista de conectores, dile que lo resolvemos en la clase del viernes.
 
 **Errores que bloquean cuentas, díselos en voz alta:** crear un perfil nuevo para anunciar, crear varias cuentas publicitarias seguidas, cambiar datos muchas veces, usar una tarjeta que rechaza cobros internacionales.
 

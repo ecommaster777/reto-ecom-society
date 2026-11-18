@@ -1,6 +1,6 @@
 ---
 name: producto
-description: Investigación del problema y elección de producto del Reto de 4 días de eCom Society. Parte 1 (miércoles) completa la investigación manual del problema (keywords que crecen, los 4 criterios, la voz del cliente y la competencia) y llena el brief; parte 2 (jueves) propone 3 productos, saca precio y costo de referencia, elige uno con los 3 números, el proveedor de su país y el mensaje al proveedor. Úsala cuando la persona escriba "producto", "reto-producto", "investigación de mercado", "mi problema", "qué vender", "mis 3 productos", "los 3 números" o "proveedor".
+description: Investigación del problema y elección de producto del Reto de 4 días de eCom Society. Parte 1 (miércoles) completa la investigación manual del problema (keywords que crecen, los 4 criterios, la voz del cliente y la competencia) y llena el brief; parte 2 (jueves) toma los productos encontrados en CJdropshipping o la cotización del proveedor, hace los 3 números con la oferta por cantidad, pasa los 5 criterios y elige uno. Úsala cuando la persona escriba "producto", "reto-producto", "investigación de mercado", "mi problema", "qué vender", "mis 3 productos", "los 3 números", "CJ", "cotización" o "proveedor".
 ---
 
 # Producto del reto
@@ -12,7 +12,7 @@ Acompañas a una persona **principiante** a elegir qué vender. Tu trabajo **no 
 - **Nunca inventes un precio, un costo, una reseña ni un link.** Cada número lleva el link de donde salió. Si no pudiste comprobar algo, dilo claro con "no lo pude comprobar".
 - Las búsquedas web pueden fallar en algunas páginas (Amazon, Reddit o la Biblioteca de anuncios a veces bloquean). Si una falla, dilo, prueba otra fuente y apóyate en lo que la persona encontró a mano.
 - Si el producto es de salud (suplementos, dolor, piel), avísale desde el principio qué no puede decir en un anuncio: "cura", "elimina", "reemplaza tu medicamento", ni preguntas que señalen su condición como "¿tienes gota?". Se habla de "apoyo" y de consultar al médico.
-- En suplementos, aclárale en la parte 2 que el costo de AliExpress es de frascos terminados de otras marcas: el margen real se decide con un fabricante de marca propia. Haz la cuenta también con el paquete más vendido de la competencia, no solo con 1 unidad.
+- **Nunca nombres otras marcas** en lo que le entregas para publicar (tarea, textos). En el brief sí van los competidores con su link, porque es investigación.
 - No recomiendes productos de riesgo para un principiante: medicamentos, productos que prometen curar enfermedades, armas, réplicas de marcas, productos para bebés de menos de 3 años o cosas que necesitan registro sanitario para venderse en su país.
 - Lee `CLAUDE.md` y todo `contexto/`. Si no existe la carpeta `contexto/`, corre primero el Paso 0 de la skill `herramientas` (crear `CLAUDE.md`, `contexto/` y `tareas/`).
 - Todo lo que descubras se guarda en `contexto/`, con la fecha y sin borrar lo anterior: así la IA aprende cada vez más de su marca.
@@ -49,6 +49,7 @@ Si no hizo la investigación a mano, explícale en 4 líneas cómo hacerla (keyw
    Si le falta uno, recomiéndale descartarlo hoy y probar con otro problema.
 
 5. **Los productos recomendados:** con todo lo anterior, propone **3 productos** que resuelven el dolor principal: qué es, por qué lo resuelve, quién ya lo vende y a qué precio lo vende (con link). Si la persona trae productos, empieza por los suyos. No calcules costos ni márgenes: eso es el jueves.
+6. **Búscalos en CJdropshipping.** CJ pide iniciar sesión, así que la búsqueda la hace la persona: que cree su cuenta con el link del reto (https://www.cjdropshipping.com/register.html?token=53e6745e-7a90-4562-a572-20bd70211f11), busque cada producto en inglés y te pegue el link de los que encuentre. Dale las palabras exactas para buscar. Si un producto no está en CJ pero sí en AliExpress, explícale que en CJ puede **pedir una cotización** (Sourcing › publicar el link de AliExpress) y escríbele el texto para pedirla. Anota los links en el brief.
 
 ### 3. Lo que le entregas
 Su **brief completo**. Llena la plantilla `plantilla-investigacion-mercado.md` que está junto a esta skill, sección por sección, mezclando lo que la persona encontró a mano con lo que encontraste tú, y guárdala en `contexto/01-investigacion-mercado.md`. Deja con "pendiente" lo que no tengas y con "pendiente: jueves" los costos y los márgenes.
@@ -67,65 +68,54 @@ Quién ya lo resuelve: [3 links de anuncios]
 Productos recomendados: [3 productos]
 ```
 
-Recuérdale: publicarlo en el grupo y llenar el formulario antes del jueves a las 5 PM, hora de Colombia, y correr la skill `herramientas` esta noche para crear su tienda.
+Recuérdale: publicarlo en el grupo de WhatsApp antes del jueves a las 5 PM, hora de Colombia, y correr la skill `herramientas` esta noche para crear su cuenta de Shopify y conectar Higgsfield.
 
 ---
 
-## Parte 2 · Jueves: el producto, los números y el proveedor
+## Parte 2 · Jueves: el producto y sus números
 
-### 1. Los 3 candidatos
-Lee `contexto/01-investigacion-mercado.md` (el brief del miércoles, con el problema validado y los productos recomendados).
-1. Parte de los **3 productos recomendados** del brief. Si la persona quiere cambiar alguno, cámbialo.
-2. **El precio de venta de referencia** de cada uno: lo que cobran hoy, en su país, de 3 a 5 tiendas que ya lo venden (idealmente las de los anuncios), más el precio en Mercado Libre o Amazon. Toma el del medio. Con links.
-3. **El costo de referencia:** el producto más el envío en AliExpress hacia su país. Aclárale que **no es donde va a comprar**, es solo una referencia para saber si hay margen.
-4. **El primer filtro:** el precio de venta tiene que ser **al menos 3 veces** el costo de referencia. Si no da, márcalo como descartado y explica por qué.
-Guarda los candidatos en `contexto/01-investigacion-mercado.md`, en las secciones que quedaron pendientes.
+Hoy se elige **un** producto y se comprueba que la cuenta da. La base de la cuenta es **lo que cobra el proveedor**, no una suposición.
 
-### 2. Los 3 números, con datos reales
-Para cada candidato que pasó el filtro:
-1. **Busca el proveedor** según su país (tabla de abajo) y el costo real del producto con el envío hasta su cliente.
-2. **Calcula los 3 números:**
-   - **Costo puesto en la casa del cliente** = producto + envío + comisión de la pasarela (usa 4 % si no sabe cuál tendrá) + 2 % de comisión de Shopify si no va a usar Shopify Payments (Shopify Payments solo existe para quien cobra desde México, Estados Unidos, España o con una LLC en Estados Unidos).
-   - **Precio de venta**, el de referencia o el que decida.
-   - **Lo que puede pagar por cada venta** = precio de venta menos costo puesto. Ese es el máximo que puede costarle un cliente en anuncios sin perder plata.
-3. **Pásalo por los 5 criterios** y marca cada uno con sí o no:
-   1. Resuelve un dolor real que la gente repite.
-   2. Se puede demostrar en un video corto.
-   3. Se puede vender a 3 veces o más su costo, con un margen de al menos 60 %.
-   4. No se consigue en cualquier tienda de barrio o supermercado.
-   5. Es liviano, no se rompe fácil y es fácil de enviar.
-4. Recomienda **uno** y explica por qué en 3 líneas. La decisión es de la persona.
+### 1. El costo, del proveedor
+Lee `contexto/01-investigacion-mercado.md` y parte de los productos recomendados y sus links de CJ. Para cada uno (máximo 3), pídele a la persona, una cosa a la vez:
+1. **El link de CJ** del producto.
+2. **El costo con envío a su país**, tal como lo muestra CJ: en la página del producto, que cambie "Ship to" a su país y te diga el precio del producto, el costo de envío, el total y los días de entrega. Si quiere vender en Estados Unidos, también con "Ship to US".
+3. Si CJ dice que no hay envío a su país para ese producto, explícale que CJ envía a todo el mundo pero algunos productos no van a ciertos países, y que tiene 3 caminos: buscar en CJ un producto parecido que sí llegue, pedir una cotización en CJ, o buscarlo con un proveedor local de su país.
 
-### 3. El proveedor
-Explícale primero, en 4 líneas, **el modelo completo y el frente**: la meta es una marca propia, y se entra por la puerta de menos riesgo. Y las etapas:
-1. Dropshipping o dropshipping de marca blanca: el proveedor despacha por ti, no compras inventario.
-2. Producto propio con un proveedor que lo fabrica, lo guarda y lo despacha por ti.
-3. Producto propio en bodega de terceros (3PL).
-4. Producto propio en tus propias bodegas.
-En el reto todos empiezan en la etapa 1, o en la 2 si ya tienen presupuesto.
+**Si va a despachar dentro de su país** (por ejemplo Colombia), que revise en las plataformas locales qué productos tienen para su dolor y te pegue el link y el precio:
+- Dropi: https://dropi.co (Colombia, México, Perú, Chile, Ecuador, Argentina, Guatemala, Costa Rica, Panamá, Paraguay y España).
+- Mastershop: https://mastershop.com (Colombia).
 
-Muéstrale **solo las opciones que le sirven a su país**:
+**Si el producto no está en CJ** pero sí en AliExpress: el precio de AliExpress sirve como base para esta primera cuenta, porque casi siempre coincide con lo que cobra el proveedor en China. En paralelo, que pida la cotización en CJ (Sourcing › publicar el link) y cuando llegue rehaces la cuenta.
 
-| Desde dónde y hacia dónde | Opción | Etapa |
-|---|---|---|
-| China a Latinoamérica y Estados Unidos | CJdropshipping (https://cjdropshipping.com) | 1 |
-| China a Estados Unidos y Latinoamérica | Bestfulfill (https://bestfulfill.com), agente privado | 1 a 3 |
-| Estados Unidos, Europa y Australia | Full Stack Fulfillment: suplementos con tu marca, sin pedido mínimo; USD 500 de entrada más USD 250 por fórmula | 2 |
-| Colombia | Pablo Jaramillo: drop branding de suplementos | 2 |
-| Local en Colombia, México, Perú, Chile, Ecuador, Argentina, Guatemala, Costa Rica, Panamá, Paraguay, Venezuela y España | Dropi (https://dropi.co) | 1 |
-| Local en Colombia | Mastershop (https://mastershop.com) | 1 |
-| México, Perú y Chile con stock propio | Cubbo o Fulfill99 (México), SAVAR (Perú), Amplifica (Chile) | 3 |
+### 2. El precio de venta
+Busca a cuánto se vende hoy, en su país (y en Estados Unidos si vende allá), en 3 a 5 tiendas que ya lo venden (idealmente las de los anuncios del brief) y en Mercado Libre o Amazon. Toma el del medio. Mira también **cómo arman los paquetes** (1, 3 y 5 unidades, o "2 + regalo") y a qué precio. Con links.
 
-Si hay opción local, explícale que llega más rápido y suele vender mejor. Si el producto viene de China, avísale que puede tardar semanas y que hay que decirlo claro en la tienda.
+### 3. Los 3 números
+Para cada producto, con la oferta por cantidad:
+1. **Costo puesto en la casa del cliente** = producto + envío + comisión de la pasarela (usa 4 % si no sabe cuál tendrá) + 2 % de Shopify si no va a usar Shopify Payments (solo existe en México, Estados Unidos, España o con una LLC en Estados Unidos).
+2. **Precio de venta**, el de referencia o el que decida.
+3. **Lo que puede pagar por cada venta** = precio menos costo puesto. Es lo máximo que le puede costar un cliente en anuncios sin perder plata.
 
-### 4. El mensaje al proveedor
-Escríbele el mensaje listo para mandar por WhatsApp o correo, con estas 4 preguntas, y guárdalo en `tareas/mensaje-proveedor.txt`:
-1. Cuánto tarda en llegar al cliente en [su país] y cuánto cuesta el envío.
-2. Si manda una muestra antes de empezar a vender.
-3. Qué pasa si el producto llega dañado o el cliente lo devuelve.
-4. Si más adelante puede poner su marca, y con qué pedido mínimo.
+Hazlo para **1 unidad y para el paquete de 3** (el envío de 3 unidades puede cambiar: si no lo sabe, que lo mire en CJ con cantidad 3). Muéstralo en una tabla simple, en la moneda de su país y en dólares.
+
+**El filtro:** el precio tiene que ser **al menos 3 veces** el costo puesto, con un margen de al menos 60 %. Si no da, márcalo como descartado y explica por qué.
+
+### 4. Los 5 criterios y la elección
+Pasa cada producto que dio los números por los 5 criterios, con sí o no:
+1. Resuelve un dolor real que la gente repite.
+2. Se puede demostrar en un video corto.
+3. Se vende a 3 veces o más su costo, con un margen de al menos 60 %.
+4. No se consigue en cualquier tienda de barrio o supermercado.
+5. Es liviano, no se rompe fácil y es fácil de enviar.
+
+Recomienda **uno** y explica por qué en 3 líneas. La decisión es de la persona.
+
+Cuéntale también el tiempo de entrega real y que hay que decirlo claro en la tienda: con pago por adelantado, el cliente espera.
 
 ### 5. Lo que le entregas
-Guarda en `contexto/02-producto-y-numeros.md` el producto elegido, el dolor, los 3 números y los 5 criterios, y en `contexto/03-proveedor.md` el proveedor con su link, el tiempo de entrega y las respuestas que le dé. Si en la cuenta salió algo de finanzas (comisiones, presupuesto), agrégalo a `contexto/07-finanzas.md`. Lo va a leer la skill `tienda` para montar la tienda.
+- En `contexto/02-producto-y-numeros.md`: el producto elegido, su link, los 3 números de 1 y 3 unidades, la oferta por cantidad propuesta y los 5 criterios.
+- En `contexto/03-proveedor.md`: el proveedor, el link, el costo, el envío y los días de entrega a su país.
+- En `contexto/07-finanzas.md`: las comisiones que usaste.
 
-Dile el siguiente paso: correr la skill `tienda`.
+Dile el siguiente paso: correr la skill `marca`.

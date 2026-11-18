@@ -22,5 +22,16 @@ Después cierra Claude con `/exit` y vuelve a abrirlo con `claude`.
 |---|---|---|
 | Herramientas | Antes de cada clase | `/reto:herramientas` |
 | Producto | Miércoles y jueves | `/reto:producto` |
+| Shopify | Jueves | `/reto:shopify` |
+| Marca | Jueves | `/reto:marca` |
+| Copy | Jueves y viernes | `/reto:copy` |
+| Tienda | Jueves | `/reto:tienda` |
 
-Las skills de tienda, anuncios y números llegan durante la semana. Para tenerlas, escribe `/plugin update reto@ecom-society`.
+Las skills nuevas llegan durante la semana. Para tenerlas, sal de Claude con `/exit` y en la terminal escribe:
+
+```
+claude plugin marketplace update ecom-society
+claude plugin update reto@ecom-society
+```
+
+Después vuelve a abrir Claude con `claude`.
