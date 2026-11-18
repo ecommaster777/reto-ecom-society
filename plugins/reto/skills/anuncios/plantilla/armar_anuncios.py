@@ -45,7 +45,18 @@ def main():
     cj = Path(sys.argv[1]).resolve(); out = cj.parent
     if not cj.exists():
         sys.exit(f"No encontré {cj}")
-    C = json.loads(cj.read_text(encoding="utf-8"))
+    try:
+        C = json.loads(cj.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        sys.exit(f"campana.json tiene un error de escritura en la línea {e.lineno}: {e.msg}")
+    req = [k for k in ("nombre_campana", "url", "moneda", "presupuesto_diario", "cpa_max", "paises", "marca", "conjuntos") if k not in C]
+    req += [f"marca.{k}" for k in ("nombre", "logo", "colores", "fuentes") if k not in C.get("marca", {})]
+    ids = [a.get("id") for c in C.get("conjuntos", []) for a in c.get("anuncios", [])]
+    req += [f'anuncio {a.get("id", "?")}: {k}' for c in C.get("conjuntos", []) for a in c.get("anuncios", []) for k in ("id", "formato", "texto_principal", "titulo") if not a.get(k)]
+    if len(ids) != len(set(ids)):
+        req.append("hay IDs de anuncio repetidos: " + ", ".join(sorted({i for i in ids if ids.count(i) > 1})))
+    if req:
+        sys.exit("En campana.json falta o está mal:\n  " + "\n  ".join(req))
     for f in ("piezas.css", "piezas.js"):
         shutil.copy(AQUI / f, out / f)
     datos = json.dumps(C, ensure_ascii=False)
@@ -66,7 +77,8 @@ def main():
                 if pl not in PLANTILLAS:
                     ad["archivo"] = ""
                     errores.append(f'{ad["id"]}: la plantilla "{pl}" no existe (usa {", ".join(sorted(PLANTILLAS))})'); continue
-                falta = [k for k in PLANTILLAS[pl] if not ad["pieza"].get(k)]
+                LISTAS = ("lineas", "burbujas", "puntos", "nuestro", "otro")
+                falta = [k for k in PLANTILLAS[pl] if not ad["pieza"].get(k)] + [f"{k} (tiene que ser una lista)" for k in LISTAS if k in ad["pieza"] and not isinstance(ad["pieza"][k], list)]
                 if falta:
                     ad["archivo"] = ""
                     errores.append(f'{ad["id"]}: a la pieza "{pl}" le falta {", ".join(falta)}'); continue
@@ -129,12 +141,12 @@ section{{padding:26px 24px}}h2{{margin:0 0 4px;font-size:22px}}.ang{{margin:0;fo
     for i, cjto in enumerate(C["conjuntos"], 1):
         g += [f'## {i + 1}. Conjunto {i} · {cjto["nombre"]}',
               f'- Nombre del conjunto: **{cjto["nombre"]}**',
-              "- Conversión: **Sitio web**, tu píxel (el que creó la app de Facebook e Instagram de Shopify), evento **Compra**.",
+              "- Conversión: **Sitio web**, tu píxel (Meta ahora lo llama **conjunto de datos**; lo creó la app de Facebook e Instagram de Shopify), evento **Compra**.",
               f'- Ubicación (países): **{", ".join(C["paises"])}**',
               f'- Idioma: **{C.get("idioma_publico", "Todos")}**',
               f'- Público: **Advantage+**, sin intereses. Edad mínima en los controles: 25 (la edad de tu cliente, {C.get("edad", "30 a 65+")}, va como sugerencia).',
               "- Ubicaciones: **Advantage+** (automáticas).", "", "### Los anuncios de este conjunto",
-              "En cada anuncio: elige **tu página de Facebook y tu cuenta de Instagram**. Después busca **Mejoras de Advantage+ creative** y apaga una por una: mejoras de texto, superposiciones, expandir imagen, generar fondo, música, animación, traducción, comentarios relevantes y anuncios de varios anunciantes. Pueden cambiar tu texto o tu imagen y romper las reglas de salud."]
+              "En cada anuncio: elige **tu página de Facebook y tu cuenta de Instagram**. Después busca **Mejoras de Advantage+ creative** y apaga una por una: mejoras de texto, retoques visuales (brillo y contraste), superposiciones e información de la tienda, expandir imagen, generar fondo, música, animación, traducción, enlaces del sitio, agregar productos del catálogo, comentarios relevantes y anuncios de varios anunciantes. Pueden cambiar tu texto o tu imagen y romper las reglas de salud."]
         for ad in cjto["anuncios"]:
             g += [f'**Anuncio {ad["id"]} · {ad["formato"]}**', f'- Nombre: `{ad["id"]} · {ad["formato"]}`', f'- Archivo: `{ad["archivo"]}`',
                   "- Texto principal:", "", "```", ad["texto_principal"], "```", "",
@@ -142,7 +154,7 @@ section{{padding:26px 24px}}h2{{margin:0 0 4px;font-size:22px}}.ang{{margin:0;fo
                   f'- Llamado a la acción: **{C.get("boton","Comprar")}**', f'- URL del sitio web: `{C["url"]}`',
                   f'- Parámetros de URL (abajo, en "Seguimiento"): `{PARAMS}`', ""]
         if i < len(C["conjuntos"]):
-            g += [f'Para el conjunto {i + 1}: en la columna de la izquierda, sobre el conjunto {i} ya armado, los 3 puntos › **Duplicar** › en la misma campaña. Cámbiale el nombre y, en cada anuncio, cambia archivo, textos y URL por los de abajo.', ""]
+            g += [f'Para el conjunto {i + 1}: en la columna de la izquierda, sobre el conjunto {i} ya armado, los 3 puntos › **Duplicar** › en la misma campaña. Cámbiale el nombre y, en cada anuncio, cambia archivo, textos y nombre por los de abajo.', ""]
     g += ["## Si algo no aparece",
           "- **El evento Compra sale restringido** (Meta a veces limita las tiendas de salud, sobre todo en Estados Unidos): saca Estados Unidos del conjunto o lleva la captura al grupo del reto.",
           "- **Meta no te deja duplicar el conjunto:** crea la campaña otra vez eligiendo la configuración manual en vez de la de Advantage+.", "",

@@ -11,6 +11,7 @@ Acompañas a una persona **principiante** a sacar sus anuncios y dejar su campa�
 - Lee `CLAUDE.md` y todo `contexto/`: la investigación (`01`), el producto y sus números (`02`), la marca y la tienda (`04`) y el perfil con su ruta y su presupuesto (`00-perfil.md`). Si no hay página de producto, dile que primero corra la skill `tienda`.
 - Una pregunta a la vez. La persona responde solo 3 veces: **los 3 ángulos** (Paso 1), **el "sí" a los créditos** (Paso 2) y **los anuncios terminados** (Paso 4). Entre una y otra vas solo, avisando en una línea qué estás haciendo.
 - `RUTA` es la carpeta donde está este archivo SKILL.md (ahí está `plantilla/`).
+- **Antes de empezar, revisa que esté ffmpeg** (`ffmpeg -version`). Si falta: Mac `brew install ffmpeg` (si no hay `brew`, primero instala Homebrew desde https://brew.sh); Windows `winget install Gyan.FFmpeg` y volver a abrir la terminal.
 - **Antes de gastar créditos de Higgsfield, dile cuántos vas a gastar y espera su "sí".** Revisa su saldo con la herramienta de balance de Higgsfield.
 - Todo va en la carpeta `anuncios/`. Lo aprobado se anota en `contexto/05-anuncios.md`, con la fecha, sin borrar lo anterior.
 - **Nunca nombres otras marcas** en los anuncios.
@@ -44,7 +45,7 @@ Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos:
 | D | Video animado | Imagen 9:16 en estilo de película animada 3D, después Kling 8 s | unos 16 |
 | E | Conjunto 1: video UGC con IA (15 s). Conjuntos 2 y 3: video de producto (8 s) | Marketing Studio / Kling | 75 / 16 |
 
-**Total: unos 160 créditos**, más lo que haya que repetir. Si no le alcanzan, cambia el video UGC con IA por uno de producto (16).
+**Total: unos 160 créditos** (más 1 de las imágenes de inicio y lo que haya que repetir). Si no le alcanzan, cambia el video UGC con IA por uno de producto (16).
 
 ### 2.1 · El archivo de la campaña
 Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **todo**:
@@ -66,14 +67,14 @@ Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **t
 3. **D, video animado:** imagen con `gpt_image_2_6`, `aspect_ratio: "9:16"`, la foto del producto como referencia y "3D animated film style, Pixar-like", la escena del ángulo y "the exact bottle from the reference, same label and colors". Después `kling3_0` con `duration: 8`, `aspect_ratio: "9:16"`, esa imagen como `start_image` y el movimiento.
 4. **E, video UGC con IA (conjunto 1):** `marketing_studio_video` con `aspect_ratio: "9:16"`, `resolution: "720p"` (en 1080p cuesta más del doble), la foto del producto en `medias` con rol `image`, y en el prompt la persona (edad y estilo de su cliente), el lugar y **el guion exacto** de 30 a 45 palabras en su español, cumpliendo las reglas de Meta.
 5. **E, video de producto (conjuntos 2 y 3):** `kling3_0`, `duration: 8`, `aspect_ratio: "9:16"`, desde una imagen 9:16 (alguien tomando la cápsula, o el frasco en estudio con un movimiento lento de cámara).
-6. Espera con `jobs_wait` y baja cada video con `curl -L --create-dirs "<url>" -o anuncios/videos/originales/<ID>.mp4` (en Windows, `curl.exe` en vez de `curl`). Míralos y escúchalos: si el frasco sale deformado o con otras letras, o el audio trae una voz rara, repite ese (en Kling puedes pasar `generate_audio: false`).
+6. Espera con `jobs_wait` y baja cada video con `curl -L --create-dirs "<url>" -o anuncios/videos/originales/<ID>.mp4` (en Windows, `curl.exe` en vez de `curl`). Míralos y escúchalos: si el frasco sale deformado o con otras letras, o el audio trae una voz rara, repite ese (en Kling, repite con `sound: "off"`).
 
 ### 2.4 · La edición de los videos
 Cada video lleva títulos o subtítulos, siempre en la **zona segura de Reels** (Instagram tapa el 14 % de arriba y el 35 % de abajo) y **nunca encima de una cara**.
 1. Mira un cuadro de cada video (`ffmpeg -ss 2 -i video.mp4 -frames:v 1 cuadro.jpg`) y fíjate dónde está la cara y dónde el frasco.
 2. En `campana.json`, a cada anuncio de video ponle `original` (el de `videos/originales/`), `video` (`videos/<ID>.mp4`) y `edicion`:
    - **Videos sin voz:** 2 títulos cortos (del segundo 0 al 3 y del 3 al 5,5); el primero es el gancho del ángulo, no una lista de ingredientes. Van en la zona sin cara (`arriba`, `centro` o `abajo`). Después un `cierre` con la oferta: mira el cuadro de ese segundo; si el producto está en el centro, usa `"zona": "arriba"` y `"sin_logo": true` para no tapar la etiqueta, o recorta el video antes de que el producto llene el cuadro.
-   - **Video con voz:** subtítulos con lo que dice la persona. Sácalo con `python3 RUTA/plantilla/editar_video.py --transcribir video.mp4` (necesita faster-whisper, que la primera vez baja unos 460 MB; si no está o no hay tiempo, usa `--pausas` y el guion), en frases de 3 a 8 palabras, `estilo: "subtitulo"`, en la zona sin cara. Agrega `"extender": 2` y un `cierre` con el precio para que termine con la oferta.
+   - **Video con voz:** subtítulos con lo que dice la persona. Como el guion lo escribiste tú, usa `python3 RUTA/plantilla/editar_video.py --pausas video.mp4` para ver en qué segundos habla y reparte el guion en esos tramos (solo si el audio no coincide, usa `--transcribir`, que necesita faster-whisper y baja unos 460 MB la primera vez), en frases de 3 a 8 palabras, `estilo: "subtitulo"`, en la zona sin cara. Si el producto está a un lado, alinea los subtítulos al otro con `"alinear": "derecha"` o `"izquierda"`. Agrega `"extender": 2`, un `cierre` con el precio y `"aviso_ia": true` (pone "Video creado con IA", porque la persona es de IA).
 3. Corre `python3 RUTA/plantilla/editar_video.py anuncios/campana.json`. Necesita ffmpeg: si falta, instálalo (Mac: `brew install ffmpeg`; Windows: `winget install Gyan.FFmpeg` y volver a abrir la terminal).
 4. Revisa un cuadro de cada video editado: textos completos, dentro de la zona segura y sin tapar caras ni la etiqueta.
 
@@ -92,9 +93,9 @@ Abre `anuncios/revision.html` en su navegador (así se ven en el celular, con su
 ## Paso 5 · Montar la campaña (la persona, un paso a la vez)
 Antes, revisa con ella dos cosas, porque sin ellas no se prende:
 - **Su tienda cobra:** pasarela aprobada y página publicada. Si no, la campaña queda armada en borrador y la publica el día que la aprueben.
-- **Su página no tiene nada de muestra:** en `contexto/04` las reseñas de muestra hechas con IA ya están cambiadas por reseñas reales (o quitadas). Meta revisa la página.
+- **Su página no tiene nada de muestra ni frases prohibidas.** Meta revisa la página igual que los anuncios. Quita (o cambia por lo real): las reseñas y los videos de testimonio de muestra, "Compra verificada", el número de clientes ("Más de 1.200 clientes") y frases como "Gente real, resultados reales". Pasa la página por las mismas reglas de salud: nada de "tu ácido úrico" o "tu [condición]", nada de "que no vuelva". Si hay que cambiarla, hazlo con la skill `tienda` antes de publicar la campaña.
 
-Abre `anuncios/campana.html` en su navegador y la carpeta `anuncios/imagenes` (Finder o Explorador). Guíala **un paso a la vez**, esperando su "¿Listo?" en cada uno:
+Abre `anuncios/campana.html` en su navegador y las carpetas `anuncios/imagenes` y `anuncios/videos` (Finder o Explorador). Avísale que **nunca suba los de `videos/originales/`**: esos no tienen títulos ni cierre. Guíala **un paso a la vez**, esperando su "¿Listo?" en cada uno:
 1. https://adsmanager.facebook.com › **+ Crear** › objetivo **Ventas**. Presupuesto **de la campaña** (Advantage+) por el monto diario.
 2. **Conjunto 1:** su píxel y el evento **Compra**; los países y el idioma; público Advantage+ sin intereses (edad mínima 25 en los controles; la edad de su cliente va como sugerencia); ubicaciones Advantage+.
 3. **Anuncio:** su página de Facebook y su cuenta de Instagram; sube el archivo; pega texto principal, título y descripción; botón **Comprar**; la URL de su página (la misma en todos) y, en "Parámetros de URL", lo que dice la guía. **Apaga una por una las mejoras de Advantage+ creative** (mejoras de texto, superposiciones, expandir imagen, generar fondo, música, animación, traducción, comentarios relevantes, anuncios de varios anunciantes): pueden cambiar el texto o la imagen y romper las reglas de salud.

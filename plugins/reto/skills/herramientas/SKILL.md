@@ -48,8 +48,9 @@ Cuando todo esté, dile: "Listo para el miércoles. En la clase vamos a usar la 
    1. Que cree su cuenta con el link del reto y elija el plan más básico con créditos (el gratis no trae créditos). Lo paga la persona.
    2. Conectar Higgsfield a Claude: que entre a https://claude.ai/customize/connectors, busque Higgsfield y lo conecte con su cuenta.
    3. Dentro de Claude, que escriba `/mcp` para comprobar que aparece. Si no aparece, que salga con `/exit`, vuelva a abrir `claude` y revise otra vez. Si sigue sin aparecer, que lo lleve al grupo con una captura.
-3. Si en `contexto/00-perfil.md` todavía no está la ruta, pregúntale si tiene una LLC en Estados Unidos o vive en México, Estados Unidos o España, y anótala (`Ruta: A` o `Ruta: B`). Explícale en 2 líneas que de eso depende dónde puede vender: con LLC, en varios países en dólares; sin LLC, en su país con una pasarela local mientras saca la LLC.
-4. Anota en `contexto/00-perfil.md` qué quedó listo. Dile: "Listo para el jueves. Mañana vemos cómo cobras, tu proveedor y tu producto, y después creamos tu marca y montamos tu página".
+3. **ffmpeg** (lo usa la skill `anuncios` el viernes para editar los videos): revisa con `ffmpeg -version`. Si falta: Mac `brew install ffmpeg` (si no hay `brew`, primero Homebrew desde https://brew.sh); Windows `winget install Gyan.FFmpeg` y volver a abrir la terminal.
+4. Si en `contexto/00-perfil.md` todavía no está la ruta, pregúntale si tiene una LLC en Estados Unidos o vive en México, Estados Unidos o España, y anótala (`Ruta: A` o `Ruta: B`). Explícale en 2 líneas que de eso depende dónde puede vender: con LLC, en varios países en dólares; sin LLC, en su país con una pasarela local mientras saca la LLC.
+5. Anota en `contexto/00-perfil.md` qué quedó listo. Dile: "Listo para el jueves. Mañana vemos cómo cobras, tu proveedor y tu producto, y después creamos tu marca y montamos tu página".
 
 ## Etapa 3 · Jueves en la noche: Meta
 Explícale primero por qué se hace con calma: Meta es estricto con las cuentas nuevas y un error puede bloquearla.

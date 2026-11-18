@@ -13,11 +13,13 @@ En campana.json, cada anuncio de video lleva:
   "video": "videos/1E.mp4",                 dónde queda el editado
   "edicion": {
     "recorte": [0.3, 14.6],                 opcional: segundo de inicio y de fin
+    "aviso_ia": true,                       si aparece una persona hecha con IA (pone "Video creado con IA")
+    "extender": 2,                          opcional: segundos de cuadro congelado al final, para el cierre
     "textos": [ {"t0": 0, "t1": 2.4, "texto": "…", "zona": "arriba", "estilo": "titulo"} , … ],
     "cierre": {"t0": 6.4, "texto": "Envío gratis · 30 días de garantía", "zona": "abajo", "sin_logo": false}
                                             sin_logo: true si el producto ya se ve grande en ese momento (así no tapas la etiqueta)
   }
-zona: arriba | centro | abajo (siempre dentro de la zona segura). estilo: titulo (caja blanca grande) | subtitulo (caja blanca más chica).
+zona: arriba | centro | abajo (siempre dentro de la zona segura). alinear (opcional): derecha | izquierda, para dejar libre el producto o la cara del otro lado. estilo: titulo (caja blanca grande) | subtitulo (caja blanca más chica).
 Si en el segundo del cierre el producto está en el centro, usa "zona": "arriba" y "sin_logo": true para no tapar la etiqueta.
 Regla: los subtítulos nunca tapan la cara. Mira un cuadro del video y elige la zona donde no hay rostro.
 Necesita Google Chrome y ffmpeg.
@@ -49,10 +51,12 @@ def ffmpeg():
 
 CSS = f"""*{{margin:0;padding:0;box-sizing:border-box}}html,body{{width:{W}px;height:{H}px;background:transparent;overflow:hidden}}
 .z{{position:absolute;left:{LADO}px;right:{LADO}px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}}
+.der{{align-items:flex-end;text-align:right}}.izq{{align-items:flex-start;text-align:left}}
 .arriba{{top:{SEG_ARRIBA}px}}.abajo{{bottom:{H - SEG_ABAJO}px}}.centro{{top:50%;transform:translateY(-50%)}}
 .titulo span{{background:#fff;color:#111;font:800 70px/1.15 -apple-system,"Helvetica Neue",Arial,sans-serif;padding:12px 26px;border-radius:16px;box-shadow:0 6px 24px #0004}}
 .subtitulo span{{background:#fff;color:#111;font:800 56px/1.15 -apple-system,"Helvetica Neue",Arial,sans-serif;padding:8px 20px;border-radius:12px;box-shadow:0 6px 20px #0005}}
 .cierre .card{{background:VAR_COLOR;border-radius:34px;padding:34px 48px 38px;display:flex;flex-direction:column;align-items:center;gap:18px;box-shadow:0 14px 40px #0006}}
+.ia{{position:absolute;top:{SEG_ARRIBA}px;left:{LADO}px;background:#0008;color:#fff;font:600 26px -apple-system,"Helvetica Neue",Arial,sans-serif;padding:8px 16px;border-radius:10px}}
 .cierre img{{height:96px}}.cierre span{{color:#fff;font:800 50px/1.2 -apple-system,"Helvetica Neue",Arial,sans-serif}}"""
 
 def lineas(t, n=24):
@@ -74,6 +78,8 @@ def capa(chr_, html_txt, destino, color):
     os.unlink(tmp)
 
 def pausas(video):
+    if not Path(video).exists():
+        print(f"No encontré {video}"); return
     if "Audio" not in subprocess.run([ffmpeg(), "-i", video], capture_output=True, text=True).stderr:
         print("Este video no tiene audio."); return
     r = subprocess.run([ffmpeg(), "-i", video, "-af", "silencedetect=noise=-32dB:d=0.25", "-f", "null", "-"], capture_output=True, text=True)
@@ -88,8 +94,17 @@ def pausas(video):
     print(f"Duración: {dur:.2f} s. La persona habla en estos tramos (segundos):")
     for a, b in habla: print(f"  {a:6.2f} → {b:6.2f}")
 
+ZONAS, ESTILOS = {"arriba", "centro", "abajo"}, {"titulo", "subtitulo"}
+
 def editar(cj):
-    cj = Path(cj).resolve(); base = cj.parent; C = json.loads(cj.read_text(encoding="utf-8"))
+    cj = Path(cj).resolve(); base = cj.parent
+    try:
+        C = json.loads(cj.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        sys.exit(f"No encontré {cj}")
+    except json.JSONDecodeError as e:
+        sys.exit(f"campana.json tiene un error de escritura en la línea {e.lineno}: {e.msg}")
+    fallas = []
     ch, ff = chrome(), ffmpeg(); color = C["marca"]["colores"]["principal"]
     logo = C["marca"].get("logo_claro") or C["marca"]["logo"]
     if not (base / logo).exists():
@@ -100,15 +115,26 @@ def editar(cj):
             if not ed: continue
             src = base / ad.get("original", ""); dst = base / ad["video"]; dst.parent.mkdir(parents=True, exist_ok=True)
             if not ad.get("original") or not src.exists():
-                print(f'{ad["id"]}: no encontré el video original ({ad.get("original")}). Bájalo a videos/originales/ y vuelve a correr.'); continue
+                fallas.append(f'{ad["id"]}: no encontré el video original ({ad.get("original")}). Bájalo a videos/originales/.'); continue
             if src.resolve() == dst.resolve():
-                print(f'{ad["id"]}: "original" y "video" no pueden ser el mismo archivo.'); continue
+                fallas.append(f'{ad["id"]}: "original" y "video" no pueden ser el mismo archivo.'); continue
+            mal = [f'texto {i + 1}' for i, t in enumerate(ed.get("textos", [])) if "t0" not in t or not t.get("texto")
+                   or t.get("zona", "abajo") not in ZONAS or t.get("estilo", "subtitulo") not in ESTILOS]
+            if ed.get("cierre") and (ed["cierre"].get("zona", "abajo") not in ZONAS or not ed["cierre"].get("texto") or "t0" not in ed["cierre"]):
+                mal.append("cierre")
+            if mal:
+                fallas.append(f'{ad["id"]}: revisa {", ".join(mal)} (cada texto lleva t0, texto, zona arriba/centro/abajo y estilo titulo/subtitulo)'); continue
             tmpd = Path(tempfile.mkdtemp()); capas = []
             r0, r1 = ed.get("recorte", [0, None])
             for i, t in enumerate(ed.get("textos", [])):
-                spans = "".join(f"<span>{html.escape(l)}</span>" for l in lineas(t["texto"], 22 if t.get("estilo") == "titulo" else 24))
-                p = tmpd / f"t{i}.png"; capa(ch, f'<div class="z {t.get("zona","abajo")} {t.get("estilo","subtitulo")}">{spans}</div>', p, color)
+                lado = {"derecha": "der", "izquierda": "izq"}.get(t.get("alinear", ""), "")
+                ancho = (22 if t.get("estilo") == "titulo" else 24) - (6 if lado else 0)
+                spans = "".join(f"<span>{html.escape(l)}</span>" for l in lineas(t["texto"], ancho))
+                p = tmpd / f"t{i}.png"; capa(ch, f'<div class="z {t.get("zona","abajo")} {t.get("estilo","subtitulo")} {lado}">{spans}</div>', p, color)
                 capas.append((p, t["t0"], t.get("t1", t["t0"] + 2.5)))
+            if ed.get("aviso_ia"):   # personas hechas con IA: aviso fijo todo el video
+                p = tmpd / "ia.png"; capa(ch, '<div class="ia">Video creado con IA</div>', p, color)
+                capas.append((p, 0, 999))
             if ed.get("cierre"):
                 c = ed["cierre"]; p = tmpd / "cierre.png"
                 img_logo = "" if c.get("sin_logo") else '<img src="' + (base / logo).resolve().as_uri() + '">'
@@ -128,9 +154,11 @@ def editar(cj):
                     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(dst)]
             r = subprocess.run(cmd, capture_output=True, text=True)
             if r.returncode != 0:
-                print(f'{ad["id"]}: ffmpeg falló:', r.stderr.strip()[-400:]); continue
+                fallas.append(f'{ad["id"]}: ffmpeg falló: ' + r.stderr.strip()[-300:]); continue
             shutil.rmtree(tmpd, ignore_errors=True)
             print("Video", ad["id"], "→", dst)
+    if fallas:
+        print("\nHay que corregir esto:", *fallas, sep="\n  "); sys.exit(1)
 
 def transcribir(video):
     try:
