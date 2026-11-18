@@ -75,18 +75,19 @@ Cada video lleva títulos o subtítulos, siempre en la **zona segura de Reels** 
 1. Mira un cuadro de cada video (`ffmpeg -ss 2 -i video.mp4 -frames:v 1 cuadro.jpg`) y fíjate dónde está la cara y dónde el frasco.
 2. En `campana.json`, a cada anuncio de video ponle `original` (el de `videos/originales/`), `video` (`videos/<ID>.mp4`) y `edicion`:
    - **Videos sin voz:** 2 títulos cortos (del segundo 0 al 3 y del 3 al 5,5); el primero es el gancho del ángulo, no una lista de ingredientes. Van en la zona sin cara (`arriba`, `centro` o `abajo`). Después un `cierre` con la oferta: mira el cuadro de ese segundo; si el producto está en el centro, usa `"zona": "arriba"` y `"sin_logo": true` para no tapar la etiqueta, o recorta el video antes de que el producto llene el cuadro.
-   - **Video con voz:** subtítulos con lo que dice la persona. Como el guion lo escribiste tú, usa `python3 RUTA/plantilla/editar_video.py --pausas video.mp4` para ver en qué segundos habla y reparte el guion en esos tramos (solo si el audio no coincide, usa `--transcribir`, que necesita faster-whisper y baja unos 460 MB la primera vez), en frases de 3 a 8 palabras, `estilo: "subtitulo"`, en la zona sin cara. Si el producto está a un lado, alinea los subtítulos al otro con `"alinear": "derecha"` o `"izquierda"`. Agrega `"extender": 2`, un `cierre` con el precio y `"aviso_ia": true` (pone "Video creado con IA", porque la persona es de IA).
-3. Corre `python3 RUTA/plantilla/editar_video.py anuncios/campana.json`. Necesita ffmpeg: si falta, instálalo (Mac: `brew install ffmpeg`; Windows: `winget install Gyan.FFmpeg` y volver a abrir la terminal).
+   - **Video con voz:** subtítulos con lo que dice la persona. Como el guion lo escribiste tú, usa `python3 RUTA/plantilla/editar_video.py --pausas video.mp4` para ver en qué segundos habla y reparte el guion en esos tramos (solo si el audio no coincide, usa `--transcribir`, que necesita faster-whisper y baja unos 460 MB la primera vez), en frases de 3 a 8 palabras, `estilo: "subtitulo"`, en la zona sin cara. Si el producto está a un lado, alinea los subtítulos al otro con `"alinear": "derecha"` o `"izquierda"`. Agrega `"extender": 2` y un `cierre` con la oferta.
+   - **Todo video donde aparezca una persona realista hecha con IA** (hable o no) lleva `"aviso_ia": true`, que pone "Video creado con IA".
+3. Corre `python3 "RUTA/plantilla/editar_video.py" anuncios/campana.json` (con comillas: en Windows la ruta puede tener espacios). Necesita ffmpeg: si falta, instálalo (Mac: `brew install ffmpeg`; Windows: `winget install Gyan.FFmpeg` y volver a abrir la terminal).
 4. Revisa un cuadro de cada video editado: textos completos, dentro de la zona segura y sin tapar caras ni la etiqueta.
 
 ### 2.5 · Arma todo
 ```
-python3 RUTA/plantilla/armar_anuncios.py anuncios/campana.json
+python3 "RUTA/plantilla/armar_anuncios.py" anuncios/campana.json
 ```
 Hace las imágenes de 1080 × 1350 en `anuncios/imagenes/`, la página `anuncios/revision.html` y la guía `anuncios/campana.md` (y `campana.html` para leerla cómoda). Si dice que falta algo, corrígelo y vuelve a correrlo. Mira cada imagen: ningún texto cortado ni encima del producto.
 
 ## Paso 3 · Revisa tú antes de mostrar
-Lee los 15 textos, las 9 imágenes y los 6 videos contra las reglas de Meta de arriba (busca "tu ", "crisis", "cura", "previene", likes inventados) y corrige. Revisa que la URL sea la de su página y que lo que dicen los anuncios (precio, envío gratis, regalos, garantía) sea exactamente lo que dice su página: si la página da envío gratis desde 2 frascos, ningún anuncio promete envío gratis en 1 frasco.
+Lee los 15 textos, las 9 imágenes y los 6 videos contra las reglas de Meta de arriba (busca "tu" o "tus" junto a una condición, síntoma o tratamiento, "crisis", "cura", "previene", "no reemplaza a tu médico" (mejor: "no reemplaza un tratamiento médico"), likes inventados) y corrige. Revisa que la URL sea la de su página y que lo que dicen los anuncios (precio, envío gratis, regalos, garantía) sea exactamente lo que dice su página: si la página da envío gratis desde 2 frascos, ningún anuncio promete envío gratis en 1 frasco.
 
 ## Paso 4 · Los anuncios terminados (aprobación 2)
 Abre `anuncios/revision.html` en su navegador (así se ven en el celular, con sus textos) y pídele que los revise. Cambia lo que pida y vuelve a correr el paso 2.5.

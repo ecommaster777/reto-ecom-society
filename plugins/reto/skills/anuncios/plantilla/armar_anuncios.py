@@ -50,7 +50,20 @@ def main():
         C = json.loads(cj.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
         sys.exit(f"campana.json tiene un error de escritura en la línea {e.lineno}: {e.msg}")
+    if not isinstance(C, dict):
+        sys.exit("campana.json tiene que empezar con { y ser un objeto, no una lista.")
     req = [k for k in ("nombre_campana", "url", "moneda", "presupuesto_diario", "cpa_max", "paises", "marca", "conjuntos") if k not in C]
+    if "paises" in C and not isinstance(C["paises"], list): req.append('"paises" tiene que ser una lista, por ejemplo ["México", "Chile"]')
+    if not isinstance(C.get("conjuntos", []), list): req.append('"conjuntos" tiene que ser una lista')
+    m_ = C.get("marca", {}) if isinstance(C.get("marca"), dict) else {}
+    if not isinstance(m_.get("colores", {}), dict) or "principal" not in m_.get("colores", {}): req.append("marca.colores.principal")
+    if not isinstance(m_.get("fuentes", {}), dict) or not {"titulos", "textos"} <= set(m_.get("fuentes", {})): req.append("marca.fuentes con titulos y textos")
+    for c in C.get("conjuntos", []) if isinstance(C.get("conjuntos"), list) else []:
+        for k in ("nombre", "angulo"):
+            if not isinstance(c.get(k), str): req.append(f'un conjunto no tiene "{k}" (texto)')
+        for a in c.get("anuncios", []):
+            for k in ("id", "formato", "texto_principal", "titulo"):
+                if k in a and not isinstance(a[k], str): req.append(f'anuncio {a.get("id")}: "{k}" tiene que ser texto (entre comillas)')
     req += [f"marca.{k}" for k in ("nombre", "logo", "colores", "fuentes") if k not in C.get("marca", {})]
     ids = [a.get("id") for c in C.get("conjuntos", []) for a in c.get("anuncios", [])]
     req += [f'anuncio {a.get("id", "?")}: {k}' for c in C.get("conjuntos", []) for a in c.get("anuncios", []) for k in ("id", "formato", "texto_principal", "titulo") if not a.get(k)]
@@ -58,6 +71,10 @@ def main():
         req.append("hay IDs de anuncio repetidos: " + ", ".join(sorted({i for i in ids if ids.count(i) > 1})))
     if req:
         sys.exit("En campana.json falta o está mal:\n  " + "\n  ".join(req))
+    for c in C["conjuntos"]:
+        for a in c["anuncios"]:
+            if len(a["titulo"]) > 40: print(f'Ojo: el título de {a["id"]} tiene {len(a["titulo"])} caracteres (máximo 40): Meta lo va a cortar.')
+            if len(a.get("descripcion", "")) > 30: print(f'Ojo: la descripción de {a["id"]} tiene {len(a["descripcion"])} caracteres (máximo 30).')
     for f in ("piezas.css", "piezas.js"):
         shutil.copy(AQUI / f, out / f)
     datos = json.dumps(C, ensure_ascii=False)
@@ -74,6 +91,8 @@ def main():
     for cjto in C["conjuntos"]:
         for ad in cjto["anuncios"]:
             if ad.get("pieza"):
+                viejo = out / "imagenes" / f'{ad["id"]}.png'
+                if viejo.exists(): viejo.unlink()
                 pl = ad["pieza"].get("plantilla")
                 if pl not in PLANTILLAS:
                     ad["archivo"] = ""
@@ -105,6 +124,9 @@ def main():
                 errores.append(f'{ad["id"]}: no tiene "pieza" ni "video"')
     if faltan or errores:
         print("\nHay que corregir esto antes de seguir:", *sorted(set(faltan)), *errores, sep="\n  ")
+
+    if faltan or errores:
+        sys.exit(1)
 
     # 2. La revisión en el celular
     m = C["marca"]; e = html.escape

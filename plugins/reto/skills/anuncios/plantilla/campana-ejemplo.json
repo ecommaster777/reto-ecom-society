@@ -108,37 +108,34 @@
      "texto_principal": "3:12 a. m. y el dedo gordo no aguanta ni la sábana. Quien lo vivió no lo olvida.\n\nDe día empieza el cuidado: cereza ácida y semilla de apio en 2 cápsulas con el desayuno. Así es ANDAR, un suplemento para apoyar niveles saludables de ácido úrico.\n\nPruébalo 30 días sin riesgo.",
      "titulo": "Para los que conocen las 3 a. m.",
      "descripcion": "Cereza ácida + semilla de apio",
-     "original": "videos/originales/1D.mp4",
+     "original": "videos/originales/1D-noche.mp4",
      "edicion": {
-      "recorte": [
-       0,
-       3.1
-      ],
       "anexar": {
-       "video": "videos/originales/2D.mp4",
-       "desde": 4.6,
-       "hasta": 8.0
+       "video": "videos/originales/1D-manana.mp4",
+       "desde": 0,
+       "hasta": 5
       },
       "textos": [
        {
         "t0": 0,
-        "t1": 3.1,
+        "t1": 3.9,
         "texto": "3:12 a. m., otra vez",
         "zona": "abajo",
         "estilo": "titulo"
        },
        {
-        "t0": 3.1,
-        "t1": 5.0,
-        "texto": "Cada mañana:",
-        "zona": "arriba",
+        "t0": 4.0,
+        "t1": 6.6,
+        "texto": "Cada mañana",
+        "zona": "centro",
         "estilo": "titulo"
        }
       ],
       "cierre": {
-       "t0": 5.0,
+       "t0": 6.6,
        "texto": "Cereza ácida y semilla de apio",
-       "zona": "arriba"
+       "zona": "centro",
+       "sin_logo": true
       }
      }
     },

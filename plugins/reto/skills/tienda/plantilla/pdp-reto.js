@@ -43,10 +43,11 @@ function render(root,D,opt){
  const cinta=(D.cinta.map(b=>'<em>●</em>'+b).join('')).repeat(4);
  h.push(`<div class="mq"><span>${cinta}</span></div>`);
  // 4-15 bloque de compra
+ const proofHTML=(D.prueba&&D.prueba.texto)?('<div class="proof"><span class="stars">'+st()+'</span>'+D.prueba.texto+'<div class="av">'+(D.prueba.caras||[]).map(c=>'<img src="'+c+'" alt="">').join('')+'</div></div>'):'';
  h.push(`<main class="w"><div class="pdp"><div class="car"><div class="track">${D.galeria.map(g=>`<img src="${g}" alt="">`).join('')}</div>
  <button class="arr l" data-go="-1" aria-label="Anterior">‹</button><button class="arr r" data-go="1" aria-label="Siguiente">›</button>
  <div class="thumbs">${D.galeria.map((g,k)=>`<img src="${g}" alt="" data-i="${k}">`).join('')}</div><div class="dots">${D.galeria.map(()=>'<i></i>').join('')}</div></div>
- <div class="buy" id="pdp-buy"><div class="proof"><span class="stars">${st()}</span>${D.prueba.texto}<div class="av">${D.prueba.caras.map(c=>`<img src="${c}" alt="">`).join('')}</div></div>
+ <div class="buy" id="pdp-buy">${proofHTML}
  <p class="cat">${D.categoria}</p><h1>${D.titulo}</h1><p class="sub">${D.frase}</p>
  <div class="icons">${D.iconos.map(t=>`<div>${svg('check')}${t}</div>`).join('')}</div>
  <div class="price"><b data-pnow></b><s data-pwas></s><span class="save" data-psave></span></div>
@@ -67,7 +68,7 @@ function render(root,D,opt){
  <div class="nav"><button data-hsb="ingr" data-d="-1">‹</button><button data-hsb="ingr" data-d="1">›</button></div></section>`);
  // 18 reseñas con fotos
  const R=D.resenas;
- h.push(`<section class="s"><div class="w"><p class="lead" style="margin-bottom:2px"><span class="stars">${st()}</span></p><h2>${R.titulo}</h2><p class="lead">${R.sub}</p></div>
+ if(R&&R.items&&R.items.length) h.push(`<section class="s"><div class="w"><p class="lead" style="margin-bottom:2px"><span class="stars">${st()}</span></p><h2>${R.titulo}</h2><p class="lead">${R.sub}</p></div>
  <div class="ugc">${R.fotos.map(f=>`<img src="${f}" alt="">`).join('')}</div>
  <div class="hs" data-hs="revs">${R.items.map(r=>`<div class="rev"><span class="stars">${st(r.estrellas)}</span><h3>"${r.titulo}"</h3><p>${r.texto}</p><small>${r.nombre}${r.ciudad?' · '+r.ciudad:''} · <span class="ok">✓ ${R.verificada||'Compra verificada'}</span></small></div>`).join('')}</div>
  <div class="nav"><button data-hsb="revs" data-d="-1">‹</button><button data-hsb="revs" data-d="1">›</button></div></section>`);
@@ -100,7 +101,7 @@ function render(root,D,opt){
  <a class="cta v" href="#pdp-buy">${B.pruebalo}</a><img class="pt" src="${G.img}" alt=""></div></section>`);
  // 25 videos
  const VI=D.videos;
- h.push(`<section class="s" style="background:var(--fondo)"><div class="w"><h2>${VI.titulo} <span class="ac">${VI.titulo_acento}</span></h2><p class="lead">${VI.sub}</p></div>
+ if(VI&&VI.items&&VI.items.length) h.push(`<section class="s" style="background:var(--fondo)"><div class="w"><h2>${VI.titulo} <span class="ac">${VI.titulo_acento}</span></h2><p class="lead">${VI.sub}</p></div>
  <div class="hs v" data-hs="vids">${VI.items.map(x=>`<div class="vid">${x.video?`<video src="${x.video}" poster="${x.poster||''}" playsinline preload="metadata"></video>`:`<img src="${x.poster}" alt="">`}<span>"${x.frase}"</span></div>`).join('')}</div>
  <div class="nav"><button data-hsb="vids" data-d="-1">‹</button><button data-hsb="vids" data-d="1">›</button></div></section>`);
  // 26 oferta otra vez
@@ -117,7 +118,7 @@ function render(root,D,opt){
  <a class="cta v" href="#pdp-buy" style="margin-top:14px">${B.pruebalo}</a></div></section>`);
  // 28 lista de reseñas
  const L=D.lista_resenas;
- h.push(`<section class="s"><div class="w"><p class="lead" style="margin-bottom:2px"><span class="stars">${st()}</span> ${L.linea}</p><h2>${L.titulo}</h2><p class="lead" style="font-size:12px">${L.sub}</p>
+ if(L&&L.items&&L.items.length) h.push(`<section class="s"><div class="w"><p class="lead" style="margin-bottom:2px"><span class="stars">${st()}</span> ${L.linea}</p><h2>${L.titulo}</h2><p class="lead" style="font-size:12px">${L.sub}</p>
  <div class="list">${L.items.map(r=>`<div class="rev"><span class="stars">${st(r.estrellas)}</span> ${(r.estrellas||5).toFixed(1)}<h3>"${r.texto}"</h3><small>${r.nombre}</small><div class="tags">${(r.etiquetas||[]).map(t=>`<span>${t}</span>`).join('')}</div></div>`).join('')}</div>
  ${L.mas?`<a class="more" href="#">${L.mas}</a>`:''}</div></section>`);
  // 29 pie

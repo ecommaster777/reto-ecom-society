@@ -114,6 +114,13 @@ def editar(cj):
         for ad in cjto["anuncios"]:
             ed = ad.get("edicion")
             if not ed: continue
+            if not ad.get("video"):
+                fallas.append(f'{ad["id"]}: tiene "edicion" pero le falta "video" (dónde queda el editado)'); continue
+            if not isinstance(ed.get("textos", []), list) or (ed.get("recorte") and (not isinstance(ed["recorte"], list) or len(ed["recorte"]) != 2)):
+                fallas.append(f'{ad["id"]}: "textos" tiene que ser una lista y "recorte" dos números [inicio, fin]'); continue
+            nums = [t.get(k) for t in ed.get("textos", []) for k in ("t0", "t1") if k in t] + ([ed["cierre"].get("t0")] if ed.get("cierre") else []) + (ed.get("recorte") or [])
+            if any(not isinstance(n, (int, float)) for n in nums if n is not None):
+                fallas.append(f'{ad["id"]}: t0, t1 y recorte van como números, sin comillas (2.5, no "2.5")'); continue
             src = base / ad.get("original", ""); dst = base / ad["video"]; dst.parent.mkdir(parents=True, exist_ok=True)
             if not ad.get("original") or not src.exists():
                 fallas.append(f'{ad["id"]}: no encontré el video original ({ad.get("original")}). Bájalo a videos/originales/.'); continue
