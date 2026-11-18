@@ -9,10 +9,9 @@ Le creas a una persona principiante la marca de su producto, **antes** de montar
 
 ## Reglas
 - Lee `CLAUDE.md` y todo `contexto/`, sobre todo `01-investigacion-mercado.md` (el dolor, a quién le duele, cómo habla) y `02-producto-y-numeros.md` (el producto elegido). Si no hay producto elegido, dile que corra primero la parte 2 de la skill `producto`.
-- **Solo 2 aprobaciones en el camino: el concepto (Paso 1) y el nombre (Paso 2).** Muéstrale opciones, recomiéndale una y explica por qué en 2 líneas, y espera su respuesta.
-- **Del Paso 3 al 6 vas solo, sin preguntar.** En cada paso elige tú la mejor opción según el concepto y el cliente del brief, y sigue al siguiente. Avísale en una línea qué estás haciendo ("Haciendo los colores… ahora el logo…"), para que sepa que va avanzando aunque esté en clase escuchando. Guarda también las opciones que no elegiste.
-- **Al final le muestras todo junto** (`marca/marca.html`) para que apruebe o pida cambios: otro color, otro de los logos, un ajuste a la etiqueta. Ahí rehaces solo lo que pida.
-- Si la persona escribe "paso a paso", vuelve a pedirle aprobación en cada paso.
+- **La persona aprueba cada paso, uno por uno:** el concepto, el nombre, los colores y la tipografía, el logo, la etiqueta (primero el texto y después el diseño) y el mockup. En cada paso muéstrale las opciones, recomiéndale una, explica por qué en 2 líneas y **espera su respuesta antes de seguir**. Si pide cambios, rehaz solo eso.
+- Mientras generas imágenes, avísale en una línea en qué vas ("Haciendo los 3 logos…"), para que sepa que va avanzando aunque esté en clase escuchando. Guarda también las opciones que no eligió.
+- **Al final le muestras todo junto** (`marca/marca.html`) como resumen de lo que aprobó.
 - **Nunca copies ni nombres otras marcas.** Puedes usar lo que aprendiste de la competencia para diferenciarte, pero ningún nombre, logo, color característico ni frase de otra marca.
 - Todo lo que se apruebe va a `contexto/04-tienda.md`, en la sección "Marca", con la fecha. Las imágenes van a la carpeta `marca/` dentro de `mi-reto`.
 - Las imágenes se hacen con **Higgsfield**, que quedó conectado el miércoles. Si no aparece (prueba con `/mcp`), dile que corra la skill `herramientas` y vuelva.
@@ -43,12 +42,12 @@ Que no sean variaciones del mismo concepto. Uno puede ser cálido y cercano, otr
 - **Evita el cliché de la categoría** si todos los competidores usan lo mismo (por ejemplo, todo verde en suplementos naturales). Diferenciarse en el estante también es diferenciarse en el feed.
 - Revisa que el texto oscuro sobre el fondo claro se lea bien.
 - **2 tipografías de Google Fonts:** una para títulos con carácter y una para textos fácil de leer.
-- Muéstrale la paleta como una lámina simple en HTML (`marca/paleta.html`) y ábrela en su navegador.
+- Muéstrale la paleta como una lámina simple en HTML (`marca/paleta.html`), ábrela en su navegador y **espera su aprobación**.
 
 ## Paso 4 · El logo
 - Genera con Higgsfield **3 propuestas de logo**: el nombre escrito con la tipografía y el estilo del concepto (logotipo), y si suma, un símbolo simple. Fondo plano, sin mockups, sin texto extra.
 - Que se lea en tamaño chico (el ícono de una pestaña, la tapa de un frasco).
-- Elige tú la que mejor se lea en chico y encaje con el concepto. Guarda la elegida en `marca/logo.png` y las otras en `marca/logo-opcion-2.png` y `marca/logo-opcion-3.png`.
+- Muéstrale las 3, recomiéndale la que mejor se lea en chico y encaje con el concepto, y **espera que elija**. Guarda la elegida en `marca/logo.png` y las otras en `marca/logo-opcion-2.png` y `marca/logo-opcion-3.png`.
 
 ## Paso 5 · La etiqueta (si es un consumible)
 Si el producto se consume (suplemento, crema, bebida, snack, cosmético), la etiqueta va **antes** de todo lo demás, porque es lo que se ve en cada foto.
@@ -57,8 +56,9 @@ Si el producto se consume (suplemento, crema, bebida, snack, cosmético), la eti
    - El beneficio en pocas palabras, sin promesas de salud ("Apoyo para…", no "Cura…").
    - Ingredientes clave y presentación (por ejemplo "60 cápsulas · 1 mes").
    - En suplementos: "Suplemento alimenticio" y el modo de uso. Avísale que el texto legal final depende de su país y de su fabricante.
+   Muéstrale el texto y **espera su aprobación** antes de diseñar.
 2. Genera con Higgsfield **2 diseños de etiqueta** planos, de frente, con la paleta y el logo.
-3. Elige el que mejor se lea y guárdalo en `marca/etiqueta.png` (el otro en `marca/etiqueta-opcion-2.png`).
+3. Muéstrale los 2, recomiéndale el que mejor se lea y **espera que elija**. Guarda el elegido en `marca/etiqueta.png` (el otro en `marca/etiqueta-opcion-2.png`).
 4. Recuérdale, al final, que antes de vender un suplemento con su marca revise el registro sanitario de su país (INVIMA en Colombia, COFEPRIS en México) y que la etiqueta cumpla la norma (FDA en Estados Unidos).
 
 ## Paso 6 · El mockup del producto
@@ -68,9 +68,9 @@ Si el producto se consume (suplemento, crema, bebida, snack, cosmético), la eti
 - Para productos que no son consumibles, el mockup es el producto con el logo y su empaque.
 - **3 tomas:** fondo limpio de estudio (la foto principal), el producto en un ambiente que encaje con el concepto, y el producto con sus ingredientes o en uso.
 - Revisa que el nombre se lea bien y que la etiqueta sea la misma en todas. Si una sale con letras raras, vuelve a generarla.
-- Guarda las mejores en `marca/mockup-1.png`, `marca/mockup-2.png` y `marca/mockup-3.png`. Son la base de las fotos de la página.
+- Guarda las mejores en `marca/mockup-1.png`, `marca/mockup-2.png` y `marca/mockup-3.png`. Son la base de las fotos de la página. Muéstraselas y **espera su aprobación**.
 
 ## Al terminar
-Escribe en `contexto/04-tienda.md` la sección "Marca": concepto, personalidad, cómo habla la marca, nombre, dominio, colores con códigos, tipografías y la ruta de cada imagen. Arma `marca/marca.html` con todo junto (concepto, nombre, paleta, logo con sus opciones, etiqueta y los 3 mockups), ábrelo en su navegador y **espera su aprobación**. Si pide cambios, rehaz solo eso y vuelve a mostrarlo.
+Escribe en `contexto/04-tienda.md` la sección "Marca": concepto, personalidad, cómo habla la marca, nombre, dominio, colores con códigos, tipografías y la ruta de cada imagen. Arma `marca/marca.html` con todo junto (concepto, nombre, paleta, logo con sus opciones, etiqueta y los 3 mockups), ábrelo en su navegador como resumen de todo lo que aprobó.
 
 Dile el siguiente paso: correr la skill `tienda`.
