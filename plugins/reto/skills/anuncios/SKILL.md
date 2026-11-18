@@ -9,7 +9,8 @@ Acompañas a una persona **principiante** a sacar sus anuncios y dejar su campa�
 
 ## Reglas
 - Lee `CLAUDE.md` y todo `contexto/`: la investigación (`01`), el producto y sus números (`02`), la marca y la tienda (`04`) y el perfil con su ruta y su presupuesto (`00-perfil.md`). Si no hay página de producto, dile que primero corra la skill `tienda`.
-- Una pregunta a la vez. Solo 2 aprobaciones: **los 3 ángulos** (Paso 1) y **los anuncios terminados** (Paso 4). Entre las dos vas solo, avisando en una línea qué estás haciendo.
+- Una pregunta a la vez. La persona responde solo 3 veces: **los 3 ángulos** (Paso 1), **el "sí" a los créditos** (Paso 2) y **los anuncios terminados** (Paso 4). Entre una y otra vas solo, avisando en una línea qué estás haciendo.
+- `RUTA` es la carpeta donde está este archivo SKILL.md (ahí está `plantilla/`).
 - **Antes de gastar créditos de Higgsfield, dile cuántos vas a gastar y espera su "sí".** Revisa su saldo con la herramienta de balance de Higgsfield.
 - Todo va en la carpeta `anuncios/`. Lo aprobado se anota en `contexto/05-anuncios.md`, con la fecha, sin borrar lo anterior.
 - **Nunca nombres otras marcas** en los anuncios.
@@ -47,7 +48,7 @@ Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos:
 
 ### 2.1 · El archivo de la campaña
 Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **todo**:
-- **Marca:** los datos de `tienda/pagina/datos.json`, con las rutas relativas a `anuncios/` (antepón `../tienda/pagina/`). Si no hay `logo_claro`, haz una versión blanca del logo (mismo dibujo, color blanco, fondo transparente) y guárdala en `tienda/pagina/fotos/logo-claro.png`.
+- **Marca:** los datos de `tienda/pagina/datos.json`, con las rutas relativas a `anuncios/` (antepón `../tienda/pagina/`). Si no hay `logo_claro`, haz una versión blanca del logo con `ffmpeg -i tienda/pagina/fotos/logo.png -vf "lutrgb=r=255:g=255:b=255" tienda/pagina/fotos/logo-claro.png` (conserva el fondo transparente).
 - **Países e idioma:** ruta A, todos los países que quedaron en `contexto/02` y el idioma de su página; ruta B, solo su país.
 - **Presupuesto y moneda:** de `00-perfil.md` (si no está, USD 30 al día); en la ruta B, en la moneda de su cuenta publicitaria.
 - **`cpa_max`:** lo que puede pagar por venta, de `contexto/02`. Si hay varios países, usa el número más bajo.
@@ -61,18 +62,18 @@ Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **t
 
 ### 2.3 · Los videos en Higgsfield (antes, los créditos y su "sí")
 1. Sube a Higgsfield la foto principal del producto (`media_upload`, sube el archivo al link que te da y `media_confirm`).
-2. **La imagen de inicio de cada video tiene que ser vertical (9:16).** Si la foto de la página no lo es, primero haz una 9:16 con `gpt_image_2_6` usando la foto como referencia. Con una imagen cuadrada el video sale cuadrado y al pasarlo a vertical se cortan cabezas y frascos.
+2. **La imagen de inicio de cada video tiene que ser vertical (9:16).** Guárdalas en `anuncios/fuentes/`. Si la foto de la página no lo es, primero haz una 9:16 con `gpt_image_2_6` usando la foto como referencia. Con una imagen cuadrada el video sale cuadrado y al pasarlo a vertical se cortan cabezas y frascos.
 3. **D, video animado:** imagen con `gpt_image_2_6`, `aspect_ratio: "9:16"`, la foto del producto como referencia y "3D animated film style, Pixar-like", la escena del ángulo y "the exact bottle from the reference, same label and colors". Después `kling3_0` con `duration: 8`, `aspect_ratio: "9:16"`, esa imagen como `start_image` y el movimiento.
 4. **E, video UGC con IA (conjunto 1):** `marketing_studio_video` con `aspect_ratio: "9:16"`, `resolution: "720p"` (en 1080p cuesta más del doble), la foto del producto en `medias` con rol `image`, y en el prompt la persona (edad y estilo de su cliente), el lugar y **el guion exacto** de 30 a 45 palabras en su español, cumpliendo las reglas de Meta.
 5. **E, video de producto (conjuntos 2 y 3):** `kling3_0`, `duration: 8`, `aspect_ratio: "9:16"`, desde una imagen 9:16 (alguien tomando la cápsula, o el frasco en estudio con un movimiento lento de cámara).
-6. Espera con `jobs_wait` y baja cada video con `curl -L "<url>" -o anuncios/videos/originales/<ID>.mp4`. Míralos: si el frasco sale deformado o con otras letras, repite ese.
+6. Espera con `jobs_wait` y baja cada video con `curl -L --create-dirs "<url>" -o anuncios/videos/originales/<ID>.mp4` (en Windows, `curl.exe` en vez de `curl`). Míralos y escúchalos: si el frasco sale deformado o con otras letras, o el audio trae una voz rara, repite ese (en Kling puedes pasar `generate_audio: false`).
 
 ### 2.4 · La edición de los videos
 Cada video lleva títulos o subtítulos, siempre en la **zona segura de Reels** (Instagram tapa el 14 % de arriba y el 35 % de abajo) y **nunca encima de una cara**.
 1. Mira un cuadro de cada video (`ffmpeg -ss 2 -i video.mp4 -frames:v 1 cuadro.jpg`) y fíjate dónde está la cara y dónde el frasco.
 2. En `campana.json`, a cada anuncio de video ponle `original` (el de `videos/originales/`), `video` (`videos/<ID>.mp4`) y `edicion`:
-   - **Videos sin voz:** 2 títulos cortos (del segundo 0 al 3 y del 3 al 5,5), en la zona sin cara (`arriba` o `abajo`), y un `cierre` con la oferta, donde no tape la etiqueta.
-   - **Video con voz:** subtítulos con lo que dice la persona. Sácalo con `python3 RUTA/plantilla/editar_video.py --transcribir video.mp4` (si no está faster-whisper, con `--pausas` y el guion), en frases de 3 a 8 palabras, `estilo: "subtitulo"`, en la zona sin cara. Agrega `"extender": 2` y un `cierre` con el precio para que termine con la oferta.
+   - **Videos sin voz:** 2 títulos cortos (del segundo 0 al 3 y del 3 al 5,5); el primero es el gancho del ángulo, no una lista de ingredientes. Van en la zona sin cara (`arriba`, `centro` o `abajo`). Después un `cierre` con la oferta: mira el cuadro de ese segundo; si el producto está en el centro, usa `"zona": "arriba"` y `"sin_logo": true` para no tapar la etiqueta, o recorta el video antes de que el producto llene el cuadro.
+   - **Video con voz:** subtítulos con lo que dice la persona. Sácalo con `python3 RUTA/plantilla/editar_video.py --transcribir video.mp4` (necesita faster-whisper, que la primera vez baja unos 460 MB; si no está o no hay tiempo, usa `--pausas` y el guion), en frases de 3 a 8 palabras, `estilo: "subtitulo"`, en la zona sin cara. Agrega `"extender": 2` y un `cierre` con el precio para que termine con la oferta.
 3. Corre `python3 RUTA/plantilla/editar_video.py anuncios/campana.json`. Necesita ffmpeg: si falta, instálalo (Mac: `brew install ffmpeg`; Windows: `winget install Gyan.FFmpeg` y volver a abrir la terminal).
 4. Revisa un cuadro de cada video editado: textos completos, dentro de la zona segura y sin tapar caras ni la etiqueta.
 
@@ -83,7 +84,7 @@ python3 RUTA/plantilla/armar_anuncios.py anuncios/campana.json
 Hace las imágenes de 1080 × 1350 en `anuncios/imagenes/`, la página `anuncios/revision.html` y la guía `anuncios/campana.md` (y `campana.html` para leerla cómoda). Si dice que falta algo, corrígelo y vuelve a correrlo. Mira cada imagen: ningún texto cortado ni encima del producto.
 
 ## Paso 3 · Revisa tú antes de mostrar
-Lee los 15 textos, las 9 imágenes y los 6 videos contra las reglas de Meta de arriba (busca "tu ", "crisis", "cura", "previene", likes inventados) y corrige. Revisa que todas las URL sean la de su página.
+Lee los 15 textos, las 9 imágenes y los 6 videos contra las reglas de Meta de arriba (busca "tu ", "crisis", "cura", "previene", likes inventados) y corrige. Revisa que la URL sea la de su página y que lo que dicen los anuncios (precio, envío gratis, regalos, garantía) sea exactamente lo que dice su página: si la página da envío gratis desde 2 frascos, ningún anuncio promete envío gratis en 1 frasco.
 
 ## Paso 4 · Los anuncios terminados (aprobación 2)
 Abre `anuncios/revision.html` en su navegador (así se ven en el celular, con sus textos) y pídele que los revise. Cambia lo que pida y vuelve a correr el paso 2.5.
@@ -96,12 +97,12 @@ Antes, revisa con ella dos cosas, porque sin ellas no se prende:
 Abre `anuncios/campana.html` en su navegador y la carpeta `anuncios/imagenes` (Finder o Explorador). Guíala **un paso a la vez**, esperando su "¿Listo?" en cada uno:
 1. https://adsmanager.facebook.com › **+ Crear** › objetivo **Ventas**. Presupuesto **de la campaña** (Advantage+) por el monto diario.
 2. **Conjunto 1:** su píxel y el evento **Compra**; los países y el idioma; público Advantage+ sin intereses (edad mínima 25 en los controles; la edad de su cliente va como sugerencia); ubicaciones Advantage+.
-3. **Anuncio:** su página de Facebook y su cuenta de Instagram; sube el archivo; pega texto principal, título y descripción; botón **Comprar**; la URL. **Apaga las "mejoras de Advantage+ creative"** (pueden reescribir el texto o generar variaciones y romper las reglas de salud).
-4. Los otros 4 anuncios del conjunto: duplica el anuncio y cambia archivo, textos y URL.
-5. **Conjuntos 2 y 3:** duplica el conjunto 1 ya armado, cámbiale el nombre y en cada anuncio cambia archivo, textos y URL.
+3. **Anuncio:** su página de Facebook y su cuenta de Instagram; sube el archivo; pega texto principal, título y descripción; botón **Comprar**; la URL de su página (la misma en todos) y, en "Parámetros de URL", lo que dice la guía. **Apaga una por una las mejoras de Advantage+ creative** (mejoras de texto, superposiciones, expandir imagen, generar fondo, música, animación, traducción, comentarios relevantes, anuncios de varios anunciantes): pueden cambiar el texto o la imagen y romper las reglas de salud.
+4. Los otros 4 anuncios del conjunto: duplica el anuncio y cambia archivo, textos y nombre.
+5. **Conjuntos 2 y 3:** duplica el conjunto 1 ya armado, cámbiale el nombre y en cada anuncio cambia archivo, textos y nombre. Si Meta no deja duplicar dentro de la campaña Advantage+, que la cree otra vez con la configuración manual.
 6. **Publicar.** Meta los revisa en minutos o en unas horas.
 
-Si Meta le frena la cuenta o el pago, que lleve la captura al grupo: la tarea cuenta igual con la campaña armada.
+Si Meta le frena la cuenta o el pago, que lleve la captura al grupo: la tarea cuenta igual con la campaña armada. Si el evento **Compra** sale restringido (Meta a veces limita las tiendas de salud, sobre todo en Estados Unidos), que saque Estados Unidos del conjunto o lleve la captura al grupo.
 
 ## Paso 6 · Hasta el domingo
 Dile claro: **no se toca nada hasta la clase del domingo.** Ni presupuesto, ni anuncios, ni públicos. El domingo se revisa todo con el protocolo de optimización. Su número para el domingo es lo que puede pagar por venta (`cpa_max`).

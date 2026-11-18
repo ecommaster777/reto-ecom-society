@@ -15,7 +15,8 @@ from pathlib import Path
 from urllib.parse import quote
 
 AQUI = Path(__file__).resolve().parent
-PLANTILLAS = {"nota", "post", "ugc", "beneficios", "comparacion", "oferta"}
+PLANTILLAS = {"nota": ["titulo", "lineas"], "post": ["texto"], "ugc": ["foto", "burbujas"], "beneficios": ["titulo", "puntos", "pie"],
+              "oferta": ["titulo", "precio"], "comparacion": ["titulo", "nuestro", "otro", "nombre_otro", "foto_otro"]}
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except Exception:
@@ -36,9 +37,7 @@ def fuentes(m):
     fams = "&".join("family=" + quote(f).replace("%20", "+") + ":wght@400;500;600;700;800" for f in dict.fromkeys(m["fuentes"].values()))
     return f'<link href="https://fonts.googleapis.com/css2?{fams}&display=block" rel="stylesheet">'
 
-def utm(url, cid):
-    sep = "&" if "?" in url else "?"
-    return f"{url}{sep}utm_source=meta&utm_medium=paid&utm_campaign=reto&utm_content={cid}"
+PARAMS = "utm_source=meta&utm_medium=paid&utm_campaign=reto&utm_content={{ad.name}}"
 
 def main():
     if len(sys.argv) < 2:
@@ -63,8 +62,14 @@ def main():
     for cjto in C["conjuntos"]:
         for ad in cjto["anuncios"]:
             if ad.get("pieza"):
-                if ad["pieza"].get("plantilla") not in PLANTILLAS:
-                    errores.append(f'{ad["id"]}: la plantilla "{ad["pieza"].get("plantilla")}" no existe (usa {", ".join(sorted(PLANTILLAS))})'); continue
+                pl = ad["pieza"].get("plantilla")
+                if pl not in PLANTILLAS:
+                    ad["archivo"] = ""
+                    errores.append(f'{ad["id"]}: la plantilla "{pl}" no existe (usa {", ".join(sorted(PLANTILLAS))})'); continue
+                falta = [k for k in PLANTILLAS[pl] if not ad["pieza"].get(k)]
+                if falta:
+                    ad["archivo"] = ""
+                    errores.append(f'{ad["id"]}: a la pieza "{pl}" le falta {", ".join(falta)}'); continue
                 for k in ("foto", "foto_otro"):
                     if ad["pieza"].get(k) and not (out / ad["pieza"][k]).exists():
                         faltan.append(ad["pieza"][k])
@@ -129,15 +134,19 @@ section{{padding:26px 24px}}h2{{margin:0 0 4px;font-size:22px}}.ang{{margin:0;fo
               f'- Idioma: **{C.get("idioma_publico", "Todos")}**',
               f'- Público: **Advantage+**, sin intereses. Edad mínima en los controles: 25 (la edad de tu cliente, {C.get("edad", "30 a 65+")}, va como sugerencia).',
               "- Ubicaciones: **Advantage+** (automáticas).", "", "### Los anuncios de este conjunto",
-              "En cada anuncio: elige **tu página de Facebook y tu cuenta de Instagram**, y **apaga las mejoras de Advantage+ creative** (pueden cambiar tu texto o tu imagen)."]
+              "En cada anuncio: elige **tu página de Facebook y tu cuenta de Instagram**. Después busca **Mejoras de Advantage+ creative** y apaga una por una: mejoras de texto, superposiciones, expandir imagen, generar fondo, música, animación, traducción, comentarios relevantes y anuncios de varios anunciantes. Pueden cambiar tu texto o tu imagen y romper las reglas de salud."]
         for ad in cjto["anuncios"]:
             g += [f'**Anuncio {ad["id"]} · {ad["formato"]}**', f'- Nombre: `{ad["id"]} · {ad["formato"]}`', f'- Archivo: `{ad["archivo"]}`',
                   "- Texto principal:", "", "```", ad["texto_principal"], "```", "",
                   f'- Título: `{ad["titulo"]}`', f'- Descripción: `{ad.get("descripcion","")}`',
-                  f'- Llamado a la acción: **{C.get("boton","Comprar")}**', f'- URL del sitio web: `{utm(C["url"], ad["id"])}`', ""]
+                  f'- Llamado a la acción: **{C.get("boton","Comprar")}**', f'- URL del sitio web: `{C["url"]}`',
+                  f'- Parámetros de URL (abajo, en "Seguimiento"): `{PARAMS}`', ""]
         if i < len(C["conjuntos"]):
             g += [f'Para el conjunto {i + 1}: en la columna de la izquierda, sobre el conjunto {i} ya armado, los 3 puntos › **Duplicar** › en la misma campaña. Cámbiale el nombre y, en cada anuncio, cambia archivo, textos y URL por los de abajo.', ""]
-    g += ["## Antes de publicar", "- Revisa que cada anuncio tenga su archivo, sus textos y su URL.",
+    g += ["## Si algo no aparece",
+          "- **El evento Compra sale restringido** (Meta a veces limita las tiendas de salud, sobre todo en Estados Unidos): saca Estados Unidos del conjunto o lleva la captura al grupo del reto.",
+          "- **Meta no te deja duplicar el conjunto:** crea la campaña otra vez eligiendo la configuración manual en vez de la de Advantage+.", "",
+          "## Antes de publicar", "- Revisa que cada anuncio tenga su archivo, sus textos y su URL.",
           "- Clic en **Publicar**. Meta revisa los anuncios (de minutos a unas horas).", "",
           "## Las reglas hasta el domingo",
           "- **No toques nada.** Ni presupuesto, ni anuncios, ni públicos. Meta necesita esos días para aprender.",

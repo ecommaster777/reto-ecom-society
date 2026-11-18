@@ -17,7 +17,8 @@ En campana.json, cada anuncio de video lleva:
     "cierre": {"t0": 6.4, "texto": "Envío gratis · 30 días de garantía", "zona": "abajo", "sin_logo": false}
                                             sin_logo: true si el producto ya se ve grande en ese momento (así no tapas la etiqueta)
   }
-zona: arriba | centro | abajo (siempre dentro de la zona segura). estilo: titulo (caja blanca) | subtitulo (letra blanca con borde).
+zona: arriba | centro | abajo (siempre dentro de la zona segura). estilo: titulo (caja blanca grande) | subtitulo (caja blanca más chica).
+Si en el segundo del cierre el producto está en el centro, usa "zona": "arriba" y "sin_logo": true para no tapar la etiqueta.
 Regla: los subtítulos nunca tapan la cara. Mira un cuadro del video y elige la zona donde no hay rostro.
 Necesita Google Chrome y ffmpeg.
 """
@@ -30,7 +31,7 @@ except Exception:
     pass
 
 W, H = 1080, 1920
-SEG_ARRIBA, SEG_ABAJO, LADO = 290, 1240, 80      # Reels: libre el 14 % de arriba y el 35 % de abajo
+SEG_ARRIBA, SEG_ABAJO, LADO = 310, 1230, 80      # Reels: libre el 14 % de arriba y el 35 % de abajo
 
 def chrome():
     for c in {"Darwin": ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"],
@@ -107,7 +108,7 @@ def editar(cj):
             for i, t in enumerate(ed.get("textos", [])):
                 spans = "".join(f"<span>{html.escape(l)}</span>" for l in lineas(t["texto"], 22 if t.get("estilo") == "titulo" else 24))
                 p = tmpd / f"t{i}.png"; capa(ch, f'<div class="z {t.get("zona","abajo")} {t.get("estilo","subtitulo")}">{spans}</div>', p, color)
-                capas.append((p, t["t0"], t["t1"]))
+                capas.append((p, t["t0"], t.get("t1", t["t0"] + 2.5)))
             if ed.get("cierre"):
                 c = ed["cierre"]; p = tmpd / "cierre.png"
                 img_logo = "" if c.get("sin_logo") else '<img src="' + (base / logo).resolve().as_uri() + '">'
@@ -135,7 +136,7 @@ def transcribir(video):
     try:
         from faster_whisper import WhisperModel
     except ImportError:
-        print("No está faster-whisper. Instálalo con: python3 -m pip install --user faster-whisper  · o usa --pausas"); return
+        print("No está faster-whisper. Instálalo con: python3 -m pip install --user faster-whisper (en Windows: py -m pip install --user faster-whisper). La primera vez baja un modelo de unos 460 MB. O usa --pausas."); return
     segs, _ = WhisperModel("small", device="cpu", compute_type="int8").transcribe(video, language="es", word_timestamps=True)
     for s in segs:
         print(f"{s.start:.2f}-{s.end:.2f} {s.text.strip()}")
@@ -143,6 +144,8 @@ def transcribir(video):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    if sys.argv[1] in ("--pausas", "--transcribir") and len(sys.argv) < 3:
         sys.exit(__doc__)
     if sys.argv[1] == "--pausas": pausas(sys.argv[2])
     elif sys.argv[1] == "--transcribir": transcribir(sys.argv[2])

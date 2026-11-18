@@ -32,5 +32,6 @@
   const id = decodeURIComponent(location.hash.slice(1));
   const ad = todos.find(a => a.id === id) || todos.find(a => a.pieza);
   if (!ad || !ad.pieza) { document.body.innerHTML = '<p style="font:40px sans-serif;padding:60px">No hay pieza con ese ID.</p>'; return; }
-  document.body.innerHTML = T[ad.pieza.plantilla](ad.pieza);
+  try { document.body.innerHTML = T[ad.pieza.plantilla](ad.pieza); }
+  catch (err) { document.body.innerHTML = '<p style="font:40px sans-serif;padding:60px;color:#b00">ERROR en ' + ad.id + ': ' + err + '</p>'; }
 })();
