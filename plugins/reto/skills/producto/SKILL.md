@@ -79,7 +79,7 @@ Hoy se elige **un** producto y se comprueba que la cuenta da. La base de la cuen
 ### 1. El costo, del proveedor
 Lee `contexto/01-investigacion-mercado.md` y parte de los productos recomendados y sus links de CJ. Si la persona todavía no tiene cuenta en CJ, que la cree primero con el link del reto (https://www.cjdropshipping.com/register.html?token=53e6745e-7a90-4562-a572-20bd70211f11): sin cuenta no puede ver el envío a su país. Para cada producto (máximo 3), pídele, una cosa a la vez:
 1. **El link de CJ** del producto.
-2. **El costo con envío a su país**, tal como lo muestra CJ: en la página del producto, que cambie "Ship to" a su país y te diga el precio del producto, el costo de envío, el total y los días de entrega. Si quiere vender en Estados Unidos, también con "Ship to US".
+2. **El costo con envío a su país**, tal como lo muestra CJ: en la página del producto, que cambie "Ship to" a su país y te diga el precio del producto, el costo de envío, el total y los días de entrega. La tienda vende en **varios países**: Estados Unidos, Canadá, Reino Unido y Australia, más Latinoamérica hispana (México, Colombia, Chile, Perú, Ecuador, Guatemala, Costa Rica, Panamá, República Dominicana, Uruguay, Paraguay, Bolivia, El Salvador, Honduras). **Nunca Argentina**, porque no deja entrar productos desde China. Si tienes Claude en Chrome y la persona tiene sesión en CJ, revisa tú el envío a cada país en la página del producto; si no, pídele que te pegue el costo de envío de cada país.
 3. Si CJ dice que no hay envío a su país para ese producto, explícale que CJ envía a todo el mundo pero algunos productos no van a ciertos países, y que tiene 3 caminos: buscar en CJ un producto parecido que sí llegue, pedir una cotización en CJ, o buscarlo con un proveedor local de su país.
 
 **Si va a despachar dentro de su país** (por ejemplo Colombia), que revise en las plataformas locales qué productos tienen para su dolor y te pegue el link y el precio:
@@ -87,6 +87,8 @@ Lee `contexto/01-investigacion-mercado.md` y parte de los productos recomendados
 - Mastershop: https://mastershop.com (Colombia).
 
 **Si el producto no está en CJ** pero sí en AliExpress: el precio de AliExpress sirve como base para esta primera cuenta, porque casi siempre coincide con lo que cobra el proveedor en China. En paralelo, que pida la cotización en CJ (Sourcing › publicar el link) y cuando llegue rehaces la cuenta.
+
+**La tabla de países:** para cada país, costo puesto (producto + envío + pasarela) y margen con el precio de venta. Entra el país si el proveedor envía y el margen es de al menos 60 %. Anota en `contexto/02-producto-y-numeros.md` los países que entran y los que no, con el motivo: esa lista la usa la skill `shopify` para crear los mercados.
 
 ### 2. El precio de venta
 Busca a cuánto se vende hoy, en su país (y en Estados Unidos si vende allá), en 3 a 5 tiendas que ya lo venden (idealmente las de los anuncios del brief) y en Mercado Libre o Amazon. Toma el del medio. Mira también **cómo arman los paquetes** (1, 3 y 5 unidades, o "2 + regalo") y a qué precio. Con links.

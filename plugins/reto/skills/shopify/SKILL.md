@@ -40,7 +40,7 @@ Desde aquí, todo lo que se pueda hacer por la conexión lo haces tú con `shopi
 
 ## Paso 3 · Los datos del negocio
 Pregúntale, uno por uno, y guárdalos en `contexto/04-tienda.md`:
-1. El país desde donde vende y la moneda en la que va a cobrar.
+1. El país desde donde vende (para la pasarela).
 2. El correo de atención al cliente (puede ser uno nuevo, como contacto@sumarca.com más adelante).
 3. Un número de WhatsApp de atención. Explícale por qué: con pago por adelantado, un WhatsApp visible le da confianza al cliente.
 4. Si vende como persona o como empresa.
@@ -53,12 +53,13 @@ Hazlo y muéstrale lo que quedó, sin pedirle que haga clic:
 2. **Las páginas:** Contacto, Preguntas frecuentes (6 a 8 preguntas: tiempos de envío, cómo pagar, garantía, cómo hacer seguimiento, devoluciones, contacto) y Rastrea tu pedido. "Sobre nosotros" se crea después de la marca.
 3. **El menú principal** con Inicio, el producto (cuando exista), Preguntas frecuentes y Contacto, y el **menú del pie** con las políticas y el contacto.
 
-## Paso 5 · Lo que hace la persona, guiado por ti
-Explícale cada uno en 2 líneas y guíalo clic por clic:
-1. **Moneda y mercados:** la tienda se configura **en dólares (USD)**, y los precios del producto se ponen en dólares. En Configuración › Mercados agrega los países a los que va a vender: Shopify Markets convierte el precio a la moneda de cada país. **Solo si va a vender en un único país**, la moneda de la tienda y los precios van en la moneda de ese país.
-2. **El envío:** Configuración › Envío y entrega. Una tarifa de **envío gratis** para su país. Explícale por qué: el envío ya va dentro del precio y "envío gratis" ayuda a que el cliente pague por adelantado.
-3. **El checkout:** Configuración › Pagos y checkout. Que pida el teléfono del cliente como obligatorio (lo necesita la transportadora).
-4. **La pasarela de pago:** ver el Paso 6.
+## Paso 5 · Mercados, envíos y checkout (lo haces tú)
+Hazlo tú por la conexión (`shopify store execute --allow-mutations`). Lo que no se pueda por la conexión, hazlo **con Claude en Chrome** abriendo el administrador de Shopify de la persona (ella ya inició sesión). Explícale cada cosa en una línea mientras la haces.
+1. **Tienda en dólares y mercados por país.** La moneda de la tienda es USD. Crea los mercados con los países que dejó la skill `producto` en `contexto/02-producto-y-numeros.md` (Estados Unidos, Canadá, Reino Unido, Australia y los de Latinoamérica hispana donde el proveedor envía y el margen da al menos 60 %). **Nunca Argentina.** Shopify Markets convierte el precio a la moneda de cada país. Solo si la persona vende en un único país, la moneda va en la de ese país.
+2. **Envío gratis** a todos esos países (una tarifa de 0 por zona), porque el envío ya va dentro del precio.
+3. **Checkout:** el teléfono del cliente obligatorio (lo necesita la transportadora).
+
+**Lo único que hace la persona:** escribir su número de WhatsApp y conectar su pasarela de pago (Paso 6), porque ahí van sus datos.
 
 ## Paso 6 · Cobrar por adelantado
 Explícale primero, en 4 líneas, por qué en el reto se cobra por adelantado: con contra entrega, si despacha 100 pedidos y le devuelven 30, pagó 30 anuncios, 30 productos y 60 envíos sin cobrar nada.
