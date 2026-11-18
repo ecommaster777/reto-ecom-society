@@ -32,7 +32,7 @@ Pregúntale si ya creó su tienda (era la tarea del miércoles en la noche).
    - Windows: `winget install OpenJS.NodeJS.LTS`, y después cerrar y volver a abrir PowerShell y Claude.
 2. **Shopify CLI:** `npm install -g @shopify/cli@latest` y revisa con `shopify version`.
 3. **La conexión:** corre
-   `shopify store auth --store SU-TIENDA.myshopify.com --scopes read_products,write_products,read_files,write_files,read_themes,write_themes,read_content,write_content,read_online_store_pages,write_online_store_pages,read_online_store_navigation,write_online_store_navigation,read_legal_policies,write_legal_policies,read_shipping,write_shipping,read_discounts,write_discounts`
+   `shopify store auth --store SU-TIENDA.myshopify.com --scopes read_products,write_products,read_files,write_files,read_themes,write_themes,read_content,write_content,read_online_store_pages,write_online_store_pages,read_online_store_navigation,write_online_store_navigation,read_legal_policies,write_legal_policies,read_shipping,write_shipping,read_markets,write_markets,read_discounts,write_discounts`
    Se abre el navegador: que inicie sesión y acepte, y después vuelva a la terminal sin cerrar nada. Si Shopify dice que un permiso no existe, quítalo de la lista y vuelve a correr: no es un error de la persona.
 4. **Prueba:** `shopify store execute --store SU-TIENDA.myshopify.com --query 'query { shop { name currencyCode } }'`. Si responde con el nombre de su tienda, quedó conectada.
 
