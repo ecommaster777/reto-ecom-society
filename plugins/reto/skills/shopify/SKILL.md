@@ -55,7 +55,7 @@ Hazlo y muéstrale lo que quedó, sin pedirle que haga clic:
 
 ## Paso 5 · Lo que hace la persona, guiado por ti
 Explícale cada uno en 2 líneas y guíalo clic por clic:
-1. **Moneda y mercado:** Configuración › Mercados. Que su país quede como mercado principal y que la moneda de la tienda sea la de su país (o dólares si vende a Estados Unidos).
+1. **Moneda y mercados:** la tienda se configura **en dólares (USD)**, y los precios del producto se ponen en dólares. En Configuración › Mercados agrega los países a los que va a vender: Shopify Markets convierte el precio a la moneda de cada país. **Solo si va a vender en un único país**, la moneda de la tienda y los precios van en la moneda de ese país.
 2. **El envío:** Configuración › Envío y entrega. Una tarifa de **envío gratis** para su país. Explícale por qué: el envío ya va dentro del precio y "envío gratis" ayuda a que el cliente pague por adelantado.
 3. **El checkout:** Configuración › Pagos y checkout. Que pida el teléfono del cliente como obligatorio (lo necesita la transportadora).
 4. **La pasarela de pago:** ver el Paso 6.

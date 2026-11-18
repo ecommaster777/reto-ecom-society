@@ -58,7 +58,8 @@ Si el producto se consume (suplemento, crema, bebida, snack, cosmético), la eti
 3. Guarda la elegida en `marca/etiqueta.png`.
 
 ## Paso 6 · El mockup del producto
-- Con Higgsfield, genera el producto con su marca: el envase que corresponde (frasco, bolsa, caja, tubo) con la etiqueta y el logo aprobados, usando `marca/etiqueta.png` y `marca/logo.png` como referencia.
+- **El mockup se parece al producto real del proveedor, con su marca.** Pídele a la persona la foto del producto en CJ (o del proveedor) y úsala como primera referencia en Higgsfield: misma forma de envase, mismo tamaño, mismo tipo de tapa y de etiqueta. Lo único que cambia es la marca: la etiqueta y el logo aprobados (`marca/etiqueta.png` y `marca/logo.png` como segunda referencia). Así lo que muestra la página es lo que le llega al cliente cuando el proveedor ponga su etiqueta.
+- Pide una foto de producto realista: luz natural, sombra suave, fondo liso cálido, sin aspecto de render 3D.
 - Para productos que no son consumibles, el mockup es el producto con el logo y su empaque.
 - **3 tomas:** fondo limpio de estudio (la foto principal), el producto en un ambiente que encaje con el concepto, y el producto con sus ingredientes o en uso.
 - Revisa que el nombre se lea bien y que la etiqueta sea la misma en todas. Si una sale con letras raras, vuelve a generarla.

@@ -22,6 +22,9 @@ Saca en 5 líneas, para ti, antes de escribir:
 4. Lo que desea de verdad, en sus palabras.
 5. Por qué este producto es distinto.
 
+## Resultado, no características
+La gente no compra cereza ácida ni 60 cápsulas, compra **lo que va a vivir**: caminar tranquilo, dormir de corrido, comer con su familia sin miedo. Cada título y cada bloque arranca por el resultado que quiere la persona, y la característica va después como la razón para creerlo. Mal: "Con cereza ácida y semilla de apio". Bien: "Camina tranquilo otra vez", y debajo "con cereza ácida y semilla de apio". Revisa cada título: si nombra un ingrediente o una característica, reescríbelo hacia el resultado.
+
 ## Cómo escribir en español
 - **Escribe como habla la gente.** Frases que se leen de corrido, en voz alta, sin tropezar. Si suena a traducción o a anuncio de televisión, reescríbelo.
 - **Une con comas lo que es la misma idea.** No cortes una idea en tres frases sueltas con punto. Mal: "Te duele. No duermes. Ya no sabes qué hacer." Bien: "Te duele tanto que no duermes, y ya probaste de todo sin que nada te dure."
@@ -34,7 +37,8 @@ Saca en 5 líneas, para ti, antes de escribir:
 - Sin mayúsculas sostenidas ni más de un emoji por bloque. Cero signos de exclamación seguidos.
 
 ## Lo que nunca se escribe
-- **Reseñas, testimonios, números de clientes o resultados inventados.** Si no hay reseñas reales todavía, el bloque de prueba usa lo que sí es verdad: la fórmula, los ingredientes y lo que dice la gente en sus propias palabras sobre el problema, sin presentarlo como reseña del producto.
+- **Resultados médicos inventados.** Ningún texto promete curar, eliminar ni reemplazar un tratamiento.
+- **Reseñas de muestra en una tienda con tráfico.** En el prototipo y en la primera versión de Shopify sí van reseñas, testimonios y número de clientes **de muestra**, escritos con IA para que la página se vea completa. Escríbelos como hablaría un cliente real de su país, con nombre, ciudad y el resultado que vivió. Anota en `contexto/04-tienda.md` que son de muestra y recuérdale a la persona que **antes de prender anuncios** los reemplaza por reseñas reales (de sus primeras clientas, amigos que lo prueben o una app de reseñas).
 - **Promesas de salud:** nunca "cura", "elimina", "trata", "reemplaza tu medicamento" ni diagnósticos. Se habla de "apoya", "ayuda a", "acompaña", y se recomienda consultar al médico.
 - **Nombres de otras marcas.** Puedes usar lo que aprendiste de la competencia para escribir mejor, pero nunca las nombras, ni para compararte.
 - Urgencia falsa ("quedan 3 unidades") o descuentos que no existen.
@@ -47,6 +51,6 @@ Saca en 5 líneas, para ti, antes de escribir:
    - ¿Hay alguna palabra de laboratorio que la gente no usa?
    - ¿Hay alguna muletilla de IA, promesa de salud o dato inventado?
    - ¿Se puede decir lo mismo con menos palabras?
-3. Para cada titular importante da **2 opciones** y di cuál recomiendas y por qué.
+3. Los títulos de sección van en **una sola línea en celular** (unas 28 letras como máximo) para no alargar la página. Para cada titular importante da **2 opciones** y di cuál recomiendas y por qué.
 4. Muéstraselo a la persona y **espera su aprobación**. Si pide cambios, ajusta solo eso y vuelve a mostrar.
 5. Cuando lo apruebe, guárdalo en `contexto/04-tienda.md` en la sección "Copy aprobado", con la fecha.
