@@ -29,7 +29,7 @@ Pregúntale si ya creó su tienda (era la tarea del miércoles en la noche).
 ## Paso 2 · Conectar Shopify con Claude
 1. **Node.js:** revisa con `node --version`. Si no lo tiene:
    - Mac: que lo descargue de https://nodejs.org (botón LTS), lo instale y vuelva a abrir la terminal. No uses `brew install node`: brew actualiza librerías al instalar otras cosas (como ffmpeg) y deja Node roto.
-   - Si `node --version` sale con un error como `Library not loaded` (Node de brew roto), no lo repares con brew (puede tardar horas): instala Node desde https://nodejs.org y vuelve a abrir la terminal.
+   - Si `node --version` sale con un error como `Library not loaded` (Node de brew roto), no lo repares con brew (puede tardar horas compilando): quítalo con `brew uninstall --ignore-dependencies node` (tarda segundos), que instale Node desde https://nodejs.org (botón LTS), vuelva a abrir la terminal y revisa otra vez con `node --version`. Hay que quitarlo, porque si no, el Node roto de brew tapa al nuevo.
    - Windows: `winget install OpenJS.NodeJS.LTS`, y después cerrar y volver a abrir PowerShell y Claude.
 2. **Shopify CLI:** `npm install -g @shopify/cli@latest` y revisa con `shopify version`.
 3. **La conexión:** corre
