@@ -17,6 +17,8 @@ Le montas a una persona principiante **la página de producto** de su marca, la 
 - **Nunca uses fotos del proveedor.** Todas las imágenes salen de Higgsfield a partir de los mockups de `marca/`.
 - **Nunca nombres otras marcas**, ni en la página ni al explicarle a la persona. Usa lo que aprendiste de ellas sin mencionarlas.
 - **Nunca inventes** reseñas, número de clientes, "más vendido", resultados, ni cuentas regresivas falsas. Si todavía no hay reseñas reales, ese bloque se arma con lo que sí es verdad.
+- **Lo que muestras es lo que tiene que llegar.** Las fotos llevan la marca, así que antes de publicar confirma con la persona que el proveedor despacha con su etiqueta (en CJ se pide en la pestaña Customize del producto). Si todavía no, que lo pida antes de prender anuncios.
+- Recuérdale revisar la regla sanitaria de su país antes de vender un suplemento o un cosmético.
 - En productos de salud, nada de "cura", "elimina" o "trata". Se habla de apoyo y se recomienda consultar al médico.
 - Guarda cada aprobación en `contexto/04-tienda.md` con la fecha.
 
