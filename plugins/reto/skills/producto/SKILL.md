@@ -77,7 +77,7 @@ Recuérdale: publicarlo en el grupo de WhatsApp antes del jueves a las 5 PM, hor
 Hoy se elige **un** producto y se comprueba que la cuenta da. La base de la cuenta es **lo que cobra el proveedor**, no una suposición.
 
 ### 0. Su ruta (lo primero que preguntas)
-De cómo va a cobrar depende dónde puede vender. Pregúntale, en una sola pregunta: "¿Tienes una LLC en Estados Unidos, o vives en México, Estados Unidos o España?". Anota la respuesta como `Ruta: A` o `Ruta: B` en `contexto/00-perfil.md`.
+De cómo va a cobrar depende dónde puede vender. Si `contexto/00-perfil.md` ya tiene la ruta (la anota la skill `herramientas`), confírmala en una línea y sigue. Si no, pregúntale, en una sola pregunta: "¿Tienes una LLC en Estados Unidos, o vives en México, Estados Unidos o España?". Anota la respuesta como `Ruta: A` o `Ruta: B` en `contexto/00-perfil.md`.
 
 - **Ruta A (sí):** cobra con Shopify Payments, así que vende en **varios países y en dólares**: Estados Unidos, Canadá, Reino Unido, Australia y Latinoamérica hispana. Proveedor: CJ desde China. Para suplementos con su marca desde Estados Unidos, más adelante: Full Stack Fulfillment (WhatsApp https://wa.me/12084015081).
 - **Ruta B (no):** con una pasarela local solo puede cobrar en su país. Vende **solo en su país y en su moneda**. Proveedor: uno que despache en su país (Dropi, Mastershop; para suplementos en Colombia, Pablo Jaramillo, que hace dropshipping de suplementos: WhatsApp https://wa.me/573245500986), o CJ si envía ese producto a su país. Explícale que no es un camino peor: lanza esta semana y, mientras tanto, saca su LLC (entrenamiento https://youtu.be/EM81WpjV7xw y doola https://partnersps.doola.com/fpmgroup con el código DOOLAFPMGROUP10). Cuando la tenga, pasa a la ruta A.
