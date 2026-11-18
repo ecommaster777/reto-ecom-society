@@ -136,7 +136,7 @@
      "id": "1E",
      "formato": "Video UGC con IA",
      "video": "videos/1E.mp4",
-     "texto_principal": "Quien ha sentido ese dolor de madrugada sabe que no se olvida.\n\nLa cereza ácida y la semilla de apio son dos ingredientes que se usan para cuidar el ácido úrico, y ANDAR los trae en 2 cápsulas al día.\n\nEs un suplemento y no reemplaza un tratamiento médico. Con 30 días de garantía.",
+     "texto_principal": "Quien ha sentido ese dolor de madrugada sabe que no se olvida.\n\nPor eso mucha gente suma a su desayuno cereza ácida y semilla de apio, dos ingredientes que se usan para cuidar el ácido úrico. ANDAR los trae en 2 cápsulas al día.\n\nEs un suplemento y no reemplaza un tratamiento médico. Con 30 días de garantía.",
      "titulo": "2 cápsulas al día, con el desayuno",
      "descripcion": "Garantía de 30 días",
      "original": "videos/originales/1E.mp4",
@@ -146,98 +146,106 @@
       "textos": [
        {
         "t0": 0.0,
-        "t1": 1.3,
+        "t1": 1.06,
         "texto": "Quien ha sentido ese dolor",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 1.32,
-        "t1": 2.6,
-        "texto": "de madrugada en el dedo gordo",
+        "t0": 1.08,
+        "t1": 2.48,
+        "texto": "de madrugada en el dedo gordo,",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 2.64,
-        "t1": 4.1,
+        "t0": 2.52,
+        "t1": 3.8,
         "texto": "sabe que no se olvida.",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 4.16,
-        "t1": 5.25,
-        "texto": "Por eso cada vez más gente",
+        "t0": 3.88,
+        "t1": 5.02,
+        "texto": "Por eso mucha gente suma",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 5.3,
-        "t1": 6.15,
-        "texto": "suma a su desayuno",
+        "t0": 5.04,
+        "t1": 6.1,
+        "texto": "a su desayuno cereza ácida",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 6.2,
-        "t1": 7.9,
-        "texto": "cereza ácida y semilla de apio,",
+        "t0": 6.14,
+        "t1": 6.98,
+        "texto": "y semilla de apio.",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 7.94,
-        "t1": 9.2,
-        "texto": "dos ingredientes que se usan",
+        "t0": 7.02,
+        "t1": 8.06,
+        "texto": "Dos ingredientes que se usan",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 9.22,
+        "t0": 8.08,
+        "t1": 9.28,
+        "texto": "para cuidar el ácido úrico,",
+        "zona": "abajo",
+        "estilo": "subtitulo",
+        "alinear": "izquierda"
+       },
+       {
+        "t0": 9.3,
         "t1": 10.5,
-        "texto": "para cuidar el ácido úrico.",
+        "texto": "dos cápsulas.",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 10.58,
-        "t1": 12.85,
-        "texto": "ANDAR los junta en 2 cápsulas al día.",
+        "t0": 10.54,
+        "t1": 12.6,
+        "texto": "ANDAR los trae en 2 cápsulas al día.",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 12.88,
-        "t1": 13.8,
+        "t0": 12.7,
+        "t1": 13.7,
         "texto": "Es un suplemento",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        },
        {
-        "t0": 13.84,
+        "t0": 13.74,
         "t1": 15.07,
-        "texto": "y no reemplaza a tu médico.",
+        "texto": "y no reemplaza un tratamiento médico.",
         "zona": "abajo",
         "estilo": "subtitulo",
-        "alinear": "derecha"
+        "alinear": "izquierda"
        }
       ],
       "cierre": {
        "t0": 15.07,
        "texto": "30 días de garantía",
        "zona": "abajo",
-       "alinear": "derecha",
+       "alinear": "izquierda",
        "sin_logo": true
       }
      }
