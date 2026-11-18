@@ -47,91 +47,98 @@
    "anuncios": [
     {
      "id": "1A",
-     "formato": "Imagen nativa · nota",
+     "formato": "Imagen nativa · pantalla bloqueada",
      "pieza": {
-      "plantilla": "nota",
-      "fecha": "Hoy, 3:12 a. m.",
-      "titulo": "Mi lista para cuidar el ácido úrico",
-      "lineas": [
-       "Agua al lado de la cama, siempre",
-       "Menos cerveza y menos carne roja",
-       "Cereza ácida, todos los días",
-       "Semilla de apio, la que casi nadie conoce"
-      ],
-      "marcadas": [
-       2,
-       3
-      ],
-      "foto": "../tienda/pagina/fotos/buro.jpg"
+      "plantilla": "bloqueo",
+      "fondo": "fuentes/noche.jpg",
+      "hora": "3:12",
+      "fecha": "miércoles, 19 de noviembre",
+      "notificaciones": [
+       {
+        "app": "Notas",
+        "cuando": "ahora",
+        "texto": "3:12 a. m. y el dedo gordo no deja dormir. Anotar: cereza ácida y semilla de apio."
+       },
+       {
+        "logo": true,
+        "app": "ANDAR",
+        "cuando": "7:00 a. m.",
+        "texto": "Recordatorio: 2 cápsulas con el desayuno."
+       }
+      ]
      },
-     "texto_principal": "Quien lo ha vivido lo sabe: ese dolor en el dedo gordo que llega de madrugada, como si estuviera fracturado, y la noche que no se acaba.\n\nANDAR junta cereza ácida y semilla de apio, dos ingredientes que mucha gente usa para cuidar el ácido úrico, en 2 cápsulas al día.\n\nUn suplemento para la rutina de todos los días. Lleva 3 y paga 2, con envío gratis.",
+     "texto_principal": "Quien lo ha vivido lo sabe: ese dolor en el dedo gordo que llega de madrugada, como si estuviera fracturado, y la noche que no se acaba.\n\nLa cereza ácida y la semilla de apio son dos ingredientes que mucha gente suma a su mañana para apoyar niveles saludables de ácido úrico. ANDAR los trae en una sola cápsula.\n\nLleva 3 y paga 2, con envío gratis.",
      "titulo": "Cereza ácida + semilla de apio",
      "descripcion": "Garantía de 30 días"
     },
     {
      "id": "1B",
-     "formato": "Imagen UGC",
+     "formato": "Imagen UGC · unboxing",
      "pieza": {
       "plantilla": "ugc",
-      "foto": "../tienda/pagina/fotos/hombre-cocina.jpg",
+      "foto": "fuentes/unboxing.jpg",
       "burbujas": [
-       "Dos cápsulas con el desayuno",
-       "y a seguir con el día"
+       "Llegó lo de cada mañana"
       ],
+      "estilo": "marcador",
       "sello": "Garantía de 30 días"
      },
-     "texto_principal": "Esa madrugada en que ni la sábana se puede tocar no se olvida.\n\nPor eso cada vez más gente suma a su desayuno 2 cápsulas de cereza ácida y semilla de apio. Así es ANDAR, un suplemento para cuidar el ácido úrico todos los días.\n\nPruébalo 30 días: si no te convence, te devolvemos tu dinero.",
+     "texto_principal": "Esa madrugada en que ni la sábana se puede tocar no se olvida.\n\nPor eso mucha gente empieza el día con 2 cápsulas de cereza ácida y semilla de apio. Así es ANDAR, un suplemento para el cuidado diario del ácido úrico.\n\nPruébalo 30 días: si no te convence, te devolvemos tu dinero.",
      "titulo": "2 cápsulas con el desayuno",
      "descripcion": "60 cápsulas · 1 mes"
     },
     {
      "id": "1C",
-     "formato": "Imagen de beneficios",
+     "formato": "Imagen de marca · editorial",
      "pieza": {
-      "plantilla": "beneficios",
-      "titulo": "El ácido úrico, *cuidado cada mañana*",
-      "puntos": [
-       "Cereza ácida y semilla de apio en una cápsula",
-       "2 cápsulas al día, con el desayuno",
-       "Un frasco te dura un mes"
-      ],
-      "pie": "Garantía de 30 días",
-      "boton": "USD 34,99"
+      "plantilla": "editorial",
+      "foto": "fuentes/cerezas-macro.jpg",
+      "kicker": "ANDAR · Equilibrio Úrico",
+      "titulo": "Lo mejor de la cereza ácida, *en una cápsula*",
+      "pie": "Con semilla de apio. 2 cápsulas al día, con el desayuno."
      },
-     "texto_principal": "Un hábito pequeño para la rutina de la mañana: 2 cápsulas con el desayuno.\n\nANDAR es un suplemento con cereza ácida y semilla de apio para apoyar niveles saludables de ácido úrico.\n\nLleva 2 frascos y el envío es gratis.",
+     "texto_principal": "Un hábito pequeño para la mañana: 2 cápsulas con el desayuno.\n\nANDAR es un suplemento con cereza ácida y semilla de apio para apoyar niveles saludables de ácido úrico.\n\nEl segundo frasco va a mitad de precio y con envío gratis.",
      "titulo": "Un hábito pequeño cada mañana",
-     "descripcion": "USD 34,99 · 60 cápsulas"
+     "descripcion": "60 cápsulas · 1 mes"
     },
     {
      "id": "1D",
      "formato": "Video animado",
      "video": "videos/1D.mp4",
-     "texto_principal": "3:12 a. m. y el dedo gordo no aguanta ni la sábana. Quien lo vivió no lo olvida.\n\nANDAR junta cereza ácida y semilla de apio en 2 cápsulas al día, para cuidar el ácido úrico desde la mañana.\n\nPruébalo 30 días sin riesgo.",
+     "texto_principal": "3:12 a. m. y el dedo gordo no aguanta ni la sábana. Quien lo vivió no lo olvida.\n\nDe día empieza el cuidado: cereza ácida y semilla de apio en 2 cápsulas con el desayuno. Así es ANDAR, un suplemento para apoyar niveles saludables de ácido úrico.\n\nPruébalo 30 días sin riesgo.",
      "titulo": "Para los que conocen las 3 a. m.",
      "descripcion": "Cereza ácida + semilla de apio",
      "original": "videos/originales/1D.mp4",
      "edicion": {
+      "recorte": [
+       0,
+       3.1
+      ],
+      "anexar": {
+       "video": "videos/originales/2D.mp4",
+       "desde": 4.6,
+       "hasta": 8.0
+      },
       "textos": [
        {
         "t0": 0,
-        "t1": 2.7,
+        "t1": 3.1,
         "texto": "3:12 a. m., otra vez",
         "zona": "abajo",
         "estilo": "titulo"
        },
        {
-        "t0": 2.7,
-        "t1": 5.7,
-        "texto": "Cereza ácida y apio",
-        "zona": "abajo",
+        "t0": 3.1,
+        "t1": 5.0,
+        "texto": "Cada mañana:",
+        "zona": "arriba",
         "estilo": "titulo"
        }
       ],
       "cierre": {
-       "t0": 5.7,
-       "texto": "30 días para probarlo",
-       "zona": "abajo",
-       "sin_logo": true
+       "t0": 5.0,
+       "texto": "Cereza ácida y semilla de apio",
+       "zona": "arriba"
       }
      }
     },
@@ -139,9 +146,9 @@
      "id": "1E",
      "formato": "Video UGC con IA",
      "video": "videos/1E.mp4",
-     "texto_principal": "Quien ha sentido ese dolor de madrugada sabe que no se olvida.\n\nPor eso cada vez más gente suma a su desayuno cereza ácida y semilla de apio, dos ingredientes que se usan para cuidar el ácido úrico. ANDAR los junta en 2 cápsulas al día.\n\nEs un suplemento y no reemplaza a tu médico. USD 34,99, con 30 días de garantía.",
+     "texto_principal": "Quien ha sentido ese dolor de madrugada sabe que no se olvida.\n\nLa cereza ácida y la semilla de apio son dos ingredientes que se usan para cuidar el ácido úrico, y ANDAR los trae en 2 cápsulas al día.\n\nEs un suplemento y no reemplaza a tu médico. Con 30 días de garantía.",
      "titulo": "2 cápsulas al día, con el desayuno",
-     "descripcion": "USD 34,99 · Garantía 30 días",
+     "descripcion": "Garantía de 30 días",
      "original": "videos/originales/1E.mp4",
      "edicion": {
       "aviso_ia": true,
@@ -238,9 +245,9 @@
       ],
       "cierre": {
        "t0": 15.07,
-       "texto": "USD 34,99 · 30 días de garantía",
+       "texto": "30 días de garantía",
        "zona": "abajo",
-       "sin_logo": true
+       "alinear": "derecha"
       }
      }
     }
@@ -257,32 +264,34 @@
      "pieza": {
       "plantilla": "post",
       "texto": "En serio, ¿por qué nadie habla de la semilla de apio?\n\nLa cereza ácida ya es famosa entre quienes cuidan el ácido úrico. La semilla de apio lleva generaciones en la cocina de las abuelas.",
-      "foto": "../tienda/pagina/fotos/capsulas-mano.jpg"
+      "foto": "../tienda/pagina/fotos/capsulas-mano.jpg",
+      "ia": true
      },
-     "texto_principal": "La semilla de apio lleva generaciones en la cocina de las abuelas, y la cereza ácida ya es famosa entre quienes cuidan el ácido úrico.\n\nANDAR junta las dos en 2 cápsulas al día, para sumarlas a tu rutina de forma natural.\n\nSi tomas algún medicamento, sigue lo que te indique tu médico. Envío gratis desde 2 frascos.",
+     "texto_principal": "La semilla de apio lleva generaciones en la cocina de las abuelas, y la cereza ácida ya es famosa entre quienes cuidan el ácido úrico.\n\nANDAR une las dos en una cápsula, sin hervir ni colar nada.\n\nSi tomas algún medicamento, sigue lo que te indique tu médico. Envío gratis desde 2 frascos.",
      "titulo": "Lo de la abuela, en 2 cápsulas",
      "descripcion": "Cereza ácida + semilla de apio"
     },
     {
      "id": "2B",
-     "formato": "Imagen UGC",
+     "formato": "Imagen UGC · desayuno",
      "pieza": {
       "plantilla": "ugc",
-      "foto": "../tienda/pagina/fotos/ugc-2.jpg",
+      "foto": "fuentes/flatlay.jpg",
       "burbujas": [
-       "Natural y sin sabor,",
-       "en cápsula"
+       "Sin hervir semillas:",
+       "2 cápsulas y listo"
       ],
+      "estilo": "marcador",
       "abajo": true,
       "sello": "Garantía de 30 días"
      },
-     "texto_principal": "Natural, sin sabor y con la medida de todos los días.\n\nANDAR es un suplemento con cereza ácida y semilla de apio. Se toma con el desayuno y un frasco dura un mes.\n\nUSD 34,99, con 30 días de garantía.",
-     "titulo": "Natural y sin sabor, en cápsula",
+     "texto_principal": "Sin hervir semillas, sin colar, sin ese sabor amargo.\n\nANDAR es un suplemento con cereza ácida y semilla de apio. Se toma con el desayuno y un frasco dura un mes.\n\nPruébalo 30 días con garantía.",
+     "titulo": "Sin hervir semillas: 2 cápsulas",
      "descripcion": "Garantía de 30 días"
     },
     {
      "id": "2C",
-     "formato": "Imagen de comparación",
+     "formato": "Imagen de marca · comparación",
      "pieza": {
       "plantilla": "comparacion",
       "titulo": "Natural, *sin complicarte*",
@@ -310,7 +319,7 @@
      "id": "2D",
      "formato": "Video animado",
      "video": "videos/2D.mp4",
-     "texto_principal": "Casi nadie conoce la semilla de apio, y lleva generaciones en la cocina.\n\nANDAR la junta con la cereza ácida en 2 cápsulas al día: un suplemento natural para tu rutina.\n\nPruébalo 30 días sin riesgo.",
+     "texto_principal": "¿El té de semillas de apio, amargo y cada mañana? Hay otra forma.\n\nANDAR trae semilla de apio y cereza ácida en cápsulas sin sabor: un suplemento natural para el desayuno.\n\nPruébalo 30 días sin riesgo.",
      "titulo": "Semilla de apio + cereza ácida",
      "descripcion": "2 cápsulas al día",
      "original": "videos/originales/2D.mp4",
@@ -319,14 +328,14 @@
        {
         "t0": 0,
         "t1": 3,
-        "texto": "Semilla de apio: casi nadie la conoce",
+        "texto": "¿El té de apio amargo?",
         "zona": "arriba",
         "estilo": "titulo"
        },
        {
         "t0": 3,
         "t1": 5.8,
-        "texto": "junto a la cereza ácida, en 2 cápsulas",
+        "texto": "Hay otra forma: 2 cápsulas",
         "zona": "arriba",
         "estilo": "titulo"
        }
@@ -342,7 +351,7 @@
      "id": "2E",
      "formato": "Video de producto",
      "video": "videos/2E.mp4",
-     "texto_principal": "Un vaso de agua, 2 cápsulas y listo: así de rápido es lo natural.\n\nANDAR trae cereza ácida y semilla de apio para cuidar el ácido úrico como parte de tu mañana.\n\nMenos de USD 1,20 al día.",
+     "texto_principal": "Un vaso de agua, 2 cápsulas y listo: así de rápido es lo natural.\n\nCereza ácida y semilla de apio para apoyar niveles saludables de ácido úrico, sin preparar nada.\n\nUn frasco te dura un mes.",
      "titulo": "Cuidarte te lleva 10 segundos",
      "descripcion": "Garantía de 30 días",
      "original": "videos/originales/2E.mp4",
@@ -365,14 +374,15 @@
       ],
       "cierre": {
        "t0": 4.8,
-       "texto": "Menos de USD 1,20 al día",
+       "texto": "Un frasco, un mes completo",
        "zona": "abajo",
-       "sin_logo": true
+       "sin_logo": false
       },
       "recorte": [
        0,
        5.8
-      ]
+      ],
+      "aviso_ia": true
      }
     }
    ]
@@ -384,29 +394,60 @@
    "anuncios": [
     {
      "id": "3A",
-     "formato": "Imagen nativa · nota",
+     "formato": "Imagen nativa · calendario",
      "pieza": {
-      "plantilla": "nota",
-      "fecha": "Domingo, 8:05 a. m.",
-      "titulo": "Lo que quiero hacer este año",
-      "lineas": [
-       "Sacar al perro todas las mañanas",
-       "Jugar fútbol con mi nieto",
-       "El asado del domingo con toda la familia",
-       "Cuidarme todos los días"
+      "plantilla": "calendario",
+      "mes": "Noviembre",
+      "sub": "Esta semana",
+      "dias": [
+       {
+        "dia": "Sáb",
+        "num": "22",
+        "eventos": [
+         {
+          "texto": "Fútbol con Mateo",
+          "hora": "9:00 a. m.",
+          "color": "c2"
+         },
+         {
+          "texto": "Caminata con el Toby",
+          "hora": "5:00 p. m.",
+          "color": "c1"
+         }
+        ]
+       },
+       {
+        "dia": "Dom",
+        "num": "23",
+        "eventos": [
+         {
+          "texto": "Asado con toda la familia",
+          "hora": "1:00 p. m.",
+          "color": "c3"
+         }
+        ]
+       },
+       {
+        "dia": "Diario",
+        "num": "☀︎",
+        "eventos": [
+         {
+          "texto": "2 cápsulas de ANDAR con el desayuno",
+          "hora": "7:00 a. m.",
+          "color": "c4"
+         }
+        ]
+       }
       ],
-      "marcadas": [
-       3
-      ],
-      "foto": "../tienda/pagina/fotos/paseo-perro.jpg"
+      "producto": true
      },
-     "texto_principal": "Caminar tranquilo, jugar con los nietos, sentarse a la mesa del domingo con toda la familia.\n\nANDAR es un suplemento con cereza ácida y semilla de apio, en 2 cápsulas al día, para cuidar el ácido úrico como parte de tu rutina.\n\nLleva 3 y paga 2, con envío gratis.",
+     "texto_principal": "Caminar tranquilo, jugar con los nietos, sentarse a la mesa del domingo con toda la familia.\n\nPara los planes de siempre, un cuidado de todos los días: cereza ácida y semilla de apio en 2 cápsulas.\n\nLleva 3 y paga 2, con envío gratis.",
      "titulo": "Cuidarse también es hacer planes",
      "descripcion": "Apoyo diario con cereza ácida"
     },
     {
      "id": "3B",
-     "formato": "Imagen UGC",
+     "formato": "Imagen UGC · selfie",
      "pieza": {
       "plantilla": "ugc",
       "foto": "../tienda/pagina/fotos/ugc-4.jpg",
@@ -416,30 +457,30 @@
       ],
       "sello": "Lleva 3 y paga 2"
      },
-     "texto_principal": "El domingo es para la familia, para la mesa larga y las risas.\n\nANDAR junta cereza ácida y semilla de apio en 2 cápsulas al día, para cuidar el ácido úrico con calma, como parte de tu rutina.\n\nLleva 3 y paga 2: envío gratis y pastillero de regalo.",
+     "texto_principal": "El domingo es para la familia, para la mesa larga y las risas.\n\nANDAR acompaña la mañana con cereza ácida y semilla de apio, un suplemento para el cuidado diario del ácido úrico.\n\nLleva 3 y paga 2: envío gratis y pastillero de regalo.",
      "titulo": "Lleva 3 y paga 2",
-     "descripcion": "USD 69,98 · Envío gratis"
+     "descripcion": "Envío gratis + pastillero"
     },
     {
      "id": "3C",
-     "formato": "Imagen de oferta",
+     "formato": "Imagen de marca · oferta",
      "pieza": {
       "plantilla": "oferta",
       "titulo": "3 meses de rutina, *el tercero gratis*",
-      "precio": "USD 69,98",
-      "antes": "USD 104,97",
-      "sub": "Menos de USD 0,80 al día · Envío gratis · Pastillero de regalo",
+      "precio": "Lleva 3, paga 2",
+      "antes": "",
+      "sub": "Envío gratis · Pastillero de regalo · Garantía de 30 días",
       "boton": "Pídelo hoy"
      },
-     "texto_principal": "Un mes de cápsulas es un comienzo, tres meses ya es una rutina.\n\nLleva 3 frascos de ANDAR, con cereza ácida y semilla de apio, y paga 2: menos de USD 0,80 al día.\n\nEnvío gratis, pastillero de regalo y 30 días de garantía.",
+     "texto_principal": "Un mes de cápsulas es un comienzo, tres meses ya es una rutina.\n\nLleva 3 frascos de ANDAR, con cereza ácida y semilla de apio, y paga 2.\n\nEnvío gratis, pastillero de regalo y 30 días de garantía.",
      "titulo": "3 meses de rutina, el tercero gratis",
-     "descripcion": "USD 69,98 · Envío gratis"
+     "descripcion": "Envío gratis + pastillero"
     },
     {
      "id": "3D",
      "formato": "Video animado",
      "video": "videos/3D.mp4",
-     "texto_principal": "Un abuelo, un nieto y un balón: lo que de verdad importa.\n\nANDAR acompaña la rutina de todos los días con cereza ácida y semilla de apio, para cuidar el ácido úrico y seguir con los planes de siempre.\n\nLleva 3 y paga 2, con envío gratis.",
+     "texto_principal": "Un abuelo, un nieto y un balón: lo que de verdad importa.\n\nPara seguir con los planes de siempre, un cuidado de todos los días con cereza ácida y semilla de apio.\n\nLleva 3 y paga 2, con envío gratis.",
      "titulo": "Para los domingos de fútbol",
      "descripcion": "Cereza ácida + semilla de apio",
      "original": "videos/originales/3D.mp4",
@@ -462,7 +503,7 @@
       ],
       "cierre": {
        "t0": 5.8,
-       "texto": "Lleva 3 y paga 2",
+       "texto": "Lleva 3 y paga 2 · Envío gratis",
        "zona": "arriba"
       }
      }
@@ -471,7 +512,7 @@
      "id": "3E",
      "formato": "Video de producto",
      "video": "videos/3E.mp4",
-     "texto_principal": "Para seguir en la cancha los domingos, cuidarse empieza en el desayuno.\n\n60 cápsulas de cereza ácida y semilla de apio, un mes completo de rutina.\n\nSi en 30 días no te convence, te devolvemos tu dinero.",
+     "texto_principal": "60 cápsulas, un mes completo.\n\nCereza ácida y semilla de apio para la mañana, en el frasco que te llega a la casa.\n\nLleva 3 y paga 2. Si en 30 días no te convence, te devolvemos tu dinero.",
      "titulo": "Un mes completo en un frasco",
      "descripcion": "Garantía de 30 días",
      "original": "videos/originales/3E.mp4",
@@ -484,21 +525,21 @@
        {
         "t0": 0,
         "t1": 2.8,
-        "texto": "Para seguir en la cancha los domingos",
+        "texto": "Un mes completo en un frasco",
         "zona": "arriba",
         "estilo": "titulo"
        },
        {
         "t0": 2.8,
         "t1": 5.2,
-        "texto": "60 cápsulas, un mes completo",
+        "texto": "Lleva 3, paga 2",
         "zona": "arriba",
         "estilo": "titulo"
        }
       ],
       "cierre": {
        "t0": 5.2,
-       "texto": "Lleva 3 y paga 2",
+       "texto": "Garantía de 30 días",
        "zona": "arriba",
        "sin_logo": true
       }

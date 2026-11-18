@@ -21,7 +21,7 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#fff}
 .post .av img{width:78%;height:auto}
 .post .nm{font:700 36px -apple-system,system-ui,sans-serif;color:#0f1419}.post .hd{font:400 30px -apple-system,system-ui,sans-serif;color:#536471}
 .post p{font:400 46px/1.32 -apple-system,system-ui,sans-serif;color:#0f1419;margin-bottom:32px;white-space:pre-line}
-.post .img{border-radius:28px;overflow:hidden;border:1px solid #cfd9de;height:560px}
+.post .img{border-radius:28px;overflow:hidden;border:1px solid #cfd9de;height:660px}
 .post .img img{width:100%;height:100%;object-fit:cover}
 .post .meta{display:flex;gap:46px;margin-top:22px;color:#536471;font:400 28px -apple-system,system-ui,sans-serif}
 /* ---------- UGC (foto con burbujas) ---------- */
@@ -47,15 +47,15 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#fff}
 .cmp .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
 .cmp .col{border-radius:30px;padding:30px 30px 34px;background:#fff}
 .cmp .col.yo{background:var(--principal);color:var(--blanco)}
-.cmp .col .ft{height:330px;display:grid;place-items:center;margin-bottom:20px}
-.cmp .col .ft img{max-height:330px;max-width:100%}
+.cmp .col .ft{height:400px;display:grid;place-items:center;margin-bottom:20px}
+.cmp .col .ft img{max-height:400px;max-width:100%}
 .cmp .col h2{font:800 40px var(--ft-titulos),sans-serif;text-align:center;margin-bottom:22px}
 .cmp .col li{list-style:none;font:500 31px/1.25 var(--ft-texto),sans-serif;margin-bottom:18px;display:flex;gap:14px}
 .cmp .col li b{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 24px sans-serif}
 .cmp .col.yo li b{background:var(--fresco);color:var(--tinta)}.cmp .col.otro li b{background:#e7e2da;color:#8a8278}
 .cmp .nota-al-pie{margin-top:26px;text-align:center;font:500 24px var(--ft-texto),sans-serif;color:#7a716b}
 
-.ugc .ia{position:absolute;left:40px;bottom:40px;background:#0009;color:#fff;font:500 22px -apple-system,system-ui,sans-serif;padding:8px 14px;border-radius:8px}
+.ia.nt,.ugc .ia{position:absolute;left:40px;bottom:40px;background:#0009;color:#fff;font:500 22px -apple-system,system-ui,sans-serif;padding:8px 14px;border-radius:8px}
 /* ---------- OFERTA (precio y paquete) ---------- */
 .ofe{background:var(--principal);color:var(--blanco);padding:84px 80px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .ofe .logo{height:60px;margin-bottom:40px}
@@ -66,3 +66,36 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#fff}
 .ofe .precio{font:800 64px var(--ft-titulos),sans-serif}.ofe .precio s{font-size:40px;opacity:.6;margin-left:14px}
 .ofe .sub{font:500 34px var(--ft-texto),sans-serif;margin-top:10px;opacity:.9}
 .ofe .boton{margin-top:34px;background:var(--fresco);color:var(--tinta);font:800 36px var(--ft-texto),sans-serif;padding:20px 50px;border-radius:999px}
+/* ---------- BLOQUEO (nativa: pantalla bloqueada del celular) ---------- */
+.blq{background:#000;color:#fff;font-family:-apple-system,"SF Pro Display","Helvetica Neue",sans-serif}
+.blq img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+.blq .fe{position:absolute;top:120px;left:0;right:0;text-align:center;font:500 40px -apple-system,sans-serif;opacity:.9}
+.blq .hr{position:absolute;top:165px;left:0;right:0;text-align:center;font:600 230px/1 -apple-system,"SF Pro Display",sans-serif;letter-spacing:-6px}
+.blq .nots{position:absolute;left:50px;right:50px;bottom:110px;display:flex;flex-direction:column;gap:16px}
+.blq .nt2{background:#ffffffd0;color:#111;border-radius:34px;padding:24px 28px;display:grid;grid-template-columns:70px 1fr;column-gap:20px;backdrop-filter:blur(20px)}
+.blq .nt2 i{grid-row:span 2;width:70px;height:70px;border-radius:16px;background:var(--principal);display:grid;place-items:center;font-style:normal}
+.blq .nt2 i img{width:80%}.blq .nt2 b{font:700 34px -apple-system,sans-serif;display:flex;justify-content:space-between}.blq .nt2 b small{font:400 24px sans-serif;color:#666}
+.blq .nt2 span{font:400 36px/1.3 -apple-system,sans-serif}
+/* ---------- CALENDARIO (nativa: la semana en el celular) ---------- */
+.cal{background:#fff;padding:80px 70px;font-family:-apple-system,"Helvetica Neue",sans-serif;color:#111}
+.cal .mes{font:800 84px -apple-system,sans-serif;color:#e0393e;margin-bottom:6px}.cal .sub{font:500 38px sans-serif;color:#888;margin-bottom:50px}
+.cal .dia{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:36px 0;border-top:2px solid #eee}
+.cal .dia b{font:700 34px sans-serif;color:#888;text-transform:uppercase}.cal .dia b span{display:block;font:300 84px/1 sans-serif;color:#111}
+.cal .ev{border-radius:16px;padding:24px 30px;font:600 42px/1.25 sans-serif;margin-bottom:16px;border-left:10px solid}
+.cal .ev small{display:block;font:400 30px sans-serif;opacity:.75;margin-top:4px}
+.cal .c1{background:#e8f1fd;border-color:#3478f6;color:#1d4fa8}.cal .c2{background:#eaf7ee;border-color:#2ea85a;color:#1c6b39}.cal .c3{background:#fdf0e3;border-color:#f08a24;color:#9a540f}
+.cal .c4{background:#fdf6d8;border-color:#e0b200;color:#7a6100}
+/* ---------- EDITORIAL (marca: foto a sangre con titular de revista) ---------- */
+.edi{background:#0b0a0a;color:#fff}
+.edi img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.edi .tx{position:absolute;top:84px;left:80px;right:80px}
+.edi .kick{font:700 26px var(--ft-texto),sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--fresco);margin-bottom:22px}
+.edi h1{font:400 98px/1 "Instrument Serif","Times New Roman",serif;letter-spacing:-.01em}.edi h1 em{font-style:italic;color:#ffd7b0}
+.edi .frasco{position:absolute;right:70px;bottom:70px;width:330px;filter:drop-shadow(0 30px 40px #000a)}
+.edi:after{content:"";position:absolute;left:0;right:0;bottom:0;height:420px;background:linear-gradient(transparent,#000c)}
+.edi .pie{position:absolute;left:80px;bottom:90px;max-width:470px;font:500 34px/1.35 var(--ft-texto),sans-serif;z-index:2}
+.edi .frasco{z-index:2}
+/* ---------- estilos de texto para fotos UGC ---------- */
+.ugc .burbujas.marcador .b{background:transparent;color:#111;font:700 82px/1.1 "Caveat","Comic Sans MS",cursive;padding:0 14px;background-image:linear-gradient(transparent 55%,#ffe45c 55%)}
+.ugc .burbujas.pie .b{background:#000b;color:#fff;font:600 40px/1.25 -apple-system,sans-serif;border-radius:10px}
+.cal .fr{position:absolute;right:70px;bottom:50px;width:190px;filter:drop-shadow(0 16px 24px #0003)}

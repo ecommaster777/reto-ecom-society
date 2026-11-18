@@ -16,7 +16,7 @@ from urllib.parse import quote
 
 AQUI = Path(__file__).resolve().parent
 PLANTILLAS = {"nota": ["titulo", "lineas"], "post": ["texto"], "ugc": ["foto", "burbujas"], "beneficios": ["titulo", "puntos", "pie"],
-              "oferta": ["titulo", "precio"], "comparacion": ["titulo", "nuestro", "otro", "nombre_otro", "foto_otro"]}
+              "oferta": ["titulo", "precio"], "bloqueo": ["fondo", "hora", "notificaciones"], "calendario": ["mes", "dias"], "editorial": ["foto", "titulo"], "comparacion": ["titulo", "nuestro", "otro", "nombre_otro", "foto_otro"]}
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except Exception:
@@ -34,8 +34,9 @@ def chrome():
     sys.exit("No encontré Google Chrome. Instálalo y vuelve a correr este paso.")
 
 def fuentes(m):
+    extra = '<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Caveat:wght@700&display=block" rel="stylesheet">'
     fams = "&".join("family=" + quote(f).replace("%20", "+") + ":wght@400;500;600;700;800" for f in dict.fromkeys(m["fuentes"].values()))
-    return f'<link href="https://fonts.googleapis.com/css2?{fams}&display=block" rel="stylesheet">'
+    return extra + f'<link href="https://fonts.googleapis.com/css2?{fams}&display=block" rel="stylesheet">'
 
 PARAMS = "utm_source=meta&utm_medium=paid&utm_campaign=reto&utm_content={{ad.name}}"
 
@@ -77,12 +78,12 @@ def main():
                 if pl not in PLANTILLAS:
                     ad["archivo"] = ""
                     errores.append(f'{ad["id"]}: la plantilla "{pl}" no existe (usa {", ".join(sorted(PLANTILLAS))})'); continue
-                LISTAS = ("lineas", "burbujas", "puntos", "nuestro", "otro")
+                LISTAS = ("lineas", "burbujas", "puntos", "nuestro", "otro", "notificaciones", "dias")
                 falta = [k for k in PLANTILLAS[pl] if not ad["pieza"].get(k)] + [f"{k} (tiene que ser una lista)" for k in LISTAS if k in ad["pieza"] and not isinstance(ad["pieza"][k], list)]
                 if falta:
                     ad["archivo"] = ""
                     errores.append(f'{ad["id"]}: a la pieza "{pl}" le falta {", ".join(falta)}'); continue
-                for k in ("foto", "foto_otro"):
+                for k in ("foto", "foto_otro", "fondo"):
                     if ad["pieza"].get(k) and not (out / ad["pieza"][k]).exists():
                         faltan.append(ad["pieza"][k])
                 destino = out / "imagenes" / f'{ad["id"]}.png'

@@ -35,13 +35,13 @@ Si un anuncio rompe una, Meta lo rechaza o frena la cuenta. Revisa cada texto, c
 4. Para cada ángulo: nombre corto, el ángulo en una frase y por qué (con cuántas frases lo repiten). Espera su aprobación.
 
 ## Paso 2 · Los 15 anuncios (vas solo)
-Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos:
+Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos. **Regla de oro de los creativos: ninguna imagen se parece a otra.** Si dos anuncios comparten plantilla, foto, paleta o encuadre, para Meta son el mismo anuncio. Las 9 imágenes usan 9 combinaciones distintas de plantilla y foto, y como máximo una selfie en toda la campaña. Para las fotos nuevas (unboxing, flat lay, macro de un ingrediente, fondo de noche) usa `gpt_image_2_6` en 4:5 con la foto del producto como referencia y guárdalas en `anuncios/fuentes/`.
 
 | Letra | Formato | Cómo se hace | Créditos |
 |---|---|---|---|
-| A | Imagen nativa | Plantilla `nota` (app de notas) o `post` (publicación), con una foto de su página | 0 |
-| B | Imagen UGC | Plantilla `ugc`: foto de su página con una persona y el producto, 2 burbujas de texto | 0 |
-| C | Imagen de marca | Una distinta en cada conjunto: `beneficios`, `comparacion` u `oferta` (3 frascos y el precio) | 0 |
+| A | Imagen nativa (parece una publicación normal) | Una plantilla distinta en cada conjunto: `bloqueo` (pantalla bloqueada con notificaciones), `post` (publicación), `calendario` (la semana en el celular) o `nota` (app de notas) | 0 |
+| B | Imagen UGC | Plantilla `ugc` con una foto distinta en cada conjunto: unboxing (manos abriendo la caja), flat lay (desayuno desde arriba), selfie con el producto. Textos `estilo`: normal (cajas blancas), `marcador` (letra a mano resaltada) o `pie` | 0 a 0,25 por foto nueva |
+| C | Imagen de marca | Una distinta en cada conjunto: `editorial` (foto a sangre y titular de revista), `beneficios`, `comparacion` u `oferta` | 0 a 0,25 |
 | D | Video animado | Imagen 9:16 en estilo de película animada 3D, después Kling 8 s | unos 16 |
 | E | Conjunto 1: video UGC con IA (15 s). Conjuntos 2 y 3: video de producto (8 s) | Marketing Studio / Kling | 75 / 16 |
 
@@ -59,7 +59,8 @@ Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **t
 ### 2.2 · Los textos de cada anuncio (con la skill `copy`)
 - **Texto principal:** 3 párrafos cortos. El gancho (una escena vivida, nunca un titular), qué es el producto y por qué ayuda, y la oferta.
 - **Título:** máximo 40 caracteres. **Descripción:** máximo 30.
-- Ningún texto se repite entre los 15. Rota los cierres: envío gratis, garantía, precio por día, el paquete.
+- Ningún texto se repite entre los 15. Rota los cierres: envío gratis, garantía, el paquete.
+- **Ruta A (varios países): no pongas precios en dólares** en las imágenes, los videos ni los textos, porque Meta se los muestra a gente que paga en otra moneda. Habla de la oferta ("lleva 3 y paga 2", "el 2.º a mitad de precio") y de la garantía.
 
 ### 2.3 · Los videos en Higgsfield (antes, los créditos y su "sí")
 1. Sube a Higgsfield la foto principal del producto (`media_upload`, sube el archivo al link que te da y `media_confirm`).

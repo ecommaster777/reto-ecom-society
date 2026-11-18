@@ -10,12 +10,12 @@
     nota: p => `<div class="pz nota"><div class="bar"><span>‹ Notas</span><span>···</span></div>
       <div class="fecha">${e(p.fecha || 'Hoy, 11:48 p. m.')}</div><h1>${e(p.titulo)}</h1>
       <ul>${p.lineas.map((l,i)=>`<li class="${(p.marcadas||[]).includes(i)?'ok':''}">${e(l)}</li>`).join('')}</ul>
-      ${p.foto?`<div class="foto"><img src="${p.foto}"></div>`:''}</div>`,
+      ${p.foto?`<div class="foto"><img src="${p.foto}"></div>`:''}${p.ia?'<div class="ia nt">Imagen creada con IA</div>':''}</div>`,
     post: p => `<div class="pz post"><div class="who"><div class="av"><img src="${M.logo_claro || M.logo}"></div>
       <div><div class="nm">${e(p.nombre || M.nombre)}</div><div class="hd">${e(p.usuario || '@'+M.nombre.toLowerCase())}</div></div></div>
-      <p>${e(p.texto)}</p>${p.foto?`<div class="img"><img src="${p.foto}"></div>`:''}
+      <p>${e(p.texto)}</p>${p.foto?`<div class="img"><img src="${p.foto}"></div>`:''}${p.ia?'<div class="ia nt">Imagen creada con IA</div>':''}
       </div>`,
-    ugc: p => `<div class="pz ugc"><img class="bg" src="${p.foto}"><div class="burbujas ${p.abajo?'abajo':''}">
+    ugc: p => `<div class="pz ugc"><img class="bg" src="${p.foto}"><div class="burbujas ${p.abajo?'abajo':''} ${p.estilo||''}">
       ${p.burbujas.map(b=>`<span class="b">${e(b)}</span>`).join('')}</div>${p.sello?`<div class="sello">${e(p.sello)}</div>`:''}<div class="ia">Imagen creada con IA</div></div>`,
     beneficios: p => `<div class="pz ben"><img class="logo" src="${M.logo}"><h1>${em(p.titulo)}</h1>
       <ul>${p.puntos.map(x=>`<li><i>✓</i><span>${e(x)}</span></li>`).join('')}</ul>
@@ -23,6 +23,12 @@
     oferta: p => `<div class="pz ofe"><img class="logo" src="${M.logo_claro || M.logo}"><h1>${em(p.titulo)}</h1>
       <div class="tres"><img src="${M.producto_sin_fondo}"><img src="${M.producto_sin_fondo}"><img src="${M.producto_sin_fondo}"></div>
       <div class="precio">${e(p.precio)}${p.antes?`<s>${e(p.antes)}</s>`:''}</div><div class="sub">${e(p.sub||'')}</div>${p.boton?`<div class="boton">${e(p.boton)}</div>`:''}</div>`,
+    bloqueo: p => `<div class="pz blq"><img class="bg" src="${p.fondo}"><div class="fe">${e(p.fecha||'miércoles, 19 de noviembre')}</div><div class="hr">${e(p.hora)}</div>
+      <div class="nots">${p.notificaciones.map(n=>`<div class="nt2"><i>${n.logo?`<img src="${M.logo_claro||M.logo}">`:'🔔'}</i><b>${e(n.app)}<small>${e(n.cuando||'ahora')}</small></b><span>${e(n.texto)}</span></div>`).join('')}</div></div>`,
+    calendario: p => `<div class="pz cal"><div class="mes">${e(p.mes)}</div><div class="sub">${e(p.sub||'')}</div>
+      ${p.dias.map(d=>`<div class="dia"><b>${e(d.dia)}<span>${e(d.num)}</span></b><div>${d.eventos.map(ev=>`<div class="ev ${ev.color||'c1'}">${e(ev.texto)}${ev.hora?`<small>${e(ev.hora)}</small>`:''}</div>`).join('')}</div></div>`).join('')}${p.producto?`<img class="fr" src="${M.producto_sin_fondo}">`:''}</div>`,
+    editorial: p => `<div class="pz edi"><img class="bg" src="${p.foto}"><div class="tx"><div class="kick">${e(p.kicker||M.nombre)}</div><h1>${em(p.titulo)}</h1></div>
+      ${p.pie?`<div class="pie">${e(p.pie)}</div>`:''}<img class="frasco" src="${M.producto_sin_fondo}"></div>`,
     comparacion: p => `<div class="pz cmp"><h1>${em(p.titulo)}</h1><div class="cols">
       <div class="col yo"><div class="ft"><img src="${M.producto_sin_fondo}"></div><h2>${e(M.nombre)}</h2><ul>${p.nuestro.map(x=>`<li><b>✓</b>${e(x)}</li>`).join('')}</ul></div>
       <div class="col otro"><div class="ft"><img src="${p.foto_otro}"></div><h2>${e(p.nombre_otro)}</h2><ul>${p.otro.map(x=>`<li><b>✕</b>${e(x)}</li>`).join('')}</ul></div></div>

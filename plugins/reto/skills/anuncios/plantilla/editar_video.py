@@ -13,6 +13,7 @@ En campana.json, cada anuncio de video lleva:
   "video": "videos/1E.mp4",                 dónde queda el editado
   "edicion": {
     "recorte": [0.3, 14.6],                 opcional: segundo de inicio y de fin
+    "anexar": {"video": "videos/originales/X.mp4", "desde": 5, "hasta": 8},   opcional: pega al final un segundo clip (por ejemplo, el producto de día)
     "aviso_ia": true,                       si aparece una persona hecha con IA (pone "Video creado con IA")
     "extender": 2,                          opcional: segundos de cuadro congelado al final, para el cierre
     "textos": [ {"t0": 0, "t1": 2.4, "texto": "…", "zona": "arriba", "estilo": "titulo"} , … ],
@@ -138,19 +139,31 @@ def editar(cj):
             if ed.get("cierre"):
                 c = ed["cierre"]; p = tmpd / "cierre.png"
                 img_logo = "" if c.get("sin_logo") else '<img src="' + (base / logo).resolve().as_uri() + '">'
-                capa(ch, f'<div class="z {c.get("zona","abajo")} cierre"><div class="card">{img_logo}<span>{html.escape(c["texto"])}</span></div></div>', p, color)
+                lado_c = {"derecha": "der", "izquierda": "izq"}.get(c.get("alinear", ""), "")
+                capa(ch, f'<div class="z {c.get("zona","abajo")} cierre {lado_c}"><div class="card">{img_logo}<span>{html.escape(c["texto"])}</span></div></div>', p, color)
                 capas.append((p, c["t0"], 999))
             ext = ed.get("extender", 0)   # segundos de cuadro congelado al final, para el cierre
             cmd = [ff, "-y", "-v", "error"]
             if r0: cmd += ["-ss", str(r0)]
             if r1: cmd += ["-to", str(r1)]
             cmd += ["-i", str(src)]
+            anx = ed.get("anexar")   # {"video": "videos/originales/2D.mp4", "desde": 5, "hasta": 8}: pega un segundo clip al final
+            if anx:
+                if not (base / anx["video"]).exists():
+                    fallas.append(f'{ad["id"]}: no encontré {anx["video"]} para anexar'); continue
+                cmd += ["-ss", str(anx.get("desde", 0))] + (["-to", str(anx["hasta"])] if anx.get("hasta") else []) + ["-i", str(base / anx["video"])]
+            k0 = 2 if anx else 1
             for p, _, _ in capas: cmd += ["-i", str(p)]
-            f = f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1" + (f",tpad=stop_mode=clone:stop_duration={ext}" if ext else "") + "[v0]"
+            esc = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30"
+            if anx:
+                f = (f"[0:v]{esc}[a0];[1:v]{esc}[a1];[0:a]aresample=44100[s0];[1:a]aresample=44100[s1];"
+                     f"[a0][s0][a1][s1]concat=n=2:v=1:a=1[vc][ac0];[ac0]" + (f"apad=pad_dur={ext}" if ext else "anull") + "[ac];[vc]" + (f"tpad=stop_mode=clone:stop_duration={ext}" if ext else "null") + "[v0]")
+            else:
+                f = f"[0:v]{esc}" + (f",tpad=stop_mode=clone:stop_duration={ext}" if ext else "") + "[v0]"
             for i, (_, a, b) in enumerate(capas, 1):
                 a2, b2 = max(a - (r0 or 0), 0), b - (r0 or 0)
-                f += f";[v{i-1}][{i}:v]overlay=0:0:enable='between(t,{a2:.2f},{b2:.2f})'[v{i}]"
-            cmd += ["-filter_complex", f, "-map", f"[v{len(capas)}]", "-map", "0:a?"] + (["-af", f"apad=pad_dur={ext}"] if ext else []) + ["-c:v", "libx264", "-preset", "medium", "-crf", "21",
+                f += f";[v{i-1}][{i - 1 + k0}:v]overlay=0:0:enable='between(t,{a2:.2f},{b2:.2f})'[v{i}]"
+            cmd += ["-filter_complex", f, "-map", f"[v{len(capas)}]", "-map", "[ac]" if anx else "0:a?"] + (["-af", f"apad=pad_dur={ext}"] if ext and not anx else []) + ["-c:v", "libx264", "-preset", "medium", "-crf", "21",
                     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(dst)]
             r = subprocess.run(cmd, capture_output=True, text=True)
             if r.returncode != 0:
