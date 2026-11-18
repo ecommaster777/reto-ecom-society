@@ -9,7 +9,7 @@ Acompañas a una persona **principiante** a sacar sus anuncios y dejar su campa�
 
 ## Reglas
 - Lee `CLAUDE.md` y todo `contexto/`: la investigación (`01`), el producto y sus números (`02`), la marca y la tienda (`04`) y el perfil con su ruta y su presupuesto (`00-perfil.md`). Si no hay página de producto, dile que primero corra la skill `tienda`.
-- Una pregunta a la vez. La persona responde solo 3 veces: **los 3 ángulos** (Paso 1), **el "sí" a los créditos** (Paso 2) y **los anuncios terminados** (Paso 4). Entre una y otra vas solo, avisando en una línea qué estás haciendo.
+- Una pregunta a la vez. La persona responde solo 2 veces: **los 3 ángulos junto con el "sí" a los créditos** (Paso 1) y **los anuncios terminados** (Paso 4). Entre una y otra vas solo, avisando en una línea qué estás haciendo.
 - `RUTA` es la carpeta donde está este archivo SKILL.md (ahí está `plantilla/`).
 - **Antes de empezar, revisa que esté ffmpeg** (`ffmpeg -version`). Si falta: Mac `brew install ffmpeg` (si no hay `brew`, primero instala Homebrew desde https://brew.sh); Windows `winget install Gyan.FFmpeg` y volver a abrir la terminal.
 - **Antes de gastar créditos de Higgsfield, dile cuántos vas a gastar y espera su "sí".** Revisa su saldo con la herramienta de balance de Higgsfield.
@@ -32,7 +32,8 @@ Si un anuncio rompe una, Meta lo rechaza o frena la cuenta. Revisa cada texto, c
 1. Saca de `contexto/01-investigacion-mercado.md` los dolores, los deseos y las frases textuales de la gente.
 2. Califica cada uno de 1 a 5 en **urgencia** (qué tan fuerte, frecuente y de "lo necesito ya" es) y en **tamaño de mercado** (a cuánta gente le pasa: cuántas frases lo repiten y lo que dice la investigación).
 3. Muéstrale una tabla ordenada por urgencia × tamaño y recomiéndale los **3 primeros**, distintos entre sí: un dolor fuerte, una alternativa u objeción y un deseo funcionan bien juntos.
-4. Para cada ángulo: nombre corto, el ángulo en una frase y por qué (con cuántas frases lo repiten). Espera su aprobación.
+4. Para cada ángulo: nombre corto, el ángulo en una frase y por qué (con cuántas frases lo repiten).
+5. **En el mismo mensaje**, dile cuántos créditos de Higgsfield vas a gastar (unos 160) y su saldo, y pídele las dos cosas juntas: "¿Apruebas estos 3 ángulos y que gaste unos 160 créditos?". Espera su "sí". Así no te quedas parado esperando mientras ella está en clase.
 
 ## Paso 2 · Los 15 anuncios (vas solo)
 Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos. **Regla de oro de los creativos: ninguna imagen se parece a otra.** Si dos anuncios comparten plantilla, foto, paleta o encuadre, para Meta son el mismo anuncio. Las 9 imágenes usan 9 combinaciones distintas de plantilla, foto y estilo de texto, y como máximo una selfie en toda la campaña. Los videos animados también van cada uno en un estilo distinto (por ejemplo 3D, papel recortado, acuarela) y nunca comparten metraje. Para las fotos nuevas (unboxing, flat lay, macro de un ingrediente, fondo de noche) usa `gpt_image_2_6` en 4:5 con la foto del producto como referencia y guárdalas en `anuncios/fuentes/`.
@@ -62,7 +63,7 @@ Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **t
 - Ningún texto se repite entre los 15. Rota los cierres: envío gratis, garantía, el paquete.
 - **Ruta A (varios países): no pongas precios en dólares** en las imágenes, los videos ni los textos, porque Meta se los muestra a gente que paga en otra moneda. Habla de la oferta ("lleva 3 y paga 2", "el 2.º a mitad de precio") y de la garantía.
 
-### 2.3 · Los videos en Higgsfield (antes, los créditos y su "sí")
+### 2.3 · Los videos en Higgsfield (los créditos ya los aprobó en el Paso 1)
 1. Sube a Higgsfield la foto principal del producto (`media_upload`, sube el archivo al link que te da y `media_confirm`).
 2. **La imagen de inicio de cada video tiene que ser vertical (9:16).** Guárdalas en `anuncios/fuentes/`. Si la foto de la página no lo es, primero haz una 9:16 con `gpt_image_2_6` usando la foto como referencia. Con una imagen cuadrada el video sale cuadrado y al pasarlo a vertical se cortan cabezas y frascos.
 3. **D, video animado:** imagen con `gpt_image_2_6`, `aspect_ratio: "9:16"`, la foto del producto como referencia y "3D animated film style, Pixar-like", la escena del ángulo y "the exact bottle from the reference, same label and colors". Después `kling3_0` con `duration: 8`, `aspect_ratio: "9:16"`, esa imagen como `start_image` y el movimiento.
