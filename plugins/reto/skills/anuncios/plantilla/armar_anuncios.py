@@ -84,6 +84,10 @@ def main():
         for a in c["anuncios"]:
             if len(a["titulo"]) > 40: print(f'Ojo: el título de {a["id"]} tiene {len(a["titulo"])} caracteres (máximo 40): Meta lo va a cortar.')
             if len(a.get("descripcion", "")) > 30: print(f'Ojo: la descripción de {a["id"]} tiene {len(a["descripcion"])} caracteres (máximo 30).')
+        nv = [a.get("conciencia") for a in c["anuncios"]]
+        if nv.count("frío") < 2 or nv.count("tibio") < 1 or nv.count("caliente") > 1:
+            print(f'Ojo: el conjunto "{c["nombre"]}" tiene {nv.count("frío")} fríos, {nv.count("tibio")} tibios y {nv.count("caliente")} calientes. '
+                  'Lo ideal son 2 fríos, 2 tibios y 1 caliente: la campaña nueva le llega casi solo a gente que no conoce la marca.')
     for f in ("piezas.css", "piezas.js"):
         shutil.copy(AQUI / f, out / f)
     datos = json.dumps(C, ensure_ascii=False)
@@ -139,10 +143,15 @@ def main():
 
     # 2. La revisión en el celular
     m = C["marca"]; e = html.escape
+    COL = {"frío": "#1d6fd8", "tibio": "#d98a00", "caliente": "#d0342c"}
+    def nivel(ad):
+        if not ad.get("conciencia"): return ""
+        return (f'<div class="nv" style="border-color:{COL.get(ad["conciencia"], "#888")}"><b style="color:{COL.get(ad["conciencia"], "#888")}">'
+                f'{e(ad["conciencia"].capitalize())}</b> · {e(ad.get("nivel", ""))}{(" · " + e(ad["entrada"])) if ad.get("entrada") else ""}</div>')
     def tarjeta(ad):
         medio = (f'<video src="{ad["archivo"]}" controls playsinline loop muted></video>' if ad.get("video")
                  else f'<img src="{ad["archivo"]}">')
-        return f'''<div class="ad"><div class="tag">{e(ad["id"])} · {e(ad["formato"])}</div><div class="phone">
+        return f'''<div class="ad"><div class="tag">{e(ad["id"])} · {e(ad["formato"])}</div>{nivel(ad)}<div class="phone">
 <div class="hd"><img src="{e(m.get("logo_claro") or m["logo"])}"><div><b>{e(m["nombre"])}</b><small>Publicidad</small></div></div>
 <p class="tp">{e(ad["texto_principal"])}</p>{medio}
 <div class="ft"><div><small>{e(C.get("dominio",""))}</small><b>{e(ad["titulo"])}</b><span>{e(ad.get("descripcion",""))}</span></div><a>{e(C.get("boton","Comprar"))}</a></div></div></div>'''
@@ -154,6 +163,7 @@ body{{margin:0;background:#f0f2f5;font:15px/1.4 -apple-system,system-ui,sans-ser
 header{{background:{m["colores"]["principal"]};color:#fff;padding:28px 24px}}header h1{{margin:0;font-size:26px}}header p{{margin:6px 0 0;opacity:.85}}
 section{{padding:26px 24px}}h2{{margin:0 0 4px;font-size:22px}}.ang{{margin:0;font-weight:600}}.pq{{margin:4px 0 16px;color:#65676b}}
 .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}}
+.nv{{font:13px system-ui;border-left:4px solid;padding:2px 8px;margin:0 0 8px;color:#444}}
 .tag{{font:700 12px system-ui;letter-spacing:.06em;text-transform:uppercase;color:#65676b;margin-bottom:6px}}
 .phone{{background:#fff;border-radius:12px;box-shadow:0 1px 3px #0002;overflow:hidden}}
 .hd{{display:flex;gap:10px;align-items:center;padding:12px}}.hd img{{width:38px;height:38px;border-radius:50%;object-fit:contain;background:{m["colores"]["principal"]};padding:5px}}
@@ -180,7 +190,8 @@ section{{padding:26px 24px}}h2{{margin:0 0 4px;font-size:22px}}.ang{{margin:0;fo
               "- Ubicaciones: **Advantage+** (automáticas).", "", "### Los anuncios de este conjunto",
               "En cada anuncio: elige **tu página de Facebook y tu cuenta de Instagram**. Después busca **Mejoras de Advantage+ creative** y apaga una por una: mejoras de texto, retoques visuales (brillo y contraste), superposiciones e información de la tienda, expandir imagen, generar fondo, música, animación, traducción, enlaces del sitio, agregar productos del catálogo, comentarios relevantes y anuncios de varios anunciantes. Pueden cambiar tu texto o tu imagen y romper las reglas de salud."]
         for ad in cjto["anuncios"]:
-            g += [f'**Anuncio {ad["id"]} · {ad["formato"]}**', f'- Nombre: `{ad["id"]} · {ad["formato"]}`', f'- Archivo: `{ad["archivo"]}`',
+            g += [f'**Anuncio {ad["id"]} · {ad["formato"]}**' + (f' · {ad["conciencia"]} ({ad.get("nivel", "")})' if ad.get("conciencia") else ""),
+                  f'- Nombre: `{ad["id"]} · {ad["formato"]}`', f'- Archivo: `{ad["archivo"]}`',
                   "- Texto principal:", "", "```", ad["texto_principal"], "```", "",
                   f'- Título: `{ad["titulo"]}`', f'- Descripción: `{ad.get("descripcion","")}`',
                   f'- Llamado a la acción: **{C.get("boton","Comprar")}**', f'- URL del sitio web: `{C["url"]}`',

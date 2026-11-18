@@ -1,6 +1,6 @@
 ---
 name: anuncios
-description: Hace los anuncios del Reto de 4 días de eCom Society y deja la campaña lista para montar a mano en Meta. Elige los 3 ángulos con más urgencia y más mercado, arma 3 conjuntos con 5 anuncios cada uno en formatos distintos (imagen nativa, imagen UGC, imagen de beneficios, comparación u oferta, video animado y video UGC con IA o de producto), con sus textos, los videos editados en la zona segura de Reels y la guía de la campaña. Úsala cuando la persona escriba "anuncios", "reto-anuncios", "creativos", "campaña" o "ads", o en la clase del viernes.
+description: Hace los anuncios del Reto de 4 días de eCom Society y deja la campaña lista para montar a mano en Meta. Elige los 3 ángulos con más urgencia y más mercado, arma 3 conjuntos con 5 anuncios cada uno en formatos distintos (imagen nativa, imagen UGC, imagen de beneficios, comparación u oferta, video animado y video UGC con IA o de producto) y 3 temperaturas (2 anuncios fríos de respuesta directa, 2 tibios y 1 caliente), con sus textos, los videos editados en la zona segura de Reels y la guía de la campaña. Úsala cuando la persona escriba "anuncios", "reto-anuncios", "creativos", "campaña" o "ads", o en la clase del viernes.
 ---
 
 # Anuncios del reto
@@ -36,7 +36,28 @@ Si un anuncio rompe una, Meta lo rechaza o frena la cuenta. Revisa cada texto, c
 5. **En el mismo mensaje**, dile cuántos créditos de Higgsfield vas a gastar en total (unos 160, incluidas las fotos nuevas) y su saldo, y pídele las dos cosas juntas: "¿Apruebas estos 3 ángulos y que gaste unos 160 créditos?". Espera su "sí". Así no te quedas parado esperando mientras ella está en clase.
 
 ## Paso 2 · Los 15 anuncios (vas solo)
-Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos. **Regla de oro de los creativos: ninguna imagen se parece a otra.** Si dos anuncios comparten plantilla, foto, paleta o encuadre, para Meta son el mismo anuncio. Las 9 imágenes usan 9 combinaciones distintas de plantilla, foto y estilo de texto, y como máximo una selfie en toda la campaña. Los videos animados también van cada uno en un estilo distinto (por ejemplo 3D, papel recortado, acuarela) y nunca comparten metraje. Para las fotos nuevas (unboxing, flat lay, macro de un ingrediente, fondo de noche) usa `gpt_image_2_6` en 4:5 con la foto del producto como referencia y guárdalas en `anuncios/fuentes/`.
+Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos **y 3 temperaturas** (niveles de conciencia).
+
+### Las temperaturas: la mayoría de los anuncios tiene que venderle a un desconocido
+Una tienda nueva no tiene público caliente: casi toda la gente que va a ver los anuncios **no conoce la marca y muchas veces ni sabe que existe una solución**. Si los 15 anuncios abren con el producto y la oferta, solo le hablan a los pocos que ya estaban buscando. Por eso cada conjunto lleva:
+
+| Temperatura | Para quién | Cómo abre el anuncio | Cuántos por conjunto |
+|---|---|---|---|
+| **Frío** | No sabe del problema o lo vive sin buscar solución | Una historia, una escena o un dato curioso ("¿por qué siempre de madrugada?"). El producto aparece casi al final | 2 |
+| **Tibio** | Conoce las soluciones (el té, la dieta, otras pastillas) | El mecanismo o el ingrediente, una comparación o una objeción | 2 |
+| **Caliente** | Ya conoce el producto o algo igual | La oferta, la garantía, lo fácil que es | 1 |
+
+**El anuncio frío es de respuesta directa: tiene que hacer comprar hoy a alguien que no sabía nada.** Su texto principal es largo (120 a 200 palabras, en párrafos de 1 a 3 líneas) y sigue este orden:
+1. **Gancho:** la escena o la pregunta, sin nombrar el producto ni la marca.
+2. **Historia o problema:** los detalles que la persona reconoce ("ni la sábana se puede apoyar").
+3. **El porqué:** algo que no sabía y que explica lo que le pasa (un dato real, de una fuente que puedas nombrar si te lo piden; nunca inventado).
+4. **El puente:** lo que hace la gente que se cuida (hábitos e ingredientes, en general).
+5. **El producto:** qué es, en una frase, y cómo se usa.
+6. **El cierre:** la oferta y la garantía, con una razón para pedirlo hoy que sea cierta (la oferta de lanzamiento de su página).
+
+El tibio va en 60 a 120 palabras y el caliente en 30 a 60. El **título** también cambia según la temperatura: el frío es curiosidad o la escena ("Por qué llega de madrugada"), el tibio es el ingrediente o la diferencia y el caliente es la oferta. En las imágenes y los videos fríos, el texto de la pieza es el gancho, no la oferta ni un sello de precio.
+
+En `campana.json`, cada anuncio lleva `"conciencia"` (`frío`, `tibio` o `caliente`), `"nivel"` (por ejemplo "No sabe del problema") y `"entrada"` (cómo abre, por ejemplo "Historia: una escena"). El armador los muestra en la revisión y avisa si un conjunto no tiene 2 fríos, al menos 1 tibio y máximo 1 caliente. Ordena los anuncios de cada conjunto de frío a caliente. **Regla de oro de los creativos: ninguna imagen se parece a otra.** Si dos anuncios comparten plantilla, foto, paleta o encuadre, para Meta son el mismo anuncio. Las 9 imágenes usan 9 combinaciones distintas de plantilla, foto y estilo de texto, y como máximo una selfie en toda la campaña. Los videos animados también van cada uno en un estilo distinto (por ejemplo 3D, papel recortado, acuarela) y nunca comparten metraje. Para las fotos nuevas (unboxing, flat lay, macro de un ingrediente, fondo de noche) usa `gpt_image_2_6` en 4:5 con la foto del producto como referencia y guárdalas en `anuncios/fuentes/`.
 
 | Letra | Formato | Cómo se hace | Créditos |
 |---|---|---|---|
@@ -58,7 +79,7 @@ Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **t
 - **Conjuntos y anuncios:** usa sus fotos de la página, nunca fotos del proveedor.
 
 ### 2.2 · Los textos de cada anuncio (con la skill `copy`)
-- **Texto principal:** 3 párrafos cortos. El gancho (una escena vivida, nunca un titular), qué es el producto y por qué ayuda, y la oferta.
+- **Texto principal:** según la temperatura (ver arriba). Frío: la estructura de 6 pasos, largo. Tibio: el gancho del ingrediente o la objeción, qué es el producto y la oferta. Caliente: la oferta y la garantía, corto. Las reglas de salud se cumplen igual en los tres: en el frío la historia va en tercera persona ("él se sienta en el borde de la cama") y nunca termina con un resultado ("ahora ya puede jugar"), porque eso es un testimonio y un antes y después.
 - **Título:** máximo 40 caracteres. **Descripción:** máximo 30.
 - Ningún texto se repite entre los 15. Rota los cierres: envío gratis, garantía, el paquete.
 - **Ruta A (varios países): no pongas precios en dólares** en las imágenes, los videos ni los textos, porque Meta se los muestra a gente que paga en otra moneda. Habla de la oferta ("lleva 3 y paga 2", "el 2.º a mitad de precio") y de la garantía.
@@ -88,7 +109,7 @@ python3 "RUTA/plantilla/armar_anuncios.py" anuncios/campana.json
 Hace las imágenes de 1080 × 1350 en `anuncios/imagenes/`, la página `anuncios/revision.html` y la guía `anuncios/campana.md` (y `campana.html` para leerla cómoda). Si dice que falta algo, corrígelo y vuelve a correrlo. Mira cada imagen: ningún texto cortado ni encima del producto.
 
 ## Paso 3 · Revisa tú antes de mostrar
-Lee los 15 textos, las 9 imágenes y los 6 videos contra las reglas de Meta de arriba (busca "tu" o "tus" junto a una condición, síntoma o tratamiento, "crisis", "cura", "previene", "no reemplaza a tu médico" (mejor: "no reemplaza un tratamiento médico"), likes inventados) y corrige. Revisa que la URL sea la de su página y que lo que dicen los anuncios (precio, envío gratis, regalos, garantía) sea exactamente lo que dice su página: si la página da envío gratis desde 2 frascos, ningún anuncio promete envío gratis en 1 frasco.
+Revisa que cada conjunto tenga 2 fríos, 2 tibios y 1 caliente, y que los fríos de verdad abran sin el producto. Lee los 15 textos, las 9 imágenes y los 6 videos contra las reglas de Meta de arriba (busca "tu" o "tus" junto a una condición, síntoma o tratamiento, "crisis", "cura", "previene", "no reemplaza a tu médico" (mejor: "no reemplaza un tratamiento médico"), likes inventados) y corrige. Revisa que la URL sea la de su página y que lo que dicen los anuncios (precio, envío gratis, regalos, garantía) sea exactamente lo que dice su página: si la página da envío gratis desde 2 frascos, ningún anuncio promete envío gratis en 1 frasco.
 
 ## Paso 4 · Los anuncios terminados (aprobación 2)
 Abre `anuncios/revision.html` en su navegador (así se ven en el celular, con sus textos) y pídele que los revise. Cambia lo que pida y vuelve a correr el paso 2.5.
@@ -112,7 +133,7 @@ Si Meta le frena la cuenta o el pago, que lleve la captura al grupo: la tarea cu
 Dile claro: **no se toca nada hasta la clase del domingo.** Ni presupuesto, ni anuncios, ni públicos. El domingo se revisa todo con el protocolo de optimización. Su número para el domingo es lo que puede pagar por venta (`cpa_max`).
 
 ## Al terminar
-Anota en `contexto/05-anuncios.md`: los 3 ángulos con su porqué, los 15 anuncios (ID, formato, archivo y textos), presupuesto, países y la fecha en que la prendió.
+Anota en `contexto/05-anuncios.md`: los 3 ángulos con su porqué, los 15 anuncios (ID, formato, temperatura, archivo y textos), presupuesto, países y la fecha en que la prendió.
 
 Escribe `tareas/tarea-3.txt`, listo para pegar en el grupo de WhatsApp:
 ```
