@@ -99,3 +99,13 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#fff}
 .ugc .burbujas.marcador .b{background:transparent;color:#111;font:700 82px/1.1 "Caveat","Comic Sans MS",cursive;padding:0 14px;background-image:linear-gradient(transparent 55%,#ffe45c 55%)}
 .ugc .burbujas.pie .b{background:#000b;color:#fff;font:600 40px/1.25 -apple-system,sans-serif;border-radius:10px}
 .cal .fr{position:absolute;right:70px;bottom:50px;width:190px;filter:drop-shadow(0 16px 24px #0003)}
+/* ---------- POSTIT (nativa: nota escrita a mano sobre una foto) ---------- */
+.pst{background:#000}
+.pst img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.85)}
+.pst .nota2{position:absolute;left:150px;top:300px;width:620px;min-height:560px;background:#ffe866;transform:rotate(-4deg);box-shadow:0 30px 60px #0009;padding:60px 54px;
+  font:700 66px/1.18 "Caveat","Comic Sans MS",cursive;color:#1d1a12}
+.pst .nota2:before{content:"";position:absolute;top:-22px;left:50%;width:180px;height:50px;margin-left:-90px;background:#ffffff88;transform:rotate(2deg)}
+.pst .nota2 p{margin-bottom:22px}.pst .nota2 u{text-decoration:none;background-image:linear-gradient(transparent 60%,#ff8f8f 60%)}
+.pst .frasco{position:absolute;right:60px;bottom:60px;width:250px;filter:drop-shadow(0 20px 30px #000c)}
+.cmp{display:flex;flex-direction:column}.cmp .cols{flex:1}.cmp .col li{font-size:34px;margin-bottom:22px}
+.cal .fr{right:auto;left:auto;top:70px;right:70px;bottom:auto;width:150px}

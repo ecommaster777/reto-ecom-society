@@ -29,6 +29,7 @@
       ${p.dias.map(d=>`<div class="dia"><b>${e(d.dia)}<span>${e(d.num)}</span></b><div>${d.eventos.map(ev=>`<div class="ev ${ev.color||'c1'}">${e(ev.texto)}${ev.hora?`<small>${e(ev.hora)}</small>`:''}</div>`).join('')}</div></div>`).join('')}${p.producto?`<img class="fr" src="${M.producto_sin_fondo}">`:''}</div>`,
     editorial: p => `<div class="pz edi"><img class="bg" src="${p.foto}"><div class="tx"><div class="kick">${e(p.kicker||M.nombre)}</div><h1>${em(p.titulo)}</h1></div>
       ${p.pie?`<div class="pie">${e(p.pie)}</div>`:''}<img class="frasco" src="${M.producto_sin_fondo}"></div>`,
+    postit: p => `<div class="pz pst"><img class="bg" src="${p.fondo}"><div class="nota2">${p.lineas.map(l=>`<p>${e(l).replace(/\*(.+?)\*/g,'<u>$1</u>')}</p>`).join('')}</div>${p.producto?`<img class="frasco" src="${M.producto_sin_fondo}">`:''}</div>`,
     comparacion: p => `<div class="pz cmp"><h1>${em(p.titulo)}</h1><div class="cols">
       <div class="col yo"><div class="ft"><img src="${M.producto_sin_fondo}"></div><h2>${e(M.nombre)}</h2><ul>${p.nuestro.map(x=>`<li><b>✓</b>${e(x)}</li>`).join('')}</ul></div>
       <div class="col otro"><div class="ft"><img src="${p.foto_otro}"></div><h2>${e(p.nombre_otro)}</h2><ul>${p.otro.map(x=>`<li><b>✕</b>${e(x)}</li>`).join('')}</ul></div></div>

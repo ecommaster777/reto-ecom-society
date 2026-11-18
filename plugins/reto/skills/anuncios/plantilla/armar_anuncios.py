@@ -16,7 +16,7 @@ from urllib.parse import quote
 
 AQUI = Path(__file__).resolve().parent
 PLANTILLAS = {"nota": ["titulo", "lineas"], "post": ["texto"], "ugc": ["foto", "burbujas"], "beneficios": ["titulo", "puntos", "pie"],
-              "oferta": ["titulo", "precio"], "bloqueo": ["fondo", "hora", "notificaciones"], "calendario": ["mes", "dias"], "editorial": ["foto", "titulo"], "comparacion": ["titulo", "nuestro", "otro", "nombre_otro", "foto_otro"]}
+              "oferta": ["titulo", "precio"], "bloqueo": ["fondo", "hora", "notificaciones"], "calendario": ["mes", "dias"], "editorial": ["foto", "titulo"], "postit": ["fondo", "lineas"], "comparacion": ["titulo", "nuestro", "otro", "nombre_otro", "foto_otro"]}
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except Exception:
@@ -61,7 +61,16 @@ def main():
     for c in C.get("conjuntos", []) if isinstance(C.get("conjuntos"), list) else []:
         for k in ("nombre", "angulo"):
             if not isinstance(c.get(k), str): req.append(f'un conjunto no tiene "{k}" (texto)')
+        if not isinstance(c.get("anuncios"), list):
+            req.append(f'el conjunto "{c.get("nombre", "?")}" necesita "anuncios" como lista'); continue
         for a in c.get("anuncios", []):
+            pz = a.get("pieza") or {}
+            if pz.get("plantilla") in ("beneficios", "oferta", "editorial", "comparacion") and not m_.get("producto_sin_fondo"):
+                req.append(f'anuncio {a.get("id")}: la plantilla {pz.get("plantilla")} necesita marca.producto_sin_fondo')
+            if pz.get("plantilla") == "calendario" and not all(isinstance(d_.get("eventos"), list) for d_ in pz.get("dias", []) if isinstance(d_, dict)):
+                req.append(f'anuncio {a.get("id")}: cada día del calendario necesita "eventos" como lista')
+            if pz.get("plantilla") == "bloqueo" and not all(isinstance(n_, dict) and n_.get("texto") for n_ in pz.get("notificaciones", [])):
+                req.append(f'anuncio {a.get("id")}: cada notificación necesita "texto"')
             for k in ("id", "formato", "texto_principal", "titulo"):
                 if k in a and not isinstance(a[k], str): req.append(f'anuncio {a.get("id")}: "{k}" tiene que ser texto (entre comillas)')
     req += [f"marca.{k}" for k in ("nombre", "logo", "colores", "fuentes") if k not in C.get("marca", {})]

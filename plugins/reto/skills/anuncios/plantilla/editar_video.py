@@ -162,7 +162,12 @@ def editar(cj):
             k0 = 2 if anx else 1
             for p, _, _ in capas: cmd += ["-i", str(p)]
             esc = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30"
-            if anx:
+            def tiene_audio(v):
+                return "Audio" in subprocess.run([ff, "-i", str(v)], capture_output=True, text=True).stderr
+            con_audio = bool(anx) and tiene_audio(src) and tiene_audio(base / anx["video"])
+            if anx and not con_audio:   # si a uno de los dos le falta audio, el video queda sin audio
+                f = f"[0:v]{esc}[a0];[1:v]{esc}[a1];[a0][a1]concat=n=2:v=1:a=0[vc];[vc]" + (f"tpad=stop_mode=clone:stop_duration={ext}" if ext else "null") + "[v0]"
+            elif anx:
                 f = (f"[0:v]{esc}[a0];[1:v]{esc}[a1];[0:a]aresample=44100[s0];[1:a]aresample=44100[s1];"
                      f"[a0][s0][a1][s1]concat=n=2:v=1:a=1[vc][ac0];[ac0]" + (f"apad=pad_dur={ext}" if ext else "anull") + "[ac];[vc]" + (f"tpad=stop_mode=clone:stop_duration={ext}" if ext else "null") + "[v0]")
             else:
@@ -170,7 +175,7 @@ def editar(cj):
             for i, (_, a, b) in enumerate(capas, 1):
                 a2, b2 = max(a - (r0 or 0), 0), b - (r0 or 0)
                 f += f";[v{i-1}][{i - 1 + k0}:v]overlay=0:0:enable='between(t,{a2:.2f},{b2:.2f})'[v{i}]"
-            cmd += ["-filter_complex", f, "-map", f"[v{len(capas)}]", "-map", "[ac]" if anx else "0:a?"] + (["-af", f"apad=pad_dur={ext}"] if ext and not anx else []) + ["-c:v", "libx264", "-preset", "medium", "-crf", "21",
+            cmd += ["-filter_complex", f, "-map", f"[v{len(capas)}]"] + (["-map", "[ac]"] if con_audio else (["-map", "0:a?"] if not anx else [])) + (["-af", f"apad=pad_dur={ext}"] if ext and not anx else []) + ["-c:v", "libx264", "-preset", "medium", "-crf", "21",
                     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(dst)]
             r = subprocess.run(cmd, capture_output=True, text=True)
             if r.returncode != 0:

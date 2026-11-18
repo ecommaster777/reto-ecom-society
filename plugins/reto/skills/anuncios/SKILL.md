@@ -25,7 +25,7 @@ Si un anuncio rompe una, Meta lo rechaza o frena la cuenta. Revisa cada texto, c
 - **Nada de antes y después**, ni partes del cuerpo con defectos marcados.
 - **Ningún testimonio inventado.** Las personas de las fotos y los videos hechos con IA nunca dicen "a mí me funcionó" ni dan resultados: explican o recomiendan. Las imágenes UGC llevan la nota "Imagen creada con IA" (la plantilla la pone sola).
 - **Nada falso:** ni likes o comentarios inventados, ni afirmaciones sobre la competencia que no puedas probar.
-- **Siempre "suplemento".** Si el anuncio habla de medicamentos, agrega que no reemplaza lo que indicó el médico. Nunca sugieras dejar un tratamiento.
+- **Siempre "suplemento".** Si el anuncio habla de medicamentos, agrega "no reemplaza un tratamiento médico" (sin "tu médico"). Nunca sugieras dejar un tratamiento.
 - Sin promesas de tiempo ("en 7 días").
 
 ## Paso 1 · Los 3 ángulos (aprobación 1)
@@ -35,11 +35,11 @@ Si un anuncio rompe una, Meta lo rechaza o frena la cuenta. Revisa cada texto, c
 4. Para cada ángulo: nombre corto, el ángulo en una frase y por qué (con cuántas frases lo repiten). Espera su aprobación.
 
 ## Paso 2 · Los 15 anuncios (vas solo)
-Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos. **Regla de oro de los creativos: ninguna imagen se parece a otra.** Si dos anuncios comparten plantilla, foto, paleta o encuadre, para Meta son el mismo anuncio. Las 9 imágenes usan 9 combinaciones distintas de plantilla y foto, y como máximo una selfie en toda la campaña. Para las fotos nuevas (unboxing, flat lay, macro de un ingrediente, fondo de noche) usa `gpt_image_2_6` en 4:5 con la foto del producto como referencia y guárdalas en `anuncios/fuentes/`.
+Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos. **Regla de oro de los creativos: ninguna imagen se parece a otra.** Si dos anuncios comparten plantilla, foto, paleta o encuadre, para Meta son el mismo anuncio. Las 9 imágenes usan 9 combinaciones distintas de plantilla, foto y estilo de texto, y como máximo una selfie en toda la campaña. Los videos animados también van cada uno en un estilo distinto (por ejemplo 3D, papel recortado, acuarela) y nunca comparten metraje. Para las fotos nuevas (unboxing, flat lay, macro de un ingrediente, fondo de noche) usa `gpt_image_2_6` en 4:5 con la foto del producto como referencia y guárdalas en `anuncios/fuentes/`.
 
 | Letra | Formato | Cómo se hace | Créditos |
 |---|---|---|---|
-| A | Imagen nativa (parece una publicación normal) | Una plantilla distinta en cada conjunto: `bloqueo` (pantalla bloqueada con notificaciones), `post` (publicación), `calendario` (la semana en el celular) o `nota` (app de notas) | 0 |
+| A | Imagen nativa (parece una publicación normal) | Una plantilla distinta en cada conjunto: `postit` (nota escrita a mano sobre una foto), `post` (publicación), `calendario` (la semana en el celular) o `nota` (app de notas). Evita `bloqueo` (pantalla bloqueada con notificaciones): Meta puede verlo como una función falsa del teléfono | 0 |
 | B | Imagen UGC | Plantilla `ugc` con una foto distinta en cada conjunto: unboxing (manos abriendo la caja), flat lay (desayuno desde arriba), selfie con el producto. Textos `estilo`: normal (cajas blancas), `marcador` (letra a mano resaltada) o `pie` | 0 a 0,25 por foto nueva |
 | C | Imagen de marca | Una distinta en cada conjunto: `editorial` (foto a sangre y titular de revista), `beneficios`, `comparacion` u `oferta` | 0 a 0,25 |
 | D | Video animado | Imagen 9:16 en estilo de película animada 3D, después Kling 8 s | unos 16 |
@@ -51,7 +51,7 @@ Cada ángulo es un **conjunto de anuncios** con 5 formatos distintos. **Regla de
 Copia `plantilla/campana-ejemplo.json` a `anuncios/campana.json` y reemplaza **todo**:
 - **Marca:** los datos de `tienda/pagina/datos.json`, con las rutas relativas a `anuncios/` (antepón `../tienda/pagina/`). Si no hay `logo_claro`, haz una versión blanca del logo con `ffmpeg -i tienda/pagina/fotos/logo.png -vf "lutrgb=r=255:g=255:b=255" tienda/pagina/fotos/logo-claro.png` (conserva el fondo transparente).
 - **Países e idioma:** ruta A, todos los países que quedaron en `contexto/02` y el idioma de su página; ruta B, solo su país.
-- **Presupuesto y moneda:** de `00-perfil.md` (si no está, USD 30 al día); en la ruta B, en la moneda de su cuenta publicitaria.
+- **Presupuesto y moneda:** de `00-perfil.md` (si no está, el equivalente a USD 30 al día). `moneda`, `presupuesto_diario` y `cpa_max` van siempre en la moneda de **su cuenta publicitaria** (la de su tarjeta), convertidos si hace falta.
 - **`cpa_max`:** lo que puede pagar por venta, de `contexto/02`. Si hay varios países, usa el número más bajo.
 - **URL:** la de su página de producto.
 - **Conjuntos y anuncios:** usa sus fotos de la página, nunca fotos del proveedor.

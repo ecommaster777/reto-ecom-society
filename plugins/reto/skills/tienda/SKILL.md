@@ -88,9 +88,9 @@ Usa `shopify store execute --allow-mutations` para todo lo que cambie la tienda.
 
 ## Antes de prender anuncios (la skill `anuncios` lo pide)
 Meta revisa la página igual que los anuncios. Las reseñas, los videos de testimonio y el número de clientes del prototipo son **de muestra**: hay que cambiarlos por reales o quitarlos.
-1. En `tienda/pagina/datos.json`: si no hay reseñas reales todavía, deja vacías las listas `resenas.items`, `videos.items` y `lista_resenas.items`, borra `prueba.texto` y `resenas.verificada`. La plantilla esconde sola esos bloques cuando están vacíos.
+1. En `tienda/pagina/datos.json`: si no hay reseñas reales todavía, deja vacías las listas `resenas.items`, `videos.items` y `lista_resenas.items`, borra `prueba.texto` y `resenas.verificada`. La plantilla esconde sola esos bloques cuando están vacíos. En la galería, quita la pieza del testimonio (`galeria-4`) de la lista `galeria` y su texto en `carrusel`.
 2. Revisa todos los textos con las reglas de salud de la skill `copy`: nada de "tu ácido úrico" (o tu condición), nada de "que no vuelva", nada de testimonios de personas hechas con IA.
-3. Vuelve a correr `armar.py` con la carpeta del tema y sube el tema otra vez (Paso 4, puntos 3 y 4).
+3. Vuelve a correr `armar.py` con la carpeta del tema y súbelo **sobre el tema publicado**, no como uno nuevo: `shopify theme push --store SU-TIENDA.myshopify.com --theme ID-DEL-TEMA --allow-live --path tienda/tema` (el ID quedó anotado en `contexto/04-tienda.md`).
 
 ## Al terminar
 Actualiza `contexto/04-tienda.md` con el link de la tienda, el del producto y lo pendiente (dominio, pasarela, etiqueta del proveedor, reseñas reales). Escribe el texto de la tarea 2 en `tareas/tarea-2.txt`:
