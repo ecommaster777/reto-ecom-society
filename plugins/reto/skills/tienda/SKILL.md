@@ -76,7 +76,7 @@ Muéstraselo completo y **espera su aprobación**. Guárdalo en `contexto/04-tie
 4. Ajusta lo que pida y **espera su aprobación**.
 
 ## Paso 4 · La página en Shopify (aprobación 4)
-1. **El producto:** créalo con `shopify store execute --allow-mutations` (mutación `productCreate`) con el título, la descripción, las fotos de `tienda/fotos/` y **una variante por cada tarjeta de la oferta** ("1 frasco", "3 frascos"…) con su precio. Para subir las fotos, usa una mutación de carga de archivos o de medios de producto; si una falla, dile cuál y sigue con las demás.
+1. **El producto:** créalo con `shopify store execute --allow-mutations` y la mutación `productCreate`, con el título, la descripción y la opción "Paquete" con un valor por cada tarjeta de la oferta ("1 frasco", "3 frascos", "5 frascos"). Después fija el precio de cada variante con `productVariantsBulkUpdate`. Sube las fotos de `tienda/fotos/` con `stagedUploadsCreate` y después `productCreateMedia`; si una falla, dile cuál y sigue con las demás.
 2. **La plantilla:** baja su tema con `shopify theme pull --store SU-TIENDA.myshopify.com --live --path tienda/tema`. Crea:
    - `sections/pagina-reto.liquid`, con el prototipo convertido a Liquid. El bloque de compra usa el formulario de producto de Shopify, con las variantes como tarjetas de oferta y el botón de agregar al carrito funcionando. Los colores, fuentes y textos salen del prototipo aprobado.
    - `templates/product.reto.json`, que usa esa sección.
