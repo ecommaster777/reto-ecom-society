@@ -1,0 +1,606 @@
+{
+ "idioma": "es-MX",
+ "nombre_producto": "ANDAR Equilibrio Úrico",
+ "marca": {
+  "nombre": "ANDAR",
+  "logo": "fotos/logo.png",
+  "producto_sin_fondo": "fotos/frasco.png",
+  "colores": {
+   "principal": "#5E1424",
+   "acento": "#B42A3C",
+   "fresco": "#C8D64A",
+   "tinta": "#1A1315",
+   "fondo": "#F3EDE4",
+   "blanco": "#FFFDF9"
+  },
+  "fuentes": {
+   "titulos": "Bricolage Grotesque",
+   "textos": "DM Sans"
+  }
+ },
+ "barra": {
+  "titulo": "OFERTA DE LANZAMIENTO",
+  "sub": "Lleva 3 y paga 2, con envío gratis",
+  "fin": "2026-11-30T23:59:59"
+ },
+ "cinta": [
+  "Cereza ácida + semilla de apio",
+  "Ácido úrico en equilibrio",
+  "2 cápsulas al día",
+  "Antioxidantes naturales",
+  "1 frasco = 1 mes",
+  "Garantía de 30 días"
+ ],
+ "galeria": [
+  "fotos/galeria-1.jpg",
+  "fotos/galeria-2.jpg",
+  "fotos/galeria-3.jpg",
+  "fotos/galeria-4.jpg",
+  "fotos/galeria-5.jpg",
+  "fotos/galeria-6.jpg",
+  "fotos/galeria-7.jpg"
+ ],
+ "img_paquete": "fotos/principal.jpg",
+ "prueba": {
+  "texto": "Más de 1.200 clientes",
+  "caras": [
+   "fotos/ugc-1.jpg",
+   "fotos/ugc-2.jpg",
+   "fotos/ugc-3.jpg",
+   "fotos/ugc-4.jpg"
+  ]
+ },
+ "categoria": "Apoyo diario para tu ácido úrico",
+ "titulo": "Camina tranquilo otra vez",
+ "frase": "Cereza ácida y semilla de apio, para que tu ácido úrico no te vuelva a parar el día.",
+ "iconos": [
+  "Ácido úrico en equilibrio",
+  "Articulaciones cómodas",
+  "Antioxidantes naturales",
+  "Cápsulas sin sabor",
+  "Cereza + semilla de apio",
+  "1 frasco = 1 mes"
+ ],
+ "ofertas": [
+  {
+   "nombre": "Compra 1 frasco",
+   "por_unidad": "$34.99 por frasco",
+   "precio": "$34.99",
+   "antes": "$39.99",
+   "ahorro": "LANZAMIENTO · Ahorra $5.00",
+   "unidades": 1,
+   "variante": 0
+  },
+  {
+   "nombre": "Compra 1 y el 2.º va al 50 %",
+   "por_unidad": "$26.25 por frasco",
+   "precio": "$52.49",
+   "antes": "$69.98",
+   "ahorro": "LANZAMIENTO · Ahorra $17.49",
+   "unidades": 2,
+   "etiqueta": "Más popular",
+   "regalo": "✓ <b>Segundo frasco a mitad de precio</b> y envío gratis",
+   "variante": 1
+  },
+  {
+   "nombre": "Compra 2 y llévate 1 gratis",
+   "por_unidad": "$23.33 por frasco",
+   "precio": "$69.98",
+   "antes": "$104.97",
+   "ahorro": "LANZAMIENTO · Ahorra $34.99",
+   "unidades": 3,
+   "etiqueta": "Mejor precio",
+   "etiqueta_color": "fresco",
+   "regalo": "✓ <b>1 frasco gratis</b>, envío gratis y pastillero de regalo",
+   "variante": 2
+  }
+ ],
+ "texto_por_unidad": "por frasco",
+ "texto_ahorro": "LANZAMIENTO · Ahorra",
+ "oferta_elegida": 1,
+ "regalos_titulo": "REGALOS DESBLOQUEADOS",
+ "regalos": [
+  {
+   "img": "fotos/hero-regalo.jpg",
+   "antes": "$4.95",
+   "nombre": "Envío gratis",
+   "nivel": 1
+  },
+  {
+   "img": "fotos/principal.jpg",
+   "antes": "$34.99",
+   "nombre": "Frasco gratis",
+   "nivel": 2
+  },
+  {
+   "img": "fotos/hero-regalo.jpg",
+   "antes": "$12.99",
+   "nombre": "Pastillero gratis",
+   "nivel": 2
+  }
+ ],
+ "entrega": {
+  "min": 10,
+  "max": 17,
+  "texto": "Pide hoy y te llega entre el"
+ },
+ "suscripcion": "⟳ Se renueva cada 30 días ($29.99 c/u) &nbsp;|&nbsp; Cancela cuando quieras",
+ "botones": {
+  "agregar": "Agregar al carrito",
+  "pruebalo": "Pruébalo sin riesgo",
+  "fijo": "Lo quiero"
+ },
+ "desplegables": [
+  {
+   "t": "Descripción",
+   "p": "ANDAR Equilibrio Úrico junta en una cápsula los dos ingredientes que más busca la gente que vive con el ácido úrico alto, la cereza ácida y la semilla de apio. 60 cápsulas, un mes completo."
+  },
+  {
+   "t": "¿Por qué ANDAR?",
+   "p": "Porque el miedo no se va cuando pasa el dolor, se queda esperando la próxima vez. ANDAR es un hábito de dos cápsulas para acompañarte todos los días, no solo cuando ya duele."
+  },
+  {
+   "t": "Tus regalos",
+   "p": "Con 2 frascos, el segundo va a mitad de precio y el envío es gratis. Con 3, uno es gratis y además te llevas un pastillero de viaje."
+  },
+  {
+   "t": "Beneficios",
+   "p": "Apoya niveles saludables de ácido úrico, aporta antioxidantes naturales y acompaña la comodidad de tus articulaciones."
+  },
+  {
+   "t": "Cómo tomarlo",
+   "p": "2 cápsulas al día con agua, de preferencia con el desayuno. Si tomas algún medicamento, consulta a tu médico antes de empezar."
+  },
+  {
+   "t": "¿Tienen garantía?",
+   "p": "Sí, 30 días. Si no notas la diferencia, nos escribes por WhatsApp y te devolvemos tu dinero."
+  }
+ ],
+ "bloque_oscuro": {
+  "titulo": "Cereza y apio. Una sola rutina.",
+  "numero": "2 cápsulas",
+  "texto": "Con el desayuno, y te olvidas del resto del día."
+ },
+ "ingredientes": {
+  "titulo": "Dos ingredientes,",
+  "titulo_acento": "dos trabajos",
+  "sub": "Lo que hace cada uno por ti.",
+  "items": [
+   {
+    "img": "fotos/cerezas.jpg",
+    "t": "Cereza ácida",
+    "p": "Antioxidantes naturales que ayudan a tu cuerpo a mantener niveles saludables de ácido úrico."
+   },
+   {
+    "img": "fotos/semillas.jpg",
+    "t": "Semilla de apio",
+    "p": "Usada por siglos para apoyar la eliminación natural de líquidos de tu cuerpo."
+   },
+   {
+    "img": "fotos/capsulas-mano.jpg",
+    "t": "Cápsula vegetal",
+    "p": "Sin sabor, pasa con un trago de agua y no tienes que preparar nada."
+   }
+  ]
+ },
+ "resenas": {
+  "titulo": "Lo que dicen nuestros clientes",
+  "sub": "Lo cuentan quienes ya toman ANDAR. Los resultados varían.",
+  "verificada": "Compra verificada",
+  "fotos": [
+   "fotos/ugc-1.jpg",
+   "fotos/ugc-2.jpg",
+   "fotos/ugc-3.jpg",
+   "fotos/ugc-4.jpg",
+   "fotos/hombre-cocina.jpg"
+  ],
+  "items": [
+   {
+    "titulo": "Por fin duermo de corrido",
+    "texto": "Llevaba meses despertándome con el dedo gordo caliente. Lo tomo con el desayuno y ya ni me acuerdo, este mes ha sido otro.",
+    "nombre": "Ramón G.",
+    "ciudad": "Guadalajara"
+   },
+   {
+    "titulo": "Más fácil que los tés",
+    "texto": "Antes andaba con tés y jugos de apio que no me duraban ni una semana, con las cápsulas no se me olvida.",
+    "nombre": "Leticia M.",
+    "ciudad": "CDMX"
+   },
+   {
+    "titulo": "Lo pedí para mi papá",
+    "texto": "Mi papá ya no quería ni salir a caminar, ahora es él quien me apura para ir al parque los domingos.",
+    "nombre": "Daniela R.",
+    "ciudad": "Monterrey"
+   }
+  ]
+ },
+ "sientete": {
+  "titulo": "Siéntete mejor cada día",
+  "sub": "Lo que hace ANDAR por ti cada mañana.",
+  "iconos": [
+   {
+    "icono": "gota",
+    "t": "Ácido úrico en equilibrio"
+   },
+   {
+    "icono": "montana",
+    "t": "Te mueves con calma"
+   },
+   {
+    "icono": "corazon",
+    "t": "Antioxidantes naturales"
+   }
+  ]
+ },
+ "beneficios": {
+  "titulo": "Beneficios reales",
+  "sub": "Dos ingredientes, dos cápsulas al día.",
+  "items": [
+   {
+    "img": "fotos/paseo-perro.jpg",
+    "t": "Camina sin pensarlo",
+    "p": "Apoyo diario para tus articulaciones."
+   },
+   {
+    "img": "fotos/cena-familia.jpg",
+    "t": "Disfruta la mesa con los tuyos",
+    "p": "Sin vivir a dieta de conejo."
+   },
+   {
+    "img": "fotos/abuelo-futbol.jpg",
+    "t": "Vuelve a jugar con tus nietos",
+    "p": "Antioxidantes de la cereza ácida."
+   },
+   {
+    "img": "fotos/tomando-capsula.jpg",
+    "t": "Fácil de tomar",
+    "p": "Dos cápsulas con el desayuno."
+   }
+  ]
+ },
+ "razones": {
+  "titulo_acento": "5 razones",
+  "titulo": "por las que eligen ANDAR",
+  "sub": "Una rutina simple, ingredientes que ya conoces y cero riesgo.",
+  "etiqueta": "Razón",
+  "items": [
+   {
+    "img": "fotos/hero-regalo.jpg",
+    "t": "Cereza y apio en una sola cápsula",
+    "p": "No tienes que comprar uno por un lado y otro por otro."
+   },
+   {
+    "img": "fotos/capsulas-mano.jpg",
+    "t": "Una rutina que sí se cumple",
+    "p": "Dos cápsulas al día, nada que medir ni licuar."
+   },
+   {
+    "img": "fotos/buro.jpg",
+    "t": "Sin sabor y sin preparar nada",
+    "p": "Pasa con un trago de agua."
+   },
+   {
+    "img": "fotos/hombre-cocina.jpg",
+    "t": "Para todos los días, no un detox de una semana",
+    "p": "Un hábito que te acompaña, no una limpieza milagro."
+   },
+   {
+    "img": "fotos/garantia-retrato.jpg",
+    "t": "30 días para probarlo",
+    "p": "Si no notas la diferencia, te devolvemos tu dinero."
+   }
+  ]
+ },
+ "comparacion": {
+  "titulo": "ANDAR vs. otras marcas",
+  "sub": "La diferencia está en lo que lleva y en lo que te respalda.",
+  "nuestro_img": "fotos/principal.jpg",
+  "otro_img": "fotos/otra-marca.jpg",
+  "otro_nombre": "Otras",
+  "filas": [
+   "Cereza y apio en una cápsula",
+   "Cápsula vegetal sin sabor",
+   "Nada que preparar ni licuar",
+   "Garantía de 30 días",
+   "Atención por WhatsApp",
+   "Envío gratis desde 2 frascos"
+  ]
+ },
+ "garantia": {
+  "dias": 30,
+  "unidad": "DÍAS",
+  "kicker": "NOTA LA DIFERENCIA",
+  "titulo": "30 días sin riesgo",
+  "texto": "Si en tus primeros 30 días no notas la diferencia, nos escribes y te devolvemos tu dinero, sin preguntas.",
+  "img": "fotos/garantia-retrato.jpg"
+ },
+ "videos": {
+  "titulo": "Gente real.",
+  "titulo_acento": "Resultados reales.",
+  "sub": "Escúchalo de ellos.",
+  "items": [
+   {
+    "video": "fotos/video-1.mp4",
+    "poster": "fotos/video-1.jpg",
+    "frase": "Ya salgo a caminar"
+   },
+   {
+    "video": "fotos/video-2.mp4",
+    "poster": "fotos/video-2.jpg",
+    "frase": "Me cambió las mañanas"
+   },
+   {
+    "video": "fotos/video-3.mp4",
+    "poster": "fotos/video-3.jpg",
+    "frase": "Voy en mi tercer frasco"
+   }
+  ]
+ },
+ "repetir": {
+  "titulo_acento": "Compártelo con tu familia.",
+  "titulo": "Lleva más, ahorra más.",
+  "sub": "Tu bienestar importa, y el de ellos también.",
+  "imgs": [
+   "fotos/principal.jpg",
+   "fotos/hero-regalo.jpg",
+   "fotos/principal.jpg"
+  ]
+ },
+ "preguntas": {
+  "titulo": "Preguntas frecuentes",
+  "sub": "Lo que más nos preguntan antes de pedir.",
+  "items": [
+   {
+    "q": "¿En cuánto tiempo voy a notar la diferencia?",
+    "a": "Funciona como hábito, tomándolo todos los días. Por eso el paquete de 3 meses es el más elegido, y si en 30 días no notas la diferencia te devolvemos tu dinero."
+   },
+   {
+    "q": "¿Lo puedo tomar si ya tomo medicamento?",
+    "a": "Si tomas algo para el ácido úrico, la presión o cualquier tratamiento, pregúntale a tu médico antes de empezar. ANDAR es un suplemento y no reemplaza lo que él te indique."
+   },
+   {
+    "q": "¿Qué lleva? ¿Es natural?",
+    "a": "Cereza ácida y semilla de apio en una cápsula vegetal, sin sabor. Nada más que tengas que preparar o mezclar."
+   },
+   {
+    "q": "¿Tiene efectos secundarios?",
+    "a": "Son ingredientes de uso común. Si estás embarazada, das pecho, eres alérgico al apio o tienes alguna condición médica, consulta a tu médico antes de tomarlo."
+   },
+   {
+    "q": "¿Cuándo me llega y cómo lo sigo?",
+    "a": "Te llega de 10 a 17 días después de tu pedido, y te mandamos el número de guía por WhatsApp para que lo sigas."
+   },
+   {
+    "q": "¿Es seguro pagar aquí?",
+    "a": "Sí, pagas con tarjeta en un pago cifrado dentro de la tienda. No guardamos los datos de tu tarjeta."
+   },
+   {
+    "q": "¿Y si no me funciona?",
+    "a": "Tienes 30 días para probarlo. Si no te convence, nos escribes por WhatsApp y te devolvemos tu dinero."
+   },
+   {
+    "q": "¿Puedo cancelar la suscripción?",
+    "a": "Cuando quieras, con un mensaje. Sin permanencia ni letras chiquitas."
+   }
+  ]
+ },
+ "lista_resenas": {
+  "linea": "Más de 1.200 clientes confían en ANDAR",
+  "titulo": "Reseñas de clientes",
+  "sub": "Los resultados varían de persona a persona.",
+  "mas": "Ver más reseñas",
+  "items": [
+   {
+    "texto": "Llegó antes de lo que decían, bien empacado. Ya voy por el segundo pedido.",
+    "nombre": "Jorge P.",
+    "etiquetas": [
+     "Envío",
+     "Recompra"
+    ]
+   },
+   {
+    "texto": "Me gusta que sea una sola cápsula con las dos cosas, antes compraba todo por separado.",
+    "nombre": "Arturo S.",
+    "etiquetas": [
+     "Uso diario",
+     "Fácil de tomar"
+    ]
+   },
+   {
+    "texto": "Lo tomo con mi café y listo, no sabe a nada.",
+    "nombre": "Patricia V.",
+    "etiquetas": [
+     "Sin sabor"
+    ]
+   }
+  ]
+ },
+ "pie": {
+  "titulo": "Entérate primero",
+  "texto": "Ofertas, novedades y consejos para tu día a día.",
+  "placeholder": "Tu correo",
+  "boton": "Enviar",
+  "links": [
+   "Preguntas frecuentes",
+   "Contacto",
+   "Rastrea tu pedido",
+   "Envíos",
+   "Devoluciones",
+   "Privacidad",
+   "Términos",
+   "Cancelar suscripción"
+  ],
+  "legal": [
+   "¿Dudas? Escríbenos por WhatsApp de lunes a sábado.",
+   "Estas afirmaciones no han sido evaluadas por la autoridad sanitaria. Este producto no es un medicamento y no está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad. El consumo de este producto es responsabilidad de quien lo recomienda y de quien lo usa.",
+   "Los resultados varían. Las reseñas reflejan experiencias individuales y no son una garantía.",
+   "Consulta a tu médico antes de tomar cualquier suplemento, sobre todo si tomas medicamentos o tienes una condición médica."
+  ],
+  "pais": "México (USD $) ⌄"
+ },
+ "whatsapp": "",
+ "carrusel": {
+  "p1": {
+   "foto": "fotos/principal-hd.jpg",
+   "sello": "REGALOS<br>GRATIS",
+   "recuadros": [
+    {
+     "icono": "gota",
+     "t": "Ácido úrico en equilibrio"
+    },
+    {
+     "icono": "persona",
+     "t": "Camina con tranquilidad"
+    },
+    {
+     "icono": "corazon",
+     "t": "Antioxidantes naturales"
+    }
+   ]
+  },
+  "p2": {
+   "titulo": "Siéntete mejor cada día",
+   "sub": "Menos días parado y más días caminando. Esto es lo que hace distinto a ANDAR.",
+   "iconos": [
+    {
+     "icono": "gota",
+     "t": "Ácido úrico en equilibrio"
+    },
+    {
+     "icono": "persona",
+     "t": "Articulaciones cómodas"
+    },
+    {
+     "icono": "rayo",
+     "t": "Más ganas de moverte"
+    }
+   ]
+  },
+  "p3": {
+   "titulo": "Por qué confiar en ANDAR",
+   "fondo": "fotos/cerezas.jpg",
+   "sellos": [
+    {
+     "icono": "gota",
+     "t": "Ingredientes que ya conoces"
+    },
+    {
+     "icono": "capsula",
+     "t": "Cápsula vegetal"
+    },
+    {
+     "icono": "check",
+     "t": "Fórmula simple"
+    },
+    {
+     "icono": "escudo",
+     "t": "Garantía de 30 días"
+    }
+   ],
+   "puntos": [
+    "Sin sabor",
+    "Fácil de tragar",
+    "1 frasco = 1 mes",
+    "Envío con seguimiento",
+    "Atención por WhatsApp",
+    "Para todos los días"
+   ]
+  },
+  "p4": {
+   "cita": "El único suplemento que",
+   "cita_acento": "sí siento que me funciona",
+   "texto": "Ya no me despierto con el dedo caliente y volví a salir a caminar con mi esposa.",
+   "nombre": "Ramón G., Guadalajara",
+   "foto": "fotos/garantia-retrato-hd.jpg"
+  },
+  "p5": {
+   "foto": "fotos/capsulas-macro-hd.jpg",
+   "detalles": [
+    {
+     "icono": "fruta",
+     "t": "Cereza ácida"
+    },
+    {
+     "icono": "hoja",
+     "t": "Semilla de apio"
+    },
+    {
+     "icono": "capsula",
+     "t": "Cápsula vegetal"
+    },
+    {
+     "icono": "mas",
+     "t": "2 ingredientes en 1"
+    },
+    {
+     "icono": "check",
+     "t": "Sin sabor"
+    },
+    {
+     "icono": "frasco",
+     "t": "60 cápsulas, 1 mes"
+    }
+   ]
+  },
+  "p6": {
+   "titulo": "ANDAR vs. otras marcas",
+   "otro_img": "fotos/otra-marca.jpg",
+   "filas": [
+    {
+     "icono": "gota",
+     "t": "Cereza y apio juntos"
+    },
+    {
+     "icono": "capsula",
+     "t": "Cápsula vegetal sin sabor"
+    },
+    {
+     "icono": "check",
+     "t": "Nada que preparar"
+    },
+    {
+     "icono": "escudo",
+     "t": "Garantía de 30 días"
+    },
+    {
+     "icono": "chat",
+     "t": "Atención por WhatsApp"
+    }
+   ]
+  },
+  "p7": {
+   "titulo": "Información nutrimental",
+   "porcion_t": "Porción:",
+   "porcion": "2 cápsulas",
+   "porciones_t": "Porciones por envase:",
+   "porciones": "30",
+   "cabecera": "CONTENIDO POR PORCIÓN",
+   "ingredientes": [
+    {
+     "n": "Cereza ácida",
+     "detalle": "(Prunus cerasus), fruto"
+    },
+    {
+     "n": "Semilla de apio",
+     "detalle": "(Apium graveolens)"
+    }
+   ],
+   "nota": "* Valor diario no establecido. Otros ingredientes: cápsula vegetal. Consérvese en un lugar fresco y seco, fuera del alcance de los niños.",
+   "pasos": [
+    {
+     "icono": "capsula",
+     "t": "Toma 2 cápsulas"
+    },
+    {
+     "icono": "vaso",
+     "t": "Con un vaso de agua"
+    },
+    {
+     "icono": "sol",
+     "t": "Una vez al día, en la mañana"
+    }
+   ]
+  }
+ }
+}
