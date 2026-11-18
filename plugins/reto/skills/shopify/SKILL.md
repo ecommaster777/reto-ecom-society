@@ -61,6 +61,12 @@ Hazlo tú por la conexión (`shopify store execute --allow-mutations`). Lo que n
 
 **Lo único que hace la persona:** escribir su número de WhatsApp y conectar su pasarela de pago (Paso 6), porque ahí van sus datos.
 
+## Paso 5b · El dominio (después de la skill marca)
+Cuando la persona ya tenga nombre:
+1. **Lo más fácil, comprarlo en Shopify:** Configuración › Dominios › Comprar dominio nuevo. Ella escribe el dominio que aprobó y lo paga (unos USD 15 al año). Shopify lo conecta solo en unos minutos.
+2. **Si ya lo compró en otro lado** (GoDaddy, Namecheap, Hostinger…): en Shopify, Configuración › Dominios › Conectar dominio existente, y en su proveedor de dominio dos registros DNS: `A` con nombre `@` apuntando a `23.227.38.65`, y `CNAME` con nombre `www` apuntando a `shops.myshopify.com`. Hazlo tú con Claude en Chrome si ella tiene la sesión abierta; si no, guíala clic por clic. Puede tardar hasta unas horas en propagarse.
+3. Márcalo como **dominio principal** y anótalo en `contexto/00-perfil.md`. Lo necesita esa noche para verificar el dominio en Meta.
+
 ## Paso 6 · Cobrar por adelantado
 Explícale primero, en 4 líneas, por qué en el reto se cobra por adelantado: con contra entrega, si despacha 100 pedidos y le devuelven 30, pagó 30 anuncios, 30 productos y 60 envíos sin cobrar nada.
 
