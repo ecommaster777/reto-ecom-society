@@ -35,6 +35,10 @@ function render(root,D,opt){
  const fmt=c=>{try{return new Intl.NumberFormat(D.idioma||'es-MX',{style:'currency',currency:opt.moneda||'USD',currencyDisplay:'narrowSymbol'}).format(c/100)}catch(e){return (c/100).toFixed(2)}};
  const O=D.ofertas.map((o,k)=>{const v=V&&V[o.variante!=null?o.variante:k];if(!v)return o;const u=o.unidades||1;
   return Object.assign({},o,{id:v.id,precio:fmt(v.p),antes:v.c>v.p?fmt(v.c):'',por_unidad:fmt(Math.round(v.p/u))+' '+(D.texto_por_unidad||'por unidad'),ahorro:v.c>v.p?(D.texto_ahorro||'Ahorra')+' '+fmt(v.c-v.p):''})});
+ // precios fijos en datos ("$4.95") a la moneda del visitante, con la tasa de Shopify Markets
+ const TASA=V&&window.Shopify&&Shopify.currency&&parseFloat(Shopify.currency.rate)||1;
+ const cv=s=>(V&&TASA!==1&&typeof s==='string')?s.replace(/\$\s?(\d+(?:\.\d{1,2})?)/g,(m,n)=>fmt(Math.round(parseFloat(n)*TASA*100))):s;
+ if(D.suscripcion)D.suscripcion=cv(D.suscripcion);
  const B=D.botones;
  const h=[];
  // 1-3 barra, encabezado, cinta
@@ -148,7 +152,7 @@ function render(root,D,opt){
    d.onclick=()=>{sel=k;pinta()};b.appendChild(d)})});
   const o=O[sel];$('[data-pnow]').textContent=o.precio;$('[data-pwas]').textContent=o.antes||'';$('[data-psave]').textContent=o.ahorro||'';
   $$('[data-atcp]').forEach(e=>e.innerHTML=(o.antes?`<s>${o.antes}</s>`:'')+o.precio);$('[data-stp]').textContent=o.nombre+' · '+o.precio;
-  $('[data-gifts]').innerHTML=(D.regalos||[]).map((g,k)=>{const on=sel>=g.nivel;return(k?'<i>+</i>':'')+`<div class="${on?'':'lock'}"><img src="${g.img}" alt=""><s>${g.antes}</s>${on?'<b>'+g.nombre+'</b>':'🔒 '+(D.bloqueado||'Bloqueado')}</div>`}).join('');
+  $('[data-gifts]').innerHTML=(D.regalos||[]).map((g,k)=>{const on=sel>=g.nivel;return(k?'<i>+</i>':'')+`<div class="${on?'':'lock'}"><img src="${g.img}" alt=""><s>${cv(g.antes)}</s>${on?'<b>'+g.nombre+'</b>':'🔒 '+(D.bloqueado||'Bloqueado')}</div>`}).join('');
  };pinta();
  const f=d=>d.toLocaleDateString(D.idioma||'es-MX',{weekday:'short',day:'numeric',month:'short'});
  const a=new Date(),b=new Date();a.setDate(a.getDate()+D.entrega.min);b.setDate(b.getDate()+D.entrega.max);
