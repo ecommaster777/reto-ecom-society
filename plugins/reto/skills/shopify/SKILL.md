@@ -55,8 +55,11 @@ Hazlo y muéstrale lo que quedó, sin pedirle que haga clic:
 
 ## Paso 5 · Mercados, envíos y checkout (lo haces tú)
 Hazlo tú por la conexión (`shopify store execute --allow-mutations`). Lo que no se pueda por la conexión, hazlo **con Claude en Chrome** abriendo el administrador de Shopify de la persona (ella ya inició sesión). Explícale cada cosa en una línea mientras la haces.
-1. **Tienda en dólares y mercados por país.** La moneda de la tienda es USD. Crea los mercados con los países que dejó la skill `producto` en `contexto/02-producto-y-numeros.md` (Estados Unidos, Canadá, Reino Unido, Australia y los de Latinoamérica hispana donde el proveedor envía y el margen da al menos 60 %). **Nunca Argentina.** Shopify Markets convierte el precio a la moneda de cada país. Solo si la persona vende en un único país, la moneda va en la de ese país.
-2. **Envío gratis** a todos esos países (una tarifa de 0 por zona), porque el envío ya va dentro del precio.
+Lee la ruta en `contexto/00-perfil.md` (la eligió en la skill `producto`). Si no está, pregúntale: "¿Tienes una LLC en Estados Unidos, o vives en México, Estados Unidos o España?". Sí es ruta A; no es ruta B.
+1. **Moneda y mercados.**
+   - **Ruta B:** la tienda en la moneda de su país y **un solo mercado, su país**. Nada de otros países: su pasarela local no les puede cobrar.
+   - **Ruta A:** la moneda de la tienda es USD. Crea los mercados con los países que dejó la skill `producto` en `contexto/02-producto-y-numeros.md` (Estados Unidos, Canadá, Reino Unido, Australia y los de Latinoamérica hispana donde el proveedor envía y el margen da al menos 60 %). **Nunca Argentina.** Shopify Markets convierte el precio a la moneda de cada país. Solo si la persona vende en un único país, la moneda va en la de ese país.
+2. **Envío gratis** a su país (ruta B) o a todos esos países (ruta A) (una tarifa de 0 por zona), porque el envío ya va dentro del precio.
 3. **Checkout:** el teléfono del cliente obligatorio (lo necesita la transportadora).
 
 **Lo único que hace la persona:** escribir su número de WhatsApp y conectar su pasarela de pago (Paso 6), porque ahí van sus datos.
@@ -72,12 +75,15 @@ Explícale primero, en 4 líneas, por qué en el reto se cobra por adelantado: c
 
 **La mejor opción para cobrar es Shopify Payments**: es la más barata, cobra internacional y no tiene la comisión extra de Shopify. Pero solo existe para quien cobra desde México, Estados Unidos o España, o con una **LLC en Estados Unidos**. Para quien está en otro país, el camino es: **empezar ya con una pasarela local y, mientras saca su LLC, pasarse a Shopify Payments.**
 
+- **Ruta A:** Shopify Payments.
+- **Ruta B:** la pasarela local de su país, según la tabla. Recuérdale que con ella cobra en su país y en su moneda, y que cuando tenga la LLC pasa a Shopify Payments y abre más países.
+
 Recomiéndale según su país:
 
 | País | Para empezar ya | Otras |
 |---|---|---|
 | México | Shopify Payments, como persona con RFC | Mercado Pago |
-| Colombia | Lane (https://lane.money) | Wompi, Bold, Mercado Pago |
+| Colombia | Lane (https://lane.money), Wompi (https://wompi.com) o Mercado Pago (https://www.mercadopago.com.co) | Bold |
 | Perú | Culqi | Mercado Pago |
 | Chile | Mercado Pago | Flow |
 | Argentina | Mercado Pago | |

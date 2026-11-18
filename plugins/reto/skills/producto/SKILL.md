@@ -76,23 +76,34 @@ Recuérdale: publicarlo en el grupo de WhatsApp antes del jueves a las 5 PM, hor
 
 Hoy se elige **un** producto y se comprueba que la cuenta da. La base de la cuenta es **lo que cobra el proveedor**, no una suposición.
 
+### 0. Su ruta (lo primero que preguntas)
+De cómo va a cobrar depende dónde puede vender. Pregúntale, en una sola pregunta: "¿Tienes una LLC en Estados Unidos, o vives en México, Estados Unidos o España?". Anota la respuesta como `Ruta: A` o `Ruta: B` en `contexto/00-perfil.md`.
+
+- **Ruta A (sí):** cobra con Shopify Payments, así que vende en **varios países y en dólares**: Estados Unidos, Canadá, Reino Unido, Australia y Latinoamérica hispana. Proveedor: CJ desde China. Para suplementos con su marca desde Estados Unidos, más adelante: Full Stack Fulfillment (WhatsApp https://wa.me/12084015081).
+- **Ruta B (no):** con una pasarela local solo puede cobrar en su país. Vende **solo en su país y en su moneda**. Proveedor: uno que despache en su país (Dropi, Mastershop; para suplementos en Colombia, Pablo Jaramillo, que hace dropshipping de suplementos: WhatsApp https://wa.me/573245500986), o CJ si envía ese producto a su país. Explícale que no es un camino peor: lanza esta semana y, mientras tanto, saca su LLC (entrenamiento https://youtu.be/EM81WpjV7xw y doola https://partnersps.doola.com/fpmgroup con el código DOOLAFPMGROUP10). Cuando la tenga, pasa a la ruta A.
+
+Todo lo que sigue cambia según la ruta.
+
 ### 1. El costo, del proveedor
 Lee `contexto/01-investigacion-mercado.md` y parte de los productos recomendados y sus links de CJ. Si la persona todavía no tiene cuenta en CJ, que la cree primero con el link del reto (https://www.cjdropshipping.com/register.html?token=53e6745e-7a90-4562-a572-20bd70211f11): sin cuenta no puede ver el envío a su país. Los links de CJ ya los tienes de la parte 1: no se los vuelvas a pedir. Pregúntale solo **con cuál producto se queda** (o con cuáles, máximo 3). Si trae uno nuevo que no está en el brief, ahí sí pídele su link.
 Para cada producto:
 1. Abre **su link de CJ** del brief.
-2. **El costo con envío a cada país**, tal como lo muestra CJ: en la página del producto, que cambie "Ship to" a su país y te diga el precio del producto, el costo de envío, el total y los días de entrega. La tienda vende en **varios países**: Estados Unidos, Canadá, Reino Unido y Australia, más Latinoamérica hispana (México, Colombia, Chile, Perú, Ecuador, Guatemala, Costa Rica, Panamá, República Dominicana, Uruguay, Paraguay, Bolivia, El Salvador, Honduras). **Nunca Argentina**, porque no deja entrar productos desde China. Si tienes Claude en Chrome y la persona tiene sesión en CJ, revisa tú el envío a cada país en la página del producto; si no, pídele que te pegue el costo de envío de cada país.
+2. **El costo con envío**, tal como lo muestra CJ (ruta A: a cada país de la lista; ruta B: solo a su país): en la página del producto, que cambie "Ship to" a su país y te diga el precio del producto, el costo de envío, el total y los días de entrega. La tienda vende en **varios países**: Estados Unidos, Canadá, Reino Unido y Australia, más Latinoamérica hispana (México, Colombia, Chile, Perú, Ecuador, Guatemala, Costa Rica, Panamá, República Dominicana, Uruguay, Paraguay, Bolivia, El Salvador, Honduras). **Nunca Argentina**, porque no deja entrar productos desde China. Si tienes Claude en Chrome y la persona tiene sesión en CJ, revisa tú el envío a cada país en la página del producto; si no, pídele que te pegue el costo de envío de cada país.
 3. Si CJ dice que no hay envío a su país para ese producto, explícale que CJ envía a todo el mundo pero algunos productos no van a ciertos países, y que tiene 3 caminos: buscar en CJ un producto parecido que sí llegue, pedir una cotización en CJ, o buscarlo con un proveedor local de su país.
 
 **Si va a despachar dentro de su país** (por ejemplo Colombia), que revise en las plataformas locales qué productos tienen para su dolor y te pegue el link y el precio:
 - Dropi: https://dropi.co (Colombia, México, Perú, Chile, Ecuador, Argentina, Guatemala, Costa Rica, Panamá, Paraguay y España).
 - Mastershop: https://mastershop.com (Colombia).
+- Suplementos en Colombia: Pablo Jaramillo hace dropshipping de suplementos (WhatsApp https://wa.me/573245500986). Que le escriba con el producto que quiere y le pida precio por unidad, envío y tiempos.
+
+En la **ruta B**, si CJ no envía el producto a su país, este es el camino principal, no un plan B.
 
 **Si el producto no está en CJ** pero sí en AliExpress: el precio de AliExpress sirve como base para esta primera cuenta, porque casi siempre coincide con lo que cobra el proveedor en China. En paralelo, que pida la cotización en CJ (Sourcing › publicar el link) y cuando llegue rehaces la cuenta.
 
-**La tabla de países:** para cada país, costo puesto (producto + envío + pasarela) y margen con el precio de venta. Entra el país si el proveedor envía y el margen es de al menos 60 %. Anota en `contexto/02-producto-y-numeros.md` los países que entran y los que no, con el motivo: esa lista la usa la skill `shopify` para crear los mercados.
+**La tabla de países (solo ruta A):** para cada país, costo puesto (producto + envío + pasarela) y margen con el precio de venta. Entra el país si el proveedor envía y el margen es de al menos 60 %. Anota en `contexto/02-producto-y-numeros.md` los países que entran y los que no, con el motivo: esa lista la usa la skill `shopify` para crear los mercados.
 
 ### 2. El precio de venta
-Busca a cuánto se vende hoy, en su país (y en Estados Unidos si vende allá), en 3 a 5 tiendas que ya lo venden (idealmente las de los anuncios del brief) y en Mercado Libre o Amazon. Toma el del medio. Mira también **cómo arman los paquetes** (1, 3 y 5 unidades, o "2 + regalo") y a qué precio. Con links.
+Busca a cuánto se vende hoy (ruta A: en Estados Unidos y en dólares; ruta B: en su país y en su moneda), en 3 a 5 tiendas que ya lo venden (idealmente las de los anuncios del brief) y en Mercado Libre o Amazon. Toma el del medio. Mira también **cómo arman los paquetes** (1, 3 y 5 unidades, o "2 + regalo") y a qué precio. Con links.
 
 ### 3. Los 3 números
 Para cada producto, con la oferta por cantidad:
@@ -117,7 +128,7 @@ Recomienda **uno** y explica por qué en 3 líneas. La decisión es de la person
 Cuéntale también el tiempo de entrega real y que hay que decirlo claro en la tienda: con pago por adelantado, el cliente espera.
 
 ### 5. Lo que le entregas
-- En `contexto/02-producto-y-numeros.md`: el producto elegido, su link, los 3 números de 1 y 3 unidades, la oferta por cantidad propuesta y los 5 criterios.
+- En `contexto/02-producto-y-numeros.md`: la ruta (A o B), el producto elegido, su link, los 3 números de 1 y 3 unidades, la oferta por cantidad propuesta y los 5 criterios.
 - En `contexto/03-proveedor.md`: el proveedor, el link, el costo, el envío y los días de entrega a su país.
 - En `contexto/07-finanzas.md`: las comisiones que usaste.
 
