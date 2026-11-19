@@ -28,6 +28,7 @@ Se hace en 4 pasos y **la persona aprueba cada uno antes de seguir**.
 - Copy: sigue la skill `copy` (resultado antes que características, títulos de una línea, nunca cruces ni asteriscos al final de los textos, nada de "cura", "elimina" o "trata", y nunca "tu ácido úrico" ni "tu [condición]": se dice "el ácido úrico", porque Meta rechaza los textos que señalan la condición del cliente).
 - Recuérdale revisar la regla sanitaria de su país antes de vender un suplemento o un cosmético.
 - Guarda cada aprobación en `contexto/04-tienda.md` con la fecha. Trabaja en la carpeta `tienda/pagina/` de `mi-reto`.
+- **Python:** los scripts de la plantilla necesitan Python. Antes del Paso 3 revisa con `python3 --version` (Mac) o `py --version` (Windows). Si no lo tiene, instálalo como dice el punto de Python de la skill `herramientas` (Mac: aceptar la ventana de herramientas de desarrollo o https://www.python.org/downloads/; Windows: `winget install Python.Python.3.12` y volver a abrir PowerShell y Claude). **En Windows, en todos los comandos de abajo cambia `python3` por `py`.**
 
 ---
 
